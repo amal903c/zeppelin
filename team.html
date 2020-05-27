@@ -15,7 +15,7 @@
 
 
     <!--  POPUP-->
-    <!--
+
     <section id="team_detalje" class="team_skjul">
         <button class="team_luk">X</button>
         <article id="team_article">
@@ -27,7 +27,7 @@
                 <a class="mail_popup" href="mailto:"></a>
             </div>
         </article>
-    </section>-->
+    </section>
 
 
 
@@ -77,8 +77,32 @@
                 klon.querySelector("img").src = person.billede.guid;
                 klon.querySelector("img").alt = "Portæt af" + person.navn;
 
+                // Click -> popup
+                klon.querySelector(".person").addEventListener("click", () => {
+                    vis_team_detalje(person)
+                });
+
                 listeELM.appendChild(klon);
             })
+        }
+
+        // Hent popup data
+        function vis_team_detalje(person) {
+
+            team_detalje.classList.remove("team_skjul");
+
+            team_detalje.querySelector(".team_luk").addEventListener("click", () =>
+                team_detalje.classList.add("team_skjul"));
+
+            console.log(person.navn);
+
+            team_detalje.querySelector("img").src = person.billede.guid;
+            team_detalje.querySelector("img").alt = "Portæt af" + person.navn;
+
+            team_detalje.querySelector(".navn_popup").textContent = person.navn;
+            team_detalje.querySelector(".stilling_popup").textContent = person.stilling;
+            team_detalje.querySelector(".text_popup").innerHTML = person.beskrivelse;
+            team_detalje.querySelector(".mail_popup").innerHTML = person.email;
         }
 
     </script>
