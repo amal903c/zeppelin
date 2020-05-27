@@ -44,7 +44,7 @@
 
             <div class="mid_kommende_forestillinger">
 
-                <h1></h1>
+                <h1 id="mid_kommende_overskrift"></h1>
                 <div class="wrapper_mid">
 
                 </div>
@@ -55,36 +55,23 @@
                 <div class="wrapper_mid">
                 </div>
             </div>
-
-
-
-
-
-
         </div>
-
-
-
-
-
-
     </section>
-
-
-
-
-
-
-
-
 
     <script>
         //variabler starter her
 
-        let endpoint = "http://michelleyoung.dk/kea/zeppelin/wordpress/wp-json/wp/v2/forestilling/53"
+        let endpointForestillinger = "http://michelleyoung.dk/kea/zeppelin/wordpress/wp-json/wp/v2/forestilling/53"
+
+        let endpointAlleForestillinger = "http://michelleyoung.dk/kea/zeppelin/wordpress/wp-json/wp/v2/alle_forestillinge"
 
         //tomt array
         let theJSONForestillinger = [];
+        let theJSONAlleForestillinger = [];
+
+        //forestilling template
+
+        const forestillingTemplate = document.querySelector("#forestillinger_template");
 
 
 
@@ -97,11 +84,17 @@
         }
 
         async function loadDataForestillinger() {
-            //henter json data
-            let ressponsForestillinger = await fetch(endpoint);
+            //henter json data for forestillinger
+            let ressponsForestillinger = await fetch(endpointForestillinger);
 
-            //putter json data ind i et array
+            //putter json data ind i et array for forestillinger
             theJSONForestillinger = await ressponsForestillinger.json();
+
+
+            //henter data fra alle forestillinger
+            let ressponsAlleForestillinger = await fetch(endpointAlleForestillinger);
+
+            theJSONAlleForestillinger = await ressponsAlleForestillinger.json();
 
             //kalder visForestillinger
             visForestillinger();
@@ -124,6 +117,26 @@
             // indsætter billedet på nuværende forestilling
 
             document.querySelector("#image_current_forestilling").src = theJSONForestillinger.forestilling_billede.guid;
+
+            //tilføjet overskriften glæd jer til
+            document.querySelector("#mid_kommende_overskrift").textContent = theJSONForestillinger.main_overskrift2
+
+            // laver et loop over alle kommende forestillinger
+
+            //laver klon
+            const klonForestillinger = forestillinger_template.cloneNode(true).content;
+
+            //kopiere indhold ind i klonen
+            forestillinger_template.querySelector("img").src = theJSONAlleForestillinger.billede.guid;
+
+            forestillinger_template.querySelector("h2").textContent = theJSONAlleForestillinger.titel;
+
+            forestillinger_template.querySelector("p").textContent = theJSONAlleForestillinger.dato;
+
+
+
+
+
 
 
 
