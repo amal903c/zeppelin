@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+
+    <div id="the_container">
+        <div id="basisside">
+            <div class="splash">
+                <button class="call_to_action_button"></button>
+            </div>
+            <h1 class="kommende"></h1>
+            <div class="forestillinger_galleri"></div>
+            <h1 class="mereend"></h1>
+            <p class="mereend_tekst"></p>
+            <button></button>
+            <h1 class="savner"></h1>
+            <p class="savner_tekst"></p>
+            <button></button>
+        </div>
+        <div id="footer"></div>
+    </div>
+
+
+
+
+    <script>
+        let theJSON;
+        const call_to_action = document.querySelector("#basisside");
+
+        document.addEventListener("DOMContentLoaded", start);
+
+        //endpoint url
+        var endpoint = "http://michelleyoung.dk/kea/zeppelin/wordpress/wp-json/wp/v2/forside/";
+
+        function start() {
+            loadData();
+        }
+
+        async function loadData() {
+            console.log("jeg er ved data");
+
+            const response = await fetch(endpoint);
+            theJSON = await response.json();
+            visIndhold();
+
+        }
+
+
+
+
+        function visIndhold() {
+            console.log(theJSON.call_to_action)
+
+            document.querySelector(".call_to_action_button").innerHTML = theJSON.call_to_action;
+
+        }
+
+    </script>
+
+</body>
+
+</html>
