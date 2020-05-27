@@ -307,6 +307,7 @@ body {
 .person {
     cursor: pointer;
     padding: 34px;
+    margin: auto;
 }
 
 .person img:hoved {
@@ -316,7 +317,7 @@ body {
 .team_liste {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-    padding: 50px;
+    padding: 20px 50px;
     flex-direction: row-reverse;
 }
 
@@ -333,6 +334,14 @@ body {
     font-size: 1.3rem;
     line-height: 20px;
 }
+
+
+@media only screen and (min-width: 650px) {
+    .team_liste {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+}
+
 
 
 
