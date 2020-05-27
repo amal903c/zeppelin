@@ -1,7 +1,9 @@
 /* GENERELLE INDSTILLINGER */
 
 
-
+body {
+    background-color: #E5E5E5;
+}
 
 
 
@@ -300,7 +302,37 @@
 /* AMALIE */
 
 
+/* Teamet Loopview */
 
+.person {
+    cursor: pointer;
+    padding: 34px;
+}
+
+.person img:hoved {
+    opacity: 0.6;
+}
+
+.team_liste {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    padding: 50px;
+    flex-direction: row-reverse;
+}
+
+.team_stilling {
+    text-align: center;
+    margin: 7px 0 0 0;
+    font-size: 0.9rem;
+    font-style: italic;
+}
+
+.team_navn {
+    text-align: center;
+    margin: 7px 0 0 0;
+    font-size: 1.3rem;
+    line-height: 20px;
+}
 
 
 

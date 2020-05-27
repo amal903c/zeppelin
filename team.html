@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+
+    <h1 id="team_title">Teamet</h1>
+
+
+    <!--  POPUP-->
+    <!--
+    <section id="team_detalje" class="team_skjul">
+        <button class="team_luk">X</button>
+        <article id="team_article">
+            <div class="team_col team_col_img"><img src=""></div>
+            <div class="team_col team_col_text">
+                <h2 class="navn_popup"></h2>
+                <p class="stilling_popup"></p>
+                <p class="text_popup"></p>
+                <a class="mail_popup" href="mailto:"></a>
+            </div>
+        </article>
+    </section>-->
+
+
+
+    <!--    LOOPVIEW-->
+    <section class="team_liste"></section>
+
+    <template class="team_template">
+        <article class="person">
+            <img src="" alt="">
+            <h2 class="team_navn"></h2>
+            <p class="team_stilling"></p>
+        </article>
+    </template>
+
+
+
+
+
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", start);
+
+        const listeELM = document.querySelector(".team_liste");
+        const template_teamet = document.querySelector(".team_template").content;
+
+        // HENT WORDPRESS
+        const url = "http://michelleyoung.dk/kea/zeppelin/wordpress/wp-json/wp/v2/team?per_page=100";
+
+
+
+        async function start() {
+            const resspons = await fetch(url);
+            const json = await resspons.json();
+            vis(json);
+        }
+
+
+        function vis(personer) {
+            listeELM.innerHTML = "";
+            personer.forEach(person => {
+                console.log(person);
+                const klon = template_teamet.cloneNode(true);
+
+                klon.querySelector(".team_navn").textContent = person.navn;
+                klon.querySelector(".team_stilling").textContent = person.stilling;
+                klon.querySelector("img").src = person.billede.guid;
+                klon.querySelector("img").alt = "Portæt af" + person.navn;
+
+                listeELM.appendChild(klon);
+            })
+        }
+
+    </script>
+</body>
+
+</html>
