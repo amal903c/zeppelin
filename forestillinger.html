@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forestillinger</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <template id="forestillinger_template">
+        <article id="forestlling">
+            <img src="" alt="">
+            <h2></h2>
+            <p></p>
+            <button class="read_more"></button>
+
+        </article>
+
+    </template>
+
+    <section id="forestllinger">
+        <div id="sectionswrapper">
+
+            <div id="top_current_forestilling">
+                <h1 id="top_overskrift"></h1>
+                <div class="wrapper">
+                    <div class="text">
+                        <h2 id="current_forestilling_overskrift"></h2>
+                        <p id="current_forestilling_dato"></p>
+
+                        <button class="read_more"> Læs mere</button>
+
+
+                    </div>
+                    <div class="image">
+                        <img id="image_current_forestilling" src="" alt="">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="mid_kommende_forestillinger">
+
+                <h1></h1>
+                <div class="wrapper_mid">
+
+                </div>
+            </div>
+
+            <div class="mid_kommende_forestillinger">
+                <h1></h1>
+                <div class="wrapper_mid">
+                </div>
+            </div>
+
+
+
+
+
+
+        </div>
+
+
+
+
+
+
+    </section>
+
+
+
+
+
+
+
+
+
+    <script>
+        //variabler starter her
+
+        let endpoint = "http://michelleyoung.dk/kea/zeppelin/wordpress/wp-json/wp/v2/forestilling/53"
+
+        //tomt array
+        let theJSONForestillinger = [];
+
+
+
+
+        // flowet starter her
+        document.addEventListener("DOMContentLoaded", startForestillinger);
+
+        function startForestillinger() {
+            loadDataForestillinger();
+        }
+
+        async function loadDataForestillinger() {
+            //henter json data
+            let ressponsForestillinger = await fetch(endpoint);
+
+            //putter json data ind i et array
+            theJSONForestillinger = await ressponsForestillinger.json();
+
+            //kalder visForestillinger
+            visForestillinger();
+        }
+
+
+        function visForestillinger() {
+
+            // indsætter indholdet
+
+            //indsætter main overskriften
+            document.querySelector("#top_overskrift").textContent = theJSONForestillinger.main_overskrift;
+
+            //indsætter overskriften på nuværende forestilling
+            document.querySelector("#current_forestilling_overskrift").textContent = theJSONForestillinger.overskrift;
+
+            // indsætter datoen på nuværrende forestilling
+            document.querySelector("#current_forestilling_dato").textContent = theJSONForestillinger.dato;
+
+            // indsætter billedet på nuværende forestilling
+
+            document.querySelector("#image_current_forestilling").src = theJSONForestillinger.forestilling_billede.guid;
+
+
+
+        }
+    </script>
+</body></html>
