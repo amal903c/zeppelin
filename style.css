@@ -230,14 +230,86 @@ p {
 
 /* om teateret */
 
-#tekst_omteateret {
-    padding: 2rem;
+
+@media only screen and (min-width: 320px) {
+    #tekst_omteateret {
+        padding: 2rem;
+    }
+
+    #omteateret_billede {
+        max-height: 100vh;
+        object-fit: cover;
+        object-position: top;
+    }
+
+    #om_teateret iframe {
+        width: 80vw;
+        height: 70vh;
+    }
+
+    .text_citater p {
+        width: 382px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin: 0 auto;
+    }
+
+
 }
 
-.mid_container {
+
+#om_teateret .mid_container {
     display: grid;
 }
 
+.velkommen_youtube {
+    justify-self: center;
+    border: none;
+
+}
+
+#om_teateret .bottom_container {
+    padding: 2rem;
+}
+
+#om_teateret .text_citater p {
+    text-align: center;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+#overskrift2_omteateret {
+    padding: 2rem;
+}
+
+@media only screen and (min-width: 768px) {
+    #om_teateret .top_wrapper {
+        display: grid;
+        grid-template-columns: 50vw 50vw;
+        margin-top: 4rem;
+    }
+
+    #omteateret_billede {
+        height: 114vh;
+        object-fit: cover;
+        padding: 1rem;
+    }
+
+    #om_teateret iframe {
+        width: 80vw;
+        height: 70vh;
+    }
+
+    #om_teateret .text_citater {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    #tekst_omteateret {
+        padding: 0rem 2rem 0rem 2rem;
+    }
+
+}
 
 
 
