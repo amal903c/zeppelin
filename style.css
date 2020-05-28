@@ -19,12 +19,14 @@ h1 {
     font-style: Light;
     font-weight: 100;
     text-align: center;
+    font-size: 3rem;
 }
 
 h2 {
     font-family: montserrat, sans-serif;
     font-style: normal;
     font-weight: 550;
+    font-size: 1.5rem;
 }
 
 p {
@@ -39,6 +41,7 @@ p {
     background-color: #8C2020;
     padding: 1rem 2.5rem 1rem 2.5rem;
     color: white;
+    cursor: pointer;
 }
 
 
@@ -151,11 +154,7 @@ p {
         padding: 2rem;
     }
 
-    #forestllinger .wrapper {
-        display: grid;
-        grid-template-columns: 40vw 60vw;
-        height: 100vh;
-    }
+
 
     #forestllinger .text {
         justify-content: center;
@@ -184,6 +183,14 @@ p {
         padding: 1rem;
     }
 
+    #forestllinger .wrapper {
+        display: grid;
+        grid-template-columns: 40vw 60vw;
+        height: 100vh;
+    }
+
+
+
 
 }
 
@@ -205,6 +212,15 @@ p {
     object-fit: cover;
 }
 
+#wrapper_mid_kommende {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr))
+}
+
+#arkiv {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr))
+}
 
 
 
