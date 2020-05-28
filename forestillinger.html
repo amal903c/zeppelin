@@ -183,7 +183,13 @@
 
                 klonForestillinger.querySelector("#dato_p").textContent = forestilling.dato;
 
+                klonForestillinger.querySelector(".read_more").addEventListener("click", () => {
+
+                    location.href = `klikpaaforestilling.html?id=${forestilling.id}`;
+                })
+
                 forestillingerContainer.appendChild(klonForestillinger);
+
 
             })
         }
@@ -213,8 +219,5 @@
 
 
         }
-
     </script>
-</body>
-
-</html>
+</body></html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forestilling</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <section id="detalje_forestilling">
+
+        <div class="detalje_section_wrapper">
+
+            <div class="image_detalje">
+                <img id="billede_detalje" src="" alt="">
+            </div>
+            <div class="text_detalje">
+                <h1 id="detalje_overskrift"></h1>
+                <p id="tekst_detalje"></p>
+
+            </div>
+            <div id="infografik_container">
+                <img src="" alt="">
+
+            </div>
+
+            <div class="billet_infografik"></div>
+
+        </div>
+
+
+
+
+    </section>
+
+
+    <script>
+        //         let endpointAlleForestillinger = "http://michelleyoung.dk/kea/zeppelin/wordpress/wp-json/wp/v2/alle_forestillinge";
+
+        let urlParams = new URLSearchParams(window.location.search);
+
+        let id = urlParams.get("id");
+        console.log(id);
+
+        let theJSONDetalje = [];
+
+
+        document.addEventListener("DOMContentLoaded", startDetalje);
+
+        function startDetalje() {
+            loadDetaljeData();
+            console.log("jeg er her")
+        }
+
+        async function loadDetaljeData() {
+
+            let jsonData = await fetch(`http://michelleyoung.dk/kea/zeppelin/wordpress/wp-json/wp/v2/alle_forestillinge/${id}`);
+
+            theJSONDetalje = await jsonData.json();
+
+            visDetalje();
+        }
+
+        function visDetalje() {
+
+            console.log(theJSONDetalje)
+
+            document.querySelector("#billede_detalje").src = theJSONDetalje.billede.guid;
+
+
+            document.querySelector("#detalje_overskrift").textContent = forestilling.titel;
+
+            document.querySelector("#tekst_detalje").textContent = forestilling.tekst;
+
+
+
+
+        }
+
+    </script>
+</body>
+
+</html>
