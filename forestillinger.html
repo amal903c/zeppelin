@@ -13,9 +13,9 @@
     <template id="forestillinger_template">
         <article id="forestlling">
             <img src="" alt="">
-            <h2></h2>
-            <p></p>
-            <button class="read_more"></button>
+            <h2 id="overskrift_h2"></h2>
+            <p id="dato_p"></p>
+            <button class="read_more">Læs mere</button>
 
         </article>
 
@@ -45,14 +45,14 @@
             <div class="mid_kommende_forestillinger">
 
                 <h1 id="mid_kommende_overskrift"></h1>
-                <div class="wrapper_mid">
+                <div id="wrapper_mid_kommende">
 
                 </div>
             </div>
 
             <div class="mid_kommende_forestillinger">
-                <h1></h1>
-                <div class="wrapper_mid">
+                <h1 id="arkiv_h1"></h1>
+                <div id="arkiv">
                 </div>
             </div>
         </div>
@@ -65,13 +65,21 @@
 
         let endpointAlleForestillinger = "http://michelleyoung.dk/kea/zeppelin/wordpress/wp-json/wp/v2/alle_forestillinge"
 
+        let endpointAkriv = "http://michelleyoung.dk/kea/zeppelin/wordpress/wp-json/wp/v2/arkiv"
+
         //tomt array
         let theJSONForestillinger = [];
         let theJSONAlleForestillinger = [];
+        let alleForestillinger = [];
+        let theJSONakriv = [];
 
         //forestilling template
-
         const forestillingTemplate = document.querySelector("#forestillinger_template");
+
+        //forestilling container
+        const forestillingerContainer = document.querySelector("#wrapper_mid_kommende");
+
+        const arkivContainer = document.querySelector("#arkiv");
 
 
 
@@ -81,6 +89,8 @@
 
         function startForestillinger() {
             loadDataForestillinger();
+            loadAlleForestillinger();
+            loadArkiv();
         }
 
         async function loadDataForestillinger() {
@@ -90,14 +100,40 @@
             //putter json data ind i et array for forestillinger
             theJSONForestillinger = await ressponsForestillinger.json();
 
+            //kalder visForestillinger
+            visForestillinger();
+
+
+        }
+
+        async function loadAlleForestillinger() {
 
             //henter data fra alle forestillinger
             let ressponsAlleForestillinger = await fetch(endpointAlleForestillinger);
 
+            console.log(ressponsAlleForestillinger);
+
             theJSONAlleForestillinger = await ressponsAlleForestillinger.json();
 
+            console.log(theJSONAlleForestillinger)
+
             //kalder visForestillinger
-            visForestillinger();
+            visAlleForestillinger(theJSONAlleForestillinger);
+
+
+        }
+
+        async function loadArkiv() {
+
+            //henter data fra alle forestillinger
+            let ressponsArkiv = await fetch(endpointAkriv);
+
+            theJSONakriv = await ressponsArkiv.json();
+
+            //kalder visForestillinger
+            visArkiv(theJSONakriv);
+
+
         }
 
 
@@ -121,25 +157,64 @@
             //tilføjet overskriften glæd jer til
             document.querySelector("#mid_kommende_overskrift").textContent = theJSONForestillinger.main_overskrift2
 
-            // laver et loop over alle kommende forestillinger
-
-            //laver klon
-            const klonForestillinger = forestillinger_template.cloneNode(true).content;
-
-            //kopiere indhold ind i klonen
-            forestillinger_template.querySelector("img").src = theJSONAlleForestillinger.billede.guid;
-
-            forestillinger_template.querySelector("h2").textContent = theJSONAlleForestillinger.titel;
-
-            forestillinger_template.querySelector("p").textContent = theJSONAlleForestillinger.dato;
-
-
-
-
+            document.querySelector("#arkiv_h1").textContent = theJSONForestillinger.main_overskrift3
 
 
 
 
         }
+
+        function visAlleForestillinger(alleForestillinger) {
+            // laver et loop over alle kommende forestillinger
+
+
+
+            forestillingerContainer.innerHTML = "";
+
+            alleForestillinger.forEach(forestilling => {
+
+                //laver klon
+                const klonForestillinger = forestillingTemplate.cloneNode(true).content;
+
+                //kopiere indhold ind i klonen
+                klonForestillinger.querySelector("img").src = forestilling.billede.guid;
+
+                klonForestillinger.querySelector("#overskrift_h2").textContent = forestilling.titel;
+
+                klonForestillinger.querySelector("#dato_p").textContent = forestilling.dato;
+
+                forestillingerContainer.appendChild(klonForestillinger);
+
+            })
+        }
+
+        function visArkiv(theJSONakriv) {
+            arkivContainer.innerHTML = "";
+
+            theJSONakriv.forEach(arkiv => {
+
+                const klonForestillinger = forestillingTemplate.cloneNode(true).content;
+
+                //kopiere indhold ind i klonen
+                klonForestillinger.querySelector("img").src = arkiv.billede.guid;
+
+                klonForestillinger.querySelector("#overskrift_h2").textContent = arkiv.titel;
+
+                klonForestillinger.querySelector("#dato_p").textContent = arkiv.aarstal;
+
+                arkivContainer.appendChild(klonForestillinger);
+
+
+
+
+
+            })
+
+
+
+        }
+
     </script>
-</body></html>
+</body>
+
+</html>

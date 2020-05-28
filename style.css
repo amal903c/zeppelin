@@ -138,6 +138,75 @@ p {
 /* KAT */
 
 
+/* toppen med nuværende forestilling */
+
+
+@media only screen and (min-width: 320px) {
+    #forestllinger .wrapper .text {
+        margin-bottom: 1rem;
+    }
+
+    #forestlling {
+        text-align: center;
+        padding: 2rem;
+    }
+
+    #forestllinger .wrapper {
+        display: grid;
+        grid-template-columns: 40vw 60vw;
+        height: 100vh;
+    }
+
+    #forestllinger .text {
+        justify-content: center;
+        align-self: center;
+    }
+
+    #forestllinger .image {
+        justify-content: center;
+        align-self: center;
+    }
+
+    #forestlling img {
+        height: 50vh;
+    }
+
+    #forestllinger #image_current_forestilling {
+        height: 50vh;
+    }
+
+}
+
+@media only screen and (min-width: 768px) {
+
+    #forestllinger #image_current_forestilling {
+        height: 75vh;
+        padding: 1rem;
+    }
+
+
+}
+
+#forestllinger .wrapper .text {
+    text-align: center;
+    padding: 1rem;
+}
+
+#forestllinger #image_current_forestilling {
+    object-fit: cover;
+
+}
+
+#forestllinger #mid_kommende_overskrift {
+    padding: 3rem;
+}
+
+#forestlling img {
+    object-fit: cover;
+}
+
+
+
 
 
 
