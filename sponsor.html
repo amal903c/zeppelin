@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sponsor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+
+
+    <section id="liste_sponsor">
+        <div class="sponsor_container">
+        </div>
+    </section>
+
+
+    <!--   TEMPLATE-->
+    <template class="template_sponsor">
+        <article class="sponsor">
+            <h1 id="overskrift" class="hide"></h1>
+            <p class="sponsor_tekst hide "></p>
+            <!--            <img class="billede1" src="" alt="">-->
+        </article>
+    </template>
+
+
+
+
+
+    <script>
+        let theJSON;
+        const listeELM = document.querySelector(".liste_sponsor");
+        const template_sponsor = document.querySelector(".template_sponsor");
+        const textContainer = document.querySelector(".sponsor_container");
+
+
+        document.addEventListener("DOMContentLoaded", start);
+
+
+        // HENT WORDPRESS
+        const url = "http://michelleyoung.dk/kea/zeppelin/wordpress/wp-json/wp/v2/pages/324";
+
+
+
+        async function start() {
+            const resspons = await fetch(url);
+            theJSON = await resspons.json();
+            visIndhold();
+        }
+
+
+        function visIndhold() {
+            console.log(theJSON)
+
+
+            if (theJSON.title) {
+                console.log(theJSON.title.rendered)
+
+                const klonText = template_sponsor.cloneNode(true).content;
+
+                klonText.querySelector("#overskrift").classList.remove("hide");
+                klonText.querySelector("#overskrift").textContent = theJSON.title.rendered;
+
+                textContainer.appendChild(klonText);
+            }
+
+            if (theJSON.excerpt.rendered) {
+
+                console.log(theJSON.excerpt.rendered)
+
+                const klonText = template_sponsor.cloneNode(true).excerpt;
+
+                klonText.querySelector(".sponsor_tekst").classList.remove("hide");
+                klonText.querySelector(".sponsor_tekst").textContent = theJSON.excerpt.rendered;
+
+                textContainer.appendChild(klonText);
+            }
+        }
+
+    </script>
+</body>
+
+</html>

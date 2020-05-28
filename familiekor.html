@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Familiekor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+
+
+    <section id="liste_familie">
+        <div class="container_billede1"></div>
+        <div class="container_tekst1"></div>
+        <div class="container_tekst2"></div>
+        <div class="container_billede2"></div>
+        <div class="container_billede3"></div>
+        <div class="container_tekst3"></div>
+    </section>
+
+
+    <!--   TEMPLATE-->
+    <template class="template_familie">
+        <article class="familie">
+            <h1 id="overskrift" class="hide"></h1>
+            <img src="" alt="">
+            <p class="familie_tekst1 hide "></p>
+            <p class="familie_tekst2 hide "></p>
+            <p class="familie_tekst3 hide "></p>
+        </article>
+    </template>
+
+
+
+
+
+    <script>
+        let theJSON;
+        const listeELM = document.querySelector(".liste_kontakt");
+        const template_kontakt = document.querySelector(".template_kontakt");
+        const textContainer = document.querySelector(".kontakt_container");
+
+
+        document.addEventListener("DOMContentLoaded", start);
+
+
+        // HENT WORDPRESS
+        const url = "http://michelleyoung.dk/kea/zeppelin/wordpress/wp-json/wp/v2/pages/269";
+
+
+
+        async function start() {
+            const resspons = await fetch(url);
+            theJSON = await resspons.json();
+            visIndhold();
+        }
+
+
+        function visIndhold() {
+            console.log(theJSON)
+
+
+            if (theJSON.title) {
+                console.log(theJSON.title.rendered)
+
+                const klonText = template_kontakt.cloneNode(true).content;
+
+                klonText.querySelector("#overskrift").classList.remove("hide");
+                klonText.querySelector("#overskrift").textContent = theJSON.title.rendered;
+
+                textContainer.appendChild(klonText);
+            }
+
+            if (theJSON.content.rendered) {
+
+                console.log(theJSON.content.rendered)
+
+                const klonText = template_kontakt.cloneNode(true).content;
+
+                klonText.querySelector(".kontakt_tekst1").classList.remove("hide");
+                klonText.querySelector(".kontakt_tekst1").innerHTML = theJSON.content.rendered;
+
+                textContainer.appendChild(klonText);
+            }
+        }
+
+    </script>
+</body>
+
+</html>
