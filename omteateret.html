@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Om teateret</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <section id="om_teateret">
+
+        <div class="top_container">
+            <h1 id="overskrift1_omteateret"></h1>
+            <div class="top_wrapper">
+                <div id="tekst_omteateret"></div>
+                <div class="image_omteateret">
+                    <img id="omteateret_billede" src="" alt="">
+                </div>
+
+            </div>
+        </div>
+
+        <div class="mid_container">
+            <h1 id="overskrift2_omteateret"></h1>
+            <iframe width="420" height="315" src="https://www.youtube.com/embed/x2sLmGSIhYg">
+            </iframe>
+        </div>
+
+
+
+        <div class="bottom_container">
+            <div class="text_citater">
+                <p id="citat1"></p>
+                <p id="citat2"></p>
+                <p id="citat3"></p>
+            </div>
+        </div>
+
+
+
+
+
+    </section>
+
+
+
+
+
+
+
+    <script>
+        let endpointOmteateret = "http://michelleyoung.dk/kea/zeppelin/wordpress/wp-json/wp/v2/omteater/315"
+
+        let theJSONOmTeateret = [];
+
+        // flowet starter her
+        document.addEventListener("DOMContentLoaded", startOmTeateret);
+
+        function startOmTeateret() {
+            loadOmTeateret();
+
+        }
+
+        async function loadOmTeateret() {
+            //henter json data for forestillinger
+            let ressponsOmTeateret = await fetch(endpointOmteateret);
+
+            //putter json data ind i et array for forestillinger
+            theJSONOmTeateret = await ressponsOmTeateret.json();
+
+            //kalder visForestillinger
+            visOmTeateret();
+
+        }
+
+        function visOmTeateret() {
+
+            document.querySelector("#overskrift1_omteateret").textContent = theJSONOmTeateret.main_overskrift;
+
+            document.querySelector("#tekst_omteateret").innerHTML = theJSONOmTeateret.tekst;
+
+            document.querySelector("#overskrift2_omteateret").textContent = theJSONOmTeateret.main_overskrift2;
+
+            document.querySelector("#omteateret_billede").src = theJSONOmTeateret.billede.guid;
+
+            document.querySelector("#citat1").innerHTML = theJSONOmTeateret.citat_1;
+
+            document.querySelector("#citat2").innerHTML = theJSONOmTeateret.citat_2;
+
+            document.querySelector("#citat3").innerHTML = theJSONOmTeateret.citat_3;
+
+
+
+
+
+
+
+        }
+
+    </script>
+</body>
+
+</html>
