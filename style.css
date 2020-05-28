@@ -234,6 +234,10 @@ p {
     padding: 2rem;
 }
 
+.mid_container {
+    display: grid;
+}
+
 
 
 
