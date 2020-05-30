@@ -23,7 +23,39 @@
 
             </div>
             <div id="infografik_container">
-                <img src="" alt="">
+
+                <div class="infografik_box">
+
+                    <h3>Varighed</h3>
+                    <img src="">
+                    <h3 class="infografik_varighed"></h3>
+
+                </div>
+
+                <div class="infografik_box">
+
+                    <h3>Hvornår</h3>
+                    <img src="">
+                    <h3 class="infografik_hvornaar"></h3>
+
+                </div>
+
+                <div class="infografik_box">
+
+                    <h3>Pris</h3>
+                    <img src="">
+                    <h3 class="infografik_pris"></h3>
+
+                </div>
+
+                <div class="infografik_box">
+
+                    <h3>Aldersgrænse</h3>
+                    <img src="">
+                    <h3 class="infografik_alder"></h3>
+
+                </div>
+
 
             </div>
 
@@ -71,9 +103,22 @@
             document.querySelector("#billede_detalje").src = theJSONDetalje.billede.guid;
 
 
-            document.querySelector("#detalje_overskrift").textContent = forestilling.titel;
+            document.querySelector("#detalje_overskrift").textContent = theJSONDetalje.titel;
 
-            document.querySelector("#tekst_detalje").textContent = forestilling.tekst;
+            document.querySelector("#tekst_detalje").innerHTML = theJSONDetalje.tekst;
+
+            document.querySelector(".infografik_varighed").innerHTML = theJSONDetalje.varighed;
+
+            document.querySelector(".infografik_hvornaar").innerHTML = theJSONDetalje.dato;
+
+            document.querySelector(".infografik_pris").innerHTML = theJSONDetalje.pris;
+
+            document.querySelector(".infografik_alder").innerHTML = theJSONDetalje.alder;
+
+            console.log(theJSONDetalje.alder);
+
+
+
 
 
 
