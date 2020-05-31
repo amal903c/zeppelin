@@ -13,10 +13,19 @@
 
     <h1 id="overskrift_sponsor"></h1>
 
+
+    <template id="spons_billede">
+
+        <section>
+            <img src="" alt="">
+        </section>
+
+    </template>
+
     <section id="liste_sponsor">
         <div class="sponsor_container"></div>
         <div class="sponsor_img">
-            <img src="">
+
         </div>
     </section>
 
@@ -60,7 +69,14 @@
 
             document.querySelector(".sponsor_container").innerHTML = theJSON.tekst;
 
-            document.querySelector(".sponsor_img img").src = theJSON.billede.guid;
+            theJSON.billede.forEach((billede, index) => {
+                const theClone = document.querySelector("#spons_billede").cloneNode(true).content;
+                //billederne sættes ind
+                theClone.querySelector("img").src = billede.guid;
+                //vi skal appende vores kloner til dokumentet:
+                document.querySelector(".sponsor_img").appendChild(theClone);
+
+            })
 
         }
 
@@ -145,5 +161,8 @@
         //            // imgContainer.appendChild(klonText);
         //            // }
         //        }
+
     </script>
-</body></html>
+</body>
+
+</html>
