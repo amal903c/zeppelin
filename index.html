@@ -97,8 +97,15 @@
 
         /*        SCROLLER*/
 
+        #splash .mus_cursor {
+            height: 35px;
+            text-align: center;
+            margin: 0 0 5px 0;
+            position: sticky;
+        }
+
         #splash .scroll-container {
-            bottom: 10vh;
+            bottom: 5vh;
             position: sticky;
 
             shape-margin: 40px;
@@ -190,6 +197,7 @@
             <source src="billeder/splash-video.mp4" type="video/mp4">
         </video>
         <div class="scroll-container scroll-animation">
+            <img class="mus_cursor" src="billeder/muscursour.svg">
             <p>SCROLL</p>
         </div>
 
