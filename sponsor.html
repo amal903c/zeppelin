@@ -43,7 +43,7 @@
 
 
         // HENT WORDPRESS
-        const url = "http://michelleyoung.dk/kea/zeppelin/wordpress/wp-json/wp/v2/sponsor";
+        const url = "http://michelleyoung.dk/kea/zeppelin/wordpress/wp-json/wp/v2/sponsor/361";
 
 
 
@@ -66,8 +66,18 @@
                 klonText.querySelector("#overskrift").classList.remove("hide");
                 klonText.querySelector("#overskrift").textContent = theJSON.overskrift;
 
+                klonText.querySelector("img").src = theJSON.billede;
+
                 textContainer.appendChild(klonText);
             }
+
+
+
+
+
+
+
+
 
             //            if (theJSON.excerpt.rendered) {
             //

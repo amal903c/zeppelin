@@ -730,9 +730,11 @@ p {
 
 /* SPONSOR */
 
-.sponsor_container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr))
+@media only screen and (min-width: 768px) {
+    .sponsor_container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(400px, 1fr))
+    }
 }
 
 
@@ -746,6 +748,70 @@ p {
 
 
 
+
+
+
+/* FAMILIEKOR */
+
+#liste_familie {
+    padding: 5vw 10vw;
+}
+
+#liste_familie p {
+    margin: 4vw 0;
+    line-height: 1.4rem;
+}
+
+@media only screen and (min-width: 768px) {
+    #liste_familie {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+
+        padding: 5vw 0;
+    }
+
+    #liste_familie p {
+        margin: 0;
+    }
+
+    .container_tekst1 {
+        padding-left: 3.5vw;
+        padding-right: 7vw;
+    }
+
+    .container_billede1 {
+        padding-left: 7vw;
+        padding-right: 3.5vw;
+    }
+
+    .container_tekst2 {
+        padding-left: 7vw;
+        padding-right: 3.5vw;
+        padding-top: 4vw;
+
+        grid-row-start: 2;
+    }
+
+    .container_billede2 {
+        padding-left: 3.5vw;
+        padding-right: 7vw;
+        padding-top: 4vw;
+    }
+
+    .container_tekst3 {
+        padding-left: 3.5vw;
+        padding-right: 7vw;
+        padding-top: 4vw;
+    }
+
+    .container_billede3 {
+        padding-left: 7vw;
+        padding-right: 3.5vw;
+        padding-top: 4vw;
+    }
+
+
+}
 
 
 
