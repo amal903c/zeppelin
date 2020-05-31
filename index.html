@@ -6,17 +6,202 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        #splash {
+            position: relative;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            overflow: hidden;
+            z-index: -100;
+
+        }
+
+
+        #splash_video {
+            position: relative;
+            right: 0;
+            bottom: 0;
+            /*
+            min-width: auto;
+            min-height: 100%;
+
+*/
+        }
+
+        /*        DESKTOP VERSION RATIO*/
+        @media (min-aspect-ratio:16/9) {
+            #splash_video {
+                width: 100vw;
+                height: auto;
+            }
+        }
+
+        /*       VICE VERCA DESKTOP: MOBIL VERSION RATIO*/
+        @media (max-aspect-ratio:16/9) {
+            #splash_video {
+                width: auto;
+                height: 100vh;
+
+            }
+        }
+
+        /*        Et billede sættes ind i mobil, fordi video kræver for meget data. Dårlig SEO, så med et billede får vi god SEO*/
+        /*
+        @media (max-width: 768px) {
+        #splash_video {
+        display: none;
+        }
+
+        body {
+        background-image: url(billeder/mobil_baggrund.jpg);
+        background-size: cover;
+
+        }
+
+        }
+*/
+
+        .billet_container {
+            display: flex;
+            /*            Vertikalt*/
+            align-items: center;
+            /*            Horisontalt*/
+            justify-content: center;
+
+            position: absolute;
+            bottom: 30%;
+
+            width: 100%;
+            padding: 20px;
+
+            flex-flow: column;
+        }
+
+        .koeb_billet {
+            bottom: 30vw;
+            position: relative;
+        }
+
+        #forestilling_galleri_template {
+            top: 100vw;
+        }
+
+        .billet_container h1 {
+            color: white;
+        }
+
+
+        /*        SCROLLER*/
+
+        #splash .scroll-container {
+            bottom: 10vh;
+            position: absolute;
+
+            shape-margin: 40px;
+
+
+        }
+
+        #splash .scroll-container p {
+            font-family: montserrat;
+            text-align: center;
+            margin: 0;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+
+        .scroll-animation {
+            animation-name: scroll_animation_kf;
+            animation-duration: 2.40s;
+            animation-timing-function: ease-out;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes scroll_animation_kf {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            25% {
+                transform: translateY(0);
+            }
+
+            35% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            80% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        @media screen and (max-width: 450px) {
+
+
+            #splash .scroll-container {
+                margin-bottom: 55px;
+            }
+        }
+
+
+
+        /*        EFTER SPLASH*/
+
+        .mereend {
+            display: flex;
+            /*            Vertikalt*/
+            align-items: center;
+            /*            Horisontalt*/
+            justify-content: center;
+            /*            Column gør at det ligger oven på hinanden og ikke ved siden af hinanden*/
+            flex-flow: column;
+        }
+
+        .savner {
+            display: flex;
+            /*            Vertikalt*/
+            align-items: center;
+            /*            Horisontalt*/
+            justify-content: center;
+            /*            Column gør at det ligger oven på hinanden og ikke ved siden af hinanden*/
+            flex-flow: column;
+        }
+
+    </style>
 </head>
 
 <body>
 
 
     <article id="splash">
-        <video width="320" height="240" autoplay loop muted>
-            <source src="splash-video.mp4" type="video/mp4"></video>
-        <button class="koeb_billet"></button>
+        <video autoplay loop muted id="splash_video">
+            <source src="billeder/splash-video.mp4" type="video/mp4">
+        </video>
+        <div class="scroll-container scroll-animation">
+            <p>SCROLL</p>
+        </div>
+
 
     </article>
+
+    <div class="billet_container">
+        <h1>OPLEV MAGIEN HOS ZEPPELIN</h1>
+        <button class="read_more">KØB DIN BILLET NU</button>
+
+    </div>
+
+
 
 
 
@@ -56,14 +241,14 @@
 
                 <h1 id="overskrift2"></h1>
                 <p id="tekst2"></p>
-                <button class="read_more"></button>
+                <button class="read_more">Læs mere</button>
             </div>
 
             <div class="savner">
 
                 <h1 id="overskrift3"></h1>
                 <p id="tekst3"></p>
-                <button class="read_more"></button>
+                <button class="read_more">Læs mere</button>
             </div>
         </div>
     </section>
