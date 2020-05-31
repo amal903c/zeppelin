@@ -39,7 +39,8 @@ h3 {
 p {
     font-family: roboto, sans-serif;
     font-style: normal;
-    font-weight: 200
+    font-weight: 200;
+    line-height: 1.4rem;
 }
 
 /* knappen */
@@ -732,7 +733,14 @@ p {
 
 .sponsor_container {
     padding: 1vw 13vw;
+}
 
+.sponsor_img {
+    text-align: center;
+}
+
+.sponsor_img img {
+    width: 70%;
 }
 
 @media only screen and (min-width: 768px) {
