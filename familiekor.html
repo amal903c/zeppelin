@@ -13,6 +13,7 @@
 
 
     <section id="liste_familie">
+        <h1 id="overskrift_familiekor"></h1>
         <div class="container_billede1"></div>
         <div class="container_tekst1"></div>
         <div class="container_tekst2"></div>
@@ -22,7 +23,8 @@
     </section>
 
 
-    <!--   TEMPLATE-->
+    <!--
+       TEMPLATE
     <template class="template_familie">
         <article class="familie">
             <h1 id="overskrift" class="hide"></h1>
@@ -32,59 +34,65 @@
             <p class="familie_tekst3 hide "></p>
         </article>
     </template>
+-->
 
 
 
 
 
     <script>
-        let theJSON;
-        const listeELM = document.querySelector(".liste_kontakt");
-        const template_kontakt = document.querySelector(".template_kontakt");
-        const textContainer = document.querySelector(".kontakt_container");
+        let url = "http://michelleyoung.dk/kea/zeppelin/wordpress/wp-json/wp/v2/familiekor"
+        let theJSON = [];
 
-
+        // flowet starter her
         document.addEventListener("DOMContentLoaded", start);
 
-
-        // HENT WORDPRESS
-        const url = "http://michelleyoung.dk/kea/zeppelin/wordpress/wp-json/wp/v2/pages/269";
-
-
-
-        async function start() {
-            const resspons = await fetch(url);
-            theJSON = await resspons.json();
-            visIndhold();
+        function start() {
+            load();
         }
 
 
-        function visIndhold() {
-            console.log(theJSON)
+
+        async function load() {
+            //henter json data for familiekor
+            let resspons = await fetch(url);
+
+            //putter json data ind i et array for familiekor
+            theJSON = await resspons.json();
+
+            console.log(theJSON);
+
+            //kalder visFamiliekor
+            visFamiliekor();
+        }
 
 
-            if (theJSON.title) {
-                console.log(theJSON.title.rendered)
 
-                const klonText = template_kontakt.cloneNode(true).content;
+        function visFamiliekor() {
+            console.log("hej");
 
-                klonText.querySelector("#overskrift").classList.remove("hide");
-                klonText.querySelector("#overskrift").textContent = theJSON.title.rendered;
+            document.querySelector("#overskrift_familiekor").textContent = theJSON.overskrift;
 
-                textContainer.appendChild(klonText);
-            }
 
-            if (theJSON.content.rendered) {
 
-                console.log(theJSON.content.rendered)
 
-                const klonText = template_kontakt.cloneNode(true).content;
 
-                klonText.querySelector(".kontakt_tekst1").classList.remove("hide");
-                klonText.querySelector(".kontakt_tekst1").innerHTML = theJSON.content.rendered;
 
-                textContainer.appendChild(klonText);
-            }
+
+
+
+            //            document.querySelector("#tekst_omteateret").innerHTML = theJSONOmTeateret.tekst;
+            //
+            // document.querySelector("#overskrift2_omteateret").textContent = theJSONOmTeateret.main_overskrift2;
+            //
+            // document.querySelector("#omteateret_billede").src = theJSONOmTeateret.billede.guid;
+            //
+            // document.querySelector("#citat1").innerHTML = theJSONOmTeateret.citat_1;
+            //
+            // document.querySelector("#citat2").innerHTML = theJSONOmTeateret.citat_2;
+            //
+            // document.querySelector("#citat3").innerHTML = theJSONOmTeateret.citat_3;
+
         }
 
     </script>
