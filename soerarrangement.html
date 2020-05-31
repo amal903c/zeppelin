@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Særarrangement</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+
+    <section id="soerarrangement">
+        <h1>Særarrangementer</h1>
+        <div class="wrapper">
+            <div class="image_arrangementer">
+                <img class="top_arragement" src="">
+            </div>
+            <div class="tekst_container">
+                <p class="tekst_arrangementer"></p>
+            </div>
+        </div>
+        <div class="wrapper">
+
+            <div class="infografik_container">
+                <div class="infografik_boks a">
+
+                    <h3>Hvornår</h3>
+                    <img src="billeder/hvornaar.svg">
+                    <p class="inforgrafik_hvornaar"></p>
+                </div>
+                <div class="infografik_boks b">
+
+                    <h3>Pris</h3>
+                    <img src="billeder/graa_billet.svg">
+                    <p class="inforgrafik_pris"></p>
+                </div>
+                <div class="infografik_boks c">
+
+                    <h3>Varighed</h3>
+                    <img src="billeder/varighed.svg">
+                    <p class="inforgrafik_varighed"></p>
+                </div>
+            </div>
+
+            <div class="image_arrangementer_container">
+                <img id="billede2" src="">
+            </div>
+
+        </div>
+    </section>
+
+
+
+
+    <script>
+        let endpointArrangement = "http://michelleyoung.dk/kea/zeppelin/wordpress/wp-json/wp/v2/soerarrangemente/245"
+
+
+        //tomt array
+        let theJSONArrangement = [];
+
+
+
+
+
+        // flowet starter her
+        document.addEventListener("DOMContentLoaded", startForestillinger);
+
+        function startForestillinger() {
+            loadDataArrangementer();
+
+        }
+
+        async function loadDataArrangementer() {
+            //henter json data for forestillinger
+            let ressponsArrangement = await fetch(endpointArrangement);
+
+            //putter json data ind i et array for forestillinger
+            theJSONArrangement = await ressponsArrangement.json();
+
+            //kalder visForestillinger
+            visArrangementer();
+
+
+        }
+
+
+        function visArrangementer() {
+
+            console.log(theJSONArrangement);
+            // indsætter indholdet
+
+            //indsætter main overskriften
+            document.querySelector(".top_arragement").src = theJSONArrangement.billede.guid;
+
+            //indsætter overskriften på nuværende forestilling
+            document.querySelector(".tekst_arrangementer").innerHTML = theJSONArrangement.tekst;
+
+            // indsætter datoen på nuværrende forestilling
+            document.querySelector("#billede2").src = theJSONArrangement.billede2.guid;
+
+            document.querySelector(".inforgrafik_hvornaar").innerHTML = theJSONArrangement.when;
+
+            document.querySelector(".inforgrafik_pris").innerHTML = theJSONArrangement.pris;
+
+            document.querySelector(".inforgrafik_varighed").innerHTML = theJSONArrangement.varighed;
+
+
+
+        }
+
+    </script>
+</body>
+
+</html>
