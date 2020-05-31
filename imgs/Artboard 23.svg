@@ -1,0 +1,18 @@
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 246 357">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #913f12;
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <title>Artboard 23</title>
+  <g>
+    <path class="cls-1" d="M223,145c0,54-91,186-91,186S30.33,211.73,19,145C10,92,34.9,22.08,114,19,191,16,223,43,223,145Z"/>
+    <path class="cls-2" d="M120,42c-27,1-78,4-78,61,0,104,88,201,88,201s72.75-119.34,78-154C213,117,203,39,120,42Z"/>
+  </g>
+</svg>

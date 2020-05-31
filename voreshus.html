@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Galleri</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #voreshus_main main {
+            width: 100vw;
+        }
+
+        .voreshus_the_container img {
+            width: 100%;
+            height: 40vw;
+        }
+
+
+        .voreshus_carousel {
+            width: 100%;
+            height: 100%;
+        }
+
+        .voreshus_the_container {
+            display: flex;
+            overflow-x: scroll;
+            overflow: hidden;
+            scroll-snap-type: x mandatory;
+
+        }
+
+        .voreshus_the_container section {
+            scroll-snap-align: start;
+            min-width: 100%;
+        }
+
+        .voreshus_carousel_inner {
+            display: flex;
+        }
+
+        .bwd p,
+        .fwd p {
+            z-index: 10;
+
+        }
+
+        .bwd p {
+            margin-right: -45px;
+        }
+
+        .fwd p {
+            margin-left: -45px;
+        }
+
+        .bwd,
+        .fwd {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            font-size: 5rem;
+            color: white;
+        }
+
+        #voreshus_text_container {
+            justify-content: center;
+            display: flex;
+        }
+
+        .voreshus_overskrift1,
+        .voreshus_overskrift2 {
+            padding-top: 3vw;
+            text-align: center
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .voreshus_col_text {
+            margin: 10px;
+        }
+
+        #voreshus_text_img img {
+            width: 200px;
+            height: 200px;
+        }
+
+        #voreshus_infobilleder {
+            display: grid;
+            grid-template-columns: auto auto;
+            justify-content: center;
+        }
+
+        #voreshus_text2_container {
+            max-width: 150ch;
+            margin: auto;
+
+        }
+
+        @media only screen and (min-width: 1024px) {
+            #voreshus_infobilleder {
+                display: grid;
+                grid-template-columns: auto auto auto auto;
+            }
+
+    </style>
+</head>
+
+<body>
+
+
+
+
+
+
+    <template id="voreshus_template_carousel">
+        <section>
+            <img class="voreshus_caro_imgs" src="" alt="">
+        </section>
+    </template>
+
+    <main id="voreshus_main">
+        <div class="voreshus_carousel">
+            <div class="voreshus_carousel_inner">
+                <div class="bwd">
+                    <p>&lt;</p>
+                </div>
+
+                <div class="voreshus_the_container">
+
+                </div>
+                <div class="fwd">
+                    <p>&gt;</p>
+
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <div class="voreshus_mainoverskrift">
+        <h1>Vores hus</h1>
+    </div>
+
+    <div class="voreshus_overskrift1">
+        <h2>Teatret Zeppelins lokaler:</h2>
+    </div>
+    <template class="voreshus_template_text">
+        <article class="voreshus_article_text">
+            <div class="voreshus_col_text">
+                <p class="col_tekst1 hide"></p>
+                <p class="col_tekst2 hide"></p>
+                <img class="infobillede1" src="" alt="">
+                <img class="infobillede2" src="" alt="">
+                <img class="infobillede3" src="" alt="">
+                <img class="infobillede4" src="" alt="">
+                <p class="tekst2"></p>
+            </div>
+        </article>
+    </template>
+
+    <main id="voreshus_text_img">
+        <div id="voreshus_text_container">
+        </div>
+        <div id="voreshus_infobilleder"></div>
+        <h2 class="voreshus_overskrift2">Vores Sal</h2>
+        <div id="voreshus_text2_container"></div>
+    </main>
+
+
+
+
+    <script>
+        "use strict"
+        const url = "http://michelleyoung.dk/kea/zeppelin/wordpress/wp-json/wp/v2/voreshus/147";
+        let theJSON;
+        let numberOfPicsInCarousel;
+        let caroCurrentNum = 0;
+
+        const TextTemplate = document.querySelector(".voreshus_template_text");
+        const container = document.querySelector("#the_container");;
+        const textContainer = document.querySelector("#voreshus_text_container");
+        const infoContainer = document.querySelector("#voreshus_infobilleder");
+        const text2container = document.querySelector("#voreshus_text2_container");
+
+
+
+        document.addEventListener("DOMContentLoaded", start);
+
+        function start() {
+            hentJSON();
+            document.querySelector(".fwd").addEventListener("click", fwd);
+            document.querySelector(".bwd").addEventListener("click", bwd);
+
+        }
+        async function hentJSON() {
+            const response = await fetch(url);
+            theJSON = await response.json();
+            console.log(theJSON)
+            buildCarousel();
+            visVoreshus();
+        }
+
+        function buildCarousel() {
+            numberOfPicsInCarousel = theJSON.galleri.length;
+            theJSON.galleri.forEach((billede, index) => {
+                const theClone = document.querySelector("#voreshus_template_carousel").cloneNode(true).content;
+                //billederne sættes ind
+                theClone.querySelector("img").src = billede.guid;
+                //vi skal appende vores kloner til dokumentet:
+                document.querySelector(".voreshus_the_container").appendChild(theClone);
+
+            })
+            document.querySelector(".voreshus_the_container").addEventListener("scroll", scrollFunction)
+        }
+
+        function scrollFunction() {
+            caroCurrentNum = Math.round(document.querySelector(".voreshus_the_container").scrollLeft / document.querySelector(".voreshus_caro_imgs").width);
+            console.log(caroCurrentNum);
+            setBtns();
+        }
+
+        function fwd() {
+            if (caroCurrentNum < numberOfPicsInCarousel - 1) {
+                caroCurrentNum++;
+                navigate();
+            }
+        }
+
+        function bwd() {
+            if (caroCurrentNum >= 0) {
+                caroCurrentNum--;
+                navigate();
+            }
+        }
+
+        function navigate() {
+            document.querySelector(".voreshus_the_container").scrollTo({
+                left: caroCurrentNum * document.querySelector(".voreshus_caro_imgs").width,
+                behavior: "smooth"
+            })
+            setBtns();
+        }
+
+        function setBtns() {
+            if (caroCurrentNum < numberOfPicsInCarousel - 1) {
+                document.querySelector(".fwd").style.opacity = 1;
+                document.querySelector(".fwd").style.cursor = "pointer";
+            } else {
+                document.querySelector(".fwd").style.opacity = 0.4;
+                document.querySelector(".fwd").style.cursor = "default";
+            }
+
+            if (caroCurrentNum > 0) {
+                document.querySelector(".bwd").style.opacity = 1;
+                document.querySelector(".bwd").style.cursor = "pointer";
+            } else {
+                document.querySelector(".bwd").style.opacity = 0.4;
+                document.querySelector(".bwd").style.cursor = "default";
+            }
+        }
+
+        function visVoreshus() {
+            console.log(theJSON);
+
+
+            if (theJSON.col_tekst1) {
+
+                console.log(theJSON.col_tekst1)
+
+                const klonText = TextTemplate.cloneNode(true).content;
+
+                klonText.querySelector("p").classList.remove("hide");
+                klonText.querySelector("p").innerHTML = theJSON.col_tekst1;
+                textContainer.appendChild(klonText);
+
+            }
+            if (theJSON.col_tekst2) {
+
+                console.log(theJSON.col_tekst2)
+
+                const klonText = TextTemplate.cloneNode(true).content;
+
+                klonText.querySelector("p").classList.remove("hide");
+                klonText.querySelector("p").innerHTML = theJSON.col_tekst2;
+                textContainer.appendChild(klonText);
+
+            }
+            if (theJSON.infobillede1) {
+
+                console.log(theJSON.infobillede1)
+
+                const klonText = TextTemplate.cloneNode(true).content;
+
+                klonText.querySelector("img").classList.remove("hide");
+                klonText.querySelector("img").src = theJSON.infobillede1.guid;
+                infoContainer.appendChild(klonText);
+
+            }
+            if (theJSON.infobillede2) {
+
+                console.log(theJSON.infobillede2)
+
+                const klonText = TextTemplate.cloneNode(true).content;
+
+                klonText.querySelector("img").classList.remove("hide");
+                klonText.querySelector("img").src = theJSON.infobillede2.guid;
+                infoContainer.appendChild(klonText);
+
+            }
+            if (theJSON.infobillede3) {
+
+                console.log(theJSON.infobillede3)
+
+                const klonText = TextTemplate.cloneNode(true).content;
+
+                klonText.querySelector("img").classList.remove("hide");
+                klonText.querySelector("img").src = theJSON.infobillede3.guid;
+                infoContainer.appendChild(klonText);
+
+            }
+            if (theJSON.infobillede4) {
+
+                console.log(theJSON.infobillede4)
+
+                const klonText = TextTemplate.cloneNode(true).content;
+
+                klonText.querySelector("img").classList.remove("hide");
+                klonText.querySelector("img").src = theJSON.infobillede4.guid;
+                infoContainer.appendChild(klonText);
+
+            }
+            if (theJSON.tekst2) {
+
+                console.log(theJSON.tekst2)
+
+                const klonText = TextTemplate.cloneNode(true).content;
+
+                klonText.querySelector("p").classList.remove("hide");
+                klonText.querySelector("p").innerHTML = theJSON.tekst2;
+                text2container.appendChild(klonText);
+
+            }
+
+        }
+
+    </script>
+</body>
+
+</html>

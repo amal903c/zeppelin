@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/a54d2cbf95.js"></script>
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .navbar {
+            margin: 0 auto;
+            padding: 2em 0 3em;
+            list-style: none;
+            position: relative;
+            display: flex;
+            font-family: 'Montserrat', sans-serif;
+            justify-content: space-between;
+        }
+
+        .navbar-step {
+            text-align: center;
+            position: relative;
+            width: 100%;
+        }
+
+        .navbar-step:before,
+        .navbar-step:after {
+            content: "";
+            height: 0.14em;
+            background-color: #000000;
+            position: absolute;
+            z-index: 1;
+            width: 100%;
+            left: -50%;
+            top: 40%;
+        }
+
+        .navbar-step:first-child:before,
+        .navbar-step:first-child:after {
+            display: none;
+        }
+
+        .navbar-icon:hover {
+            background-color: black;
+            transition: all .25s ease-out;
+        }
+
+        .navbar-icon {
+            width: 0.5em;
+            height: 0.5em;
+            background-color: #ffffff;
+            fill: #000000;
+            border: 1px solid black;
+            border-radius: 50%;
+            padding: 0.5em;
+            max-width: 100%;
+            z-index: 10;
+            position: relative;
+        }
+
+
+        .navbar-stepLabel {
+            display: block;
+            text-transform: uppercase;
+            color: #000000;
+            position: absolute;
+            padding-top: 0.5em;
+            width: 100%;
+        }
+
+        .visit_wrapper {
+            max-width: 1200px;
+            margin: 3em auto;
+            font-size: 0.7rem;
+        }
+
+
+        main {
+            min-width: 300px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        main h2 {
+            text-align: center
+        }
+
+
+
+        .visit section {
+            font-size: 1em;
+            line-height: 1.75em;
+            border-top: 3px solid;
+            border-image: linear-gradient(to right, #34435e 0%, #903f11 100%);
+            border-image-slice: 1;
+            border-width: 3px;
+            margin: 0;
+            padding: 40px;
+            counter-increment: section;
+            position: relative;
+            color: #34435e;
+        }
+
+
+
+        .visit section:before {
+
+            position: absolute;
+            border-radius: 50%;
+            padding: 10px;
+            height: 2.25em;
+            width: 2.25em;
+            background-color: #34435e;
+            text-align: center;
+            line-height: 1.25em;
+            color: #ffffff;
+            font-size: 1em;
+        }
+
+
+
+        .visit section:nth-child(odd) {
+            border-right: 3px solid;
+            padding-left: 0;
+        }
+
+
+
+        .visit section:nth-child(odd):before {
+            left: 100%;
+            margin-left: -20px;
+        }
+
+
+
+        .visit section:nth-child(even) {
+            border-left: 3px solid;
+            padding-right: 0;
+        }
+
+
+
+        .visit section:nth-child(even):before {
+            right: 100%;
+            margin-right: -20px;
+        }
+
+
+
+        .visit section:first-child {
+            border-top: 0;
+            border-top-right-radius: 0;
+            border-top-left-radius: 0;
+            border-right: 0;
+        }
+
+
+
+        .visit section:last-child {
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+
+        .text_img {
+            display: flex;
+            flex-direction: column-reverse;
+        }
+
+
+        .visit img {
+            width: 20vw;
+            margin: auto;
+
+        }
+
+        #billet img {
+            height: auto;
+        }
+
+        #billet img:hover {
+            cursor: pointer;
+        }
+
+        .text_visit {
+            max-width: 68ch;
+        }
+
+        /* Set the size of the div element that contains the map */
+        #map {
+            height: 400px;
+            /* The height is 400 pixels */
+            width: 100%;
+            /* The width is the width of the web page */
+        }
+
+        body {
+            margin: 0;
+            padding: 0 4em;
+        }
+
+        .to-top {
+            background: white;
+            position: fixed;
+            bottom: 16px;
+            right: 32px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            color: #1f1f1f;
+            text-decoration: none;
+            opacity: 0;
+            pointer-events: none;
+            transition: all .4s;
+        }
+
+        .to-top.top_active {
+            bottom: 32px;
+            pointer-events: auto;
+            opacity: 1;
+        }
+
+        .navbar span {
+            margin: auto;
+            font-size: 0.4rem
+        }
+
+        @media only screen and (min-width: 768px) {
+                        .text_img {
+                display: flex;
+                flex-direction: row;
+                }
+
+            .visit img {
+                width: 10vw;
+                margin: auto;
+
+            }
+
+            .navbar span {
+                font-size: 0.8rem
+            }
+
+        }
+
+    </style>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+
+    <h1 class="mainoverskrift">Dit besøg</h1>
+    <div class="visit_wrapper">
+        <ol class="navbar">
+            <li class="navbar-step">
+                <a href="#billet">
+                    <svg class="navbar-icon">
+                        <span class="navbar-stepLabel">Køb af billet</span>
+                </a>
+            </li>
+            <li class="navbar-step">
+                <a href="#gaaiteater">
+                    <svg class="navbar-icon">
+                        <span class="navbar-stepLabel">At gå i teater med børn</span>
+                </a>
+            </li>
+            <li class="navbar-step">
+                <a href="#findvej">
+                    <svg class="navbar-icon">
+                        <span class="navbar-stepLabel">Find vej</span>
+                </a>
+            </li>
+            <li class="navbar-step">
+                <a href="#restaurant">
+                    <svg class="navbar-icon">
+                        <span class="navbar-stepLabel">Restaurantbesøg</span>
+                </a>
+            </li>
+            <li class="navbar-step">
+                <a href="#inden">
+                    <svg class="navbar-icon">
+                        <span class="navbar-stepLabel">Inden forestillingen</span>
+                </a>
+            </li>
+            <li class="navbar-step">
+                <a href="#efter">
+                    <svg class="navbar-icon">
+                        <span class="navbar-stepLabel">Efter forestillingen</span>
+                </a>
+            </li>
+        </ol>
+    </div>
+
+
+
+
+    <template id="visit_template">
+        <article id="visit">
+            <h2 id="visit_overskrift"></h2>
+            <div class="text_img">
+                <p class="text_visit" id="visit_tekst"></p>
+                <p class="col2"></p>
+                <img src="" alt="">
+            </div>
+        </article>
+
+    </template>
+    <div class="visit_container">
+        <main class="visit">
+            <section></section>
+            <section class="visit" id="billet"></section>
+            <section class="visit" id="gaaiteater"></section>
+            <section class="visit" id="findvej">
+                <div id="map"></div>
+            </section>
+
+            <section class="visit" id="restaurant"></section>
+            <section class="visit" id="inden"></section>
+            <section class="visit" id="efter"></section>
+        </main>
+    </div>
+
+    <a href="#" class="to-top">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+
+
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASjQdNLvV1XdmlCxkDKK4d_c8W6tahkz0&callback=initMap">
+    </script>
+
+    <script>
+        // Initialize and add the map
+        function initMap() {
+            // The location of Uluru
+            var uluru = {
+                lat: 55.670919,
+                lng: 12.548738
+            };
+
+            // The map, centered at Uluru
+            var map = new google.maps.Map(
+                document.getElementById('map'), {
+                    zoom: 17,
+                    center: uluru
+                });
+            // The marker, positioned at Uluru
+            var marker = new google.maps.Marker({
+                position: uluru,
+                map: map
+            });
+        }
+
+
+        //variabler starter her
+
+        let endpointVisit = "http://michelleyoung.dk/kea/zeppelin/wordpress/wp-json/wp/v2/ditvisit";
+
+        let theVisit;
+
+
+        //forestilling template
+        const visitTemplate = document.querySelector("#visit_template");
+
+        //forestilling container
+        const visitContainer = document.querySelector("#billet");
+
+
+
+
+
+        document.addEventListener("DOMContentLoaded", start);
+
+        function start() {
+            hentJSON();
+
+        }
+        async function hentJSON() {
+            const response = await fetch(endpointVisit);
+            theVisit = await response.json();
+            console.log(theVisit)
+            visDitVisit();
+        }
+
+        function visDitVisit() {
+            const klonText = visit_template.cloneNode(true).content;
+
+            theVisit.forEach(billet => {
+                const klonText = visit_template.cloneNode(true).content;
+                klonText.querySelector("h2").textContent = billet.overskrift1;
+                klonText.querySelector("p").innerHTML = billet.tekst1;
+                klonText.querySelector("img").src = billet.cta.guid;
+
+                klonText.querySelector("img").addEventListener("click", () => {
+                    location.href = "https://www.teaterbilletter.dk/organizer/teatret-zeppelin/";
+                });
+
+                visitContainer.appendChild(klonText);
+            });
+            theVisit.forEach(gaaiteater => {
+                const klonText = visit_template.cloneNode(true).content;
+
+                klonText.querySelector("h2").textContent = gaaiteater.overskrift2;
+                klonText.querySelector("p").innerHTML = gaaiteater.col_tekst1;
+                klonText.querySelector("img").src = gaaiteater.billede1.guid;
+                document.querySelector("#gaaiteater").appendChild(klonText);
+            });
+            theVisit.forEach(findvej => {
+                const klonText = visit_template.cloneNode(true).content;
+
+                klonText.querySelector("h2").textContent = findvej.overskrift3;
+                klonText.querySelector("p").innerHTML = findvej.tekst3;
+                klonText.querySelector("img").src = findvej.billede2.guid;
+                document.querySelector("#findvej").appendChild(klonText);
+            });
+            theVisit.forEach(restaurant => {
+                const klonText = visit_template.cloneNode(true).content;
+
+                klonText.querySelector("h2").textContent = restaurant.overskrift4;
+                klonText.querySelector("p").innerHTML = restaurant.tekst4;
+                klonText.querySelector("img").src = restaurant.billede3.guid;
+                document.querySelector("#restaurant").appendChild(klonText);
+            });
+
+            theVisit.forEach(inden => {
+                const klonText = visit_template.cloneNode(true).content;
+
+                klonText.querySelector("h2").textContent = inden.overskrift5;
+                klonText.querySelector("p").innerHTML = inden.tekst5;
+                klonText.querySelector("img").src = inden.billede4.guid;
+                document.querySelector("#inden").appendChild(klonText);
+            });
+            theVisit.forEach(efter => {
+                const klonText = visit_template.cloneNode(true).content;
+
+                klonText.querySelector("h2").textContent = efter.overskrift6;
+                klonText.querySelector("p").innerHTML = efter.tekst6;
+                document.querySelector("#efter").appendChild(klonText);
+            });
+
+
+        }
+
+        const toTop = document.querySelector(".to-top");
+
+        window.addEventListener("scroll", () => {
+            if (window.pageYOffset > 100) {
+                toTop.classList.add("top_active");
+            } else {
+                toTop.classList.remove("top_active");
+            }
+        })
+
+    </script>
+
+</body>
+
+</html>

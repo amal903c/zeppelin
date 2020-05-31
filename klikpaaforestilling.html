@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forestilling</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <section id="detalje_forestilling">
+
+        <div class="detalje_section_wrapper">
+
+            <div class="image_detalje">
+                <img id="billede_detalje" src="" alt="">
+            </div>
+            <div class="text_detalje">
+                <h1 id="detalje_overskrift"></h1>
+                <p id="tekst_detalje"></p>
+
+            </div>
+            <div id="infografik_container">
+
+                <div class="infografik_box">
+
+                    <h3>Varighed</h3>
+                    <img src="billeder/varighed.svg">
+                    <h3 class="infografik_varighed"></h3>
+
+                </div>
+
+                <div class="infografik_box">
+
+                    <h3>Hvornår</h3>
+                    <img src="billeder/hvornaar.svg">
+                    <h3 class="infografik_hvornaar"></h3>
+
+                </div>
+
+                <div class="infografik_box">
+
+                    <h3>Pris</h3>
+                    <img src="billeder/graa_billet.svg">
+                    <h3 class="infografik_pris"></h3>
+
+                </div>
+
+                <div class="infografik_box">
+
+                    <h3>Aldersgrænse</h3>
+                    <img src="billeder/alder.svg">
+                    <h3 class="infografik_alder"></h3>
+
+                </div>
+
+
+            </div>
+
+            <div class="billet_infografik">
+                <h3>Køb billet</h3>
+            </div>
+
+        </div>
+
+
+
+
+    </section>
+
+
+    <script>
+        //         let endpointAlleForestillinger = "http://michelleyoung.dk/kea/zeppelin/wordpress/wp-json/wp/v2/alle_forestillinge";
+
+        let urlParams = new URLSearchParams(window.location.search);
+
+        let id = urlParams.get("id");
+        console.log(id);
+
+        let theJSONDetalje = [];
+
+
+        document.addEventListener("DOMContentLoaded", startDetalje);
+
+        function startDetalje() {
+            loadDetaljeData();
+            console.log("jeg er her")
+        }
+
+        async function loadDetaljeData() {
+
+            let jsonData = await fetch(`http://michelleyoung.dk/kea/zeppelin/wordpress/wp-json/wp/v2/alle_forestillinge/${id}`);
+
+            theJSONDetalje = await jsonData.json();
+
+            visDetalje();
+        }
+
+        function visDetalje() {
+
+            console.log(theJSONDetalje)
+
+            document.querySelector("#billede_detalje").src = theJSONDetalje.billede.guid;
+
+
+            document.querySelector("#detalje_overskrift").textContent = theJSONDetalje.titel;
+
+            document.querySelector("#tekst_detalje").innerHTML = theJSONDetalje.tekst;
+
+            document.querySelector(".infografik_varighed").innerHTML = theJSONDetalje.varighed;
+
+            document.querySelector(".infografik_hvornaar").innerHTML = theJSONDetalje.dato;
+
+            document.querySelector(".infografik_pris").innerHTML = theJSONDetalje.pris;
+
+            document.querySelector(".infografik_alder").innerHTML = theJSONDetalje.alder;
+
+            console.log(theJSONDetalje.alder);
+
+
+
+
+
+
+
+        }
+
+    </script>
+</body>
+
+</html>

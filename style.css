@@ -19,12 +19,21 @@ h1 {
     font-style: Light;
     font-weight: 100;
     text-align: center;
+    font-size: 3rem;
 }
 
 h2 {
     font-family: montserrat, sans-serif;
     font-style: normal;
     font-weight: 550;
+    font-size: 1.5rem;
+}
+
+h3 {
+    font-family: montserrat, sans-serif;
+    font-style: ExtraLight;
+    font-weight: 100;
+    font-size: 1rem;
 }
 
 p {
@@ -39,6 +48,12 @@ p {
     background-color: #8C2020;
     padding: 1rem 2.5rem 1rem 2.5rem;
     color: white;
+    cursor: pointer;
+}
+
+.read_more:hover,
+#detalje_forestilling .billet_infografik:hover {
+    filter: grayscale(30%);
 }
 
 
@@ -137,6 +152,213 @@ p {
 
 /* KAT */
 
+
+/* toppen med nuværende forestilling */
+
+
+@media only screen and (min-width: 320px) {
+    #forestllinger .wrapper .text {
+        margin-bottom: 1rem;
+    }
+
+    #forestlling {
+        text-align: center;
+        padding: 2rem;
+    }
+
+
+
+    #forestllinger .text {
+        justify-content: center;
+        align-self: center;
+    }
+
+    #forestllinger .image {
+        justify-content: center;
+        align-self: center;
+    }
+
+    #forestlling img {
+        height: 50vh;
+    }
+
+    #forestllinger #image_current_forestilling {
+        height: 50vh;
+    }
+
+}
+
+@media only screen and (min-width: 768px) {
+
+    #forestllinger #image_current_forestilling {
+        height: 75vh;
+        padding: 1rem;
+    }
+
+    #forestllinger .wrapper {
+        display: grid;
+        grid-template-columns: 40vw 60vw;
+        height: 100vh;
+    }
+
+
+
+
+}
+
+#forestllinger .wrapper .text {
+    text-align: center;
+    padding: 1rem;
+}
+
+#forestllinger #image_current_forestilling {
+    object-fit: cover;
+
+}
+
+#forestllinger #mid_kommende_overskrift {
+    padding: 3rem;
+}
+
+#forestlling img {
+    object-fit: cover;
+}
+
+#wrapper_mid_kommende {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr))
+}
+
+#arkiv {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr))
+}
+
+
+
+/* om teateret */
+
+
+@media only screen and (min-width: 320px) {
+    #tekst_omteateret {
+        padding: 2rem;
+    }
+
+    #omteateret_billede {
+        max-height: 100vh;
+        object-fit: cover;
+        object-position: top;
+    }
+
+    #om_teateret iframe {
+        width: 80vw;
+        height: 70vh;
+    }
+
+    .text_citater p {
+        width: 382px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin: 0 auto;
+    }
+
+
+}
+
+
+#om_teateret .mid_container {
+    display: grid;
+}
+
+.velkommen_youtube {
+    justify-self: center;
+    border: none;
+
+}
+
+#om_teateret .bottom_container {
+    padding: 2rem;
+}
+
+#om_teateret .text_citater p {
+    text-align: center;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+#overskrift2_omteateret {
+    padding: 2rem;
+}
+
+@media only screen and (min-width: 768px) {
+    #om_teateret .top_wrapper {
+        display: grid;
+        grid-template-columns: 50vw 50vw;
+        margin-top: 4rem;
+    }
+
+    #omteateret_billede {
+        height: 114vh;
+        object-fit: cover;
+        padding: 1rem;
+    }
+
+    #om_teateret iframe {
+        width: 80vw;
+        height: 70vh;
+    }
+
+    #om_teateret .text_citater {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    #tekst_omteateret {
+        padding: 0rem 2rem 0rem 2rem;
+    }
+
+}
+
+
+/* alle forestillinger, når du har klikket på en forestilling */
+
+#detalje_forestilling .billet_infografik {
+    background-image: url(billeder/rod_billet.svg);
+    background-size: 100%;
+
+    height: 10vw;
+    width: 28.636363636363637vw;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+
+    margin: 0 auto;
+
+    cursor: pointer;
+}
+
+#detalje_forestilling .image_detalje img {
+    height: 90vh;
+    object-fit: cover;
+
+}
+
+#detalje_forestilling .text_detalje #tekst_detalje {
+    padding: 1rem 9rem 1rem 9rem;
+}
+
+#detalje_forestilling #infografik_container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    text-align: center;
+    margin-bottom: 6rem;
+}
+
+#detalje_forestilling .infografik_box img {
+    width: 10vw;
+}
 
 
 
@@ -341,12 +563,15 @@ p {
 /* Teamet Loopview */
 
 .person {
-    cursor: pointer;
     padding: 34px;
     margin: auto;
 }
 
-.person img:hoved {
+.person img {
+    cursor: pointer;
+}
+
+.person img:hover {
     opacity: 0.6;
 }
 
@@ -369,13 +594,145 @@ p {
     margin: 7px 0 0 0;
     font-size: 1.3rem;
     line-height: 20px;
+    cursor: pointer;
+}
+
+.team_navn:hover {
+    opacity: 0.6;
 }
 
 
-@media only screen and (min-width: 650px) {
+@media only screen and (min-width: 768px) {
     .team_liste {
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     }
+}
+
+
+
+
+
+/* Teamet popup */
+
+.team_skjul {
+    display: none;
+}
+
+#team_detalje {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+#team_article {
+    display: flex;
+    flex-wrap: wrap;
+
+    background-color: white;
+    margin: auto;
+}
+
+.team_col {
+    flex-grow: 1;
+    flex-basis: 500px;
+
+    padding: 5px 50px;
+}
+
+.navn_popup {
+    text-align: center;
+    line-height: 20px;
+    margin: 13px 0 0 0;
+}
+
+.stilling_popup {
+    text-align: center;
+    font-style: italic;
+    margin: 10px 0 35px 0;
+}
+
+.mail_popup {
+    margin-bottom: 10vw;
+}
+
+.text_popup {
+    margin: 8vw 0 60px 0;
+    line-height: 1.3rem;
+}
+
+.link_popup {
+    padding-bottom: 60px;
+}
+
+.team_luk {
+
+    color: black;
+    cursor: pointer;
+    margin: 0;
+    float: left;
+    border: none;
+    font-size: 1.8rem;
+    background-color: white;
+
+}
+
+@media only screen and (min-width: 768px) {
+    .team_col {
+        flex-basis: 300px;
+        flex-grow: 1;
+    }
+
+    .team_col_img {
+        padding: 2vw 7vw;
+    }
+
+}
+
+
+
+
+
+
+
+/* KONTAKT */
+
+.hide {
+    display: none;
+}
+
+.kontakt_tekst1 {
+    padding: 0 21vw;
+}
+
+
+@media only screen and (min-width: 768px) {
+    .kontakt_tekst1 {
+        column-count: 2;
+        column-gap: 10vw;
+        margin: 0 auto;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+/* SPONSOR */
+
+.sponsor_container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr))
 }
 
 
