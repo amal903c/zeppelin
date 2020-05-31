@@ -39,7 +39,8 @@ h3 {
 p {
     font-family: roboto, sans-serif;
     font-style: normal;
-    font-weight: 200
+    font-weight: 200;
+    line-height: 1.4rem;
 }
 
 /* knappen */
@@ -345,9 +346,6 @@ p {
 
 }
 
-#detalje_forestilling .text_detalje #tekst_detalje {
-    padding: 1rem 9rem 1rem 9rem;
-}
 
 #detalje_forestilling #infografik_container {
     display: grid;
@@ -359,6 +357,90 @@ p {
 #detalje_forestilling .infografik_box img {
     width: 10vw;
 }
+
+
+@media only screen and (min-width: 320px) {
+    #tekst_detalje {
+        padding: 1rem 2rem 1rem 2rem;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    #tekst_detalje {
+        padding: 1rem 9rem 1rem 9rem;
+    }
+
+}
+
+
+/* særarrangementer */
+
+#soerarrangement .top_arragement {
+    height: 100vh;
+    object-fit: cover;
+}
+
+@media only screen and (min-width: 320px) {
+    #soerarrangement .tekst_container {
+        padding: 2rem;
+    }
+
+
+
+
+}
+
+@media only screen and (min-width: 768px) {
+    #soerarrangement .wrapper {
+        display: grid;
+        grid-template-columns: 50vw 50vw;
+    }
+}
+
+#soerarrangement .infografik_container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+#soerarrangement .a {
+    grid-row: span 2;
+}
+
+.infografik_boks img {
+    width: 12vw;
+}
+
+#soerarrangement .infografik_boks {
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    flex-direction: column;
+    text-align: center;
+
+    border: 2px solid #8C2020;
+    margin: 0.4rem;
+
+
+}
+
+.infografik_container {
+    padding: 1rem;
+}
+
+.image_arrangementer_container {
+    padding: 1rem;
+}
+
+.image_arrangementer_container img {
+    height: 80vh;
+    object-fit: cover;
+}
+
+.image_arrangementer {
+    padding: 1rem;
+}
+
 
 
 
@@ -731,8 +813,26 @@ p {
 /* SPONSOR */
 
 .sponsor_container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr))
+    padding: 1vw 13vw;
+}
+
+.sponsor_img {
+    text-align: center;
+}
+
+.sponsor_img img {
+    width: 70%;
+}
+
+@media only screen and (min-width: 768px) {
+    .sponsor_container {
+        padding: 1vw 30vw;
+    }
+
+    .sponsor_img {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(400px, 1fr))
+    }
 }
 
 
@@ -746,6 +846,70 @@ p {
 
 
 
+
+
+
+/* FAMILIEKOR */
+
+#liste_familie {
+    padding: 5vw 10vw;
+}
+
+#liste_familie p {
+    margin: 4vw 0;
+    line-height: 1.4rem;
+}
+
+@media only screen and (min-width: 768px) {
+    #liste_familie {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+
+        padding: 5vw 0;
+    }
+
+    #liste_familie p {
+        margin: 0;
+    }
+
+    .container_tekst1 {
+        padding-left: 3.5vw;
+        padding-right: 7vw;
+    }
+
+    .container_billede1 {
+        padding-left: 7vw;
+        padding-right: 3.5vw;
+    }
+
+    .container_tekst2 {
+        padding-left: 7vw;
+        padding-right: 3.5vw;
+        padding-top: 4vw;
+
+        grid-row-start: 2;
+    }
+
+    .container_billede2 {
+        padding-left: 3.5vw;
+        padding-right: 7vw;
+        padding-top: 4vw;
+    }
+
+    .container_tekst3 {
+        padding-left: 3.5vw;
+        padding-right: 7vw;
+        padding-top: 4vw;
+    }
+
+    .container_billede3 {
+        padding-left: 7vw;
+        padding-right: 3.5vw;
+        padding-top: 4vw;
+    }
+
+
+}
 
 
 
