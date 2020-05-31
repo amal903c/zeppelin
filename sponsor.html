@@ -13,8 +13,8 @@
 
 
     <section id="liste_sponsor">
-        <div class="sponsor_container">
-        </div>
+        <div class="sponsor_container"></div>
+        <div class="sponsor_img"></div>
     </section>
 
 
@@ -22,8 +22,8 @@
     <template class="template_sponsor">
         <article class="sponsor">
             <h1 id="overskrift" class="hide"></h1>
-            <p class="sponsor_tekst hide "></p>
-            <!--            <img class="billede1" src="" alt="">-->
+            <p class="sponsor_tekst hide"></p>
+            <img class="billede1" src="" alt="">
         </article>
     </template>
 
@@ -36,13 +36,14 @@
         const listeELM = document.querySelector(".liste_sponsor");
         const template_sponsor = document.querySelector(".template_sponsor");
         const textContainer = document.querySelector(".sponsor_container");
+        const imgContainer = document.querySelector(".sponsor_img");
 
 
         document.addEventListener("DOMContentLoaded", start);
 
 
         // HENT WORDPRESS
-        const url = "http://michelleyoung.dk/kea/zeppelin/wordpress/wp-json/wp/v2/pages/324";
+        const url = "http://michelleyoung.dk/kea/zeppelin/wordpress/wp-json/wp/v2/sponsor";
 
 
 
@@ -57,28 +58,39 @@
             console.log(theJSON)
 
 
-            if (theJSON.title) {
-                console.log(theJSON.title.rendered)
+            if (theJSON.overskrift) {
+                console.log(theJSON.overskrift)
 
                 const klonText = template_sponsor.cloneNode(true).content;
 
                 klonText.querySelector("#overskrift").classList.remove("hide");
-                klonText.querySelector("#overskrift").textContent = theJSON.title.rendered;
+                klonText.querySelector("#overskrift").textContent = theJSON.overskrift;
 
                 textContainer.appendChild(klonText);
             }
 
-            if (theJSON.excerpt.rendered) {
-
-                console.log(theJSON.excerpt.rendered)
-
-                const klonText = template_sponsor.cloneNode(true).excerpt;
-
-                klonText.querySelector(".sponsor_tekst").classList.remove("hide");
-                klonText.querySelector(".sponsor_tekst").textContent = theJSON.excerpt.rendered;
-
-                textContainer.appendChild(klonText);
-            }
+            //            if (theJSON.excerpt.rendered) {
+            //
+            // console.log(theJSON.excerpt.rendered)
+            //
+            // const klonText = template_sponsor.cloneNode(true).content;
+            //
+            // klonText.querySelector(".sponsor_tekst").classList.remove("hide");
+            // klonText.querySelector(".sponsor_tekst").innerHTML = theJSON.excerpt.rendered;
+            //
+            // textContainer.appendChild(klonText);
+            // }
+            //
+            // if (theJSON.excerpt.rendered) {
+            //
+            // console.log(theJSON.excerpt.rendered)
+            //
+            // const klonText = template_sponsor.cloneNode(true).content;
+            //
+            // klonText.querySelector("img").src = theJSON.excerpt.rendered;
+            //
+            // imgContainer.appendChild(klonText);
+            // }
         }
 
     </script>
