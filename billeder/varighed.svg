@@ -1,0 +1,16 @@
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 93 98">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #999;
+      }
+    </style>
+  </defs>
+  <title>Artboard 16</title>
+  <path class="cls-1" d="M46.5,10C20.82,10,0,29.7,0,54S20.82,98,46.5,98,93,78.3,93,54,72.18,10,46.5,10Zm0,83.27C23.58,93.27,5,75.48,5,53.53S23.58,13.78,46.5,13.78,88,31.57,88,53.53,69.42,93.27,46.5,93.27Z"/>
+  <circle class="cls-1" cx="47" cy="57" r="6"/>
+  <rect class="cls-1" x="39.36" y="26.96" width="4.88" height="46.95" rx="1.15" transform="translate(-22.63 38.6) rotate(-39.94)"/>
+  <rect class="cls-1" x="42" y="5" width="9" height="6"/>
+  <rect class="cls-1" x="35" width="22" height="5"/>
+  <rect class="cls-1" x="67" y="8" width="16" height="8" transform="translate(17.77 -37.93) rotate(32.01)"/>
+</svg>
