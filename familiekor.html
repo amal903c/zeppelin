@@ -41,7 +41,7 @@
 
 
     <script>
-        let url = "http://michelleyoung.dk/kea/zeppelin/wordpress/wp-json/wp/v2/familiekor"
+        let url = "http://michelleyoung.dk/kea/zeppelin/wordpress/wp-json/wp/v2/familiekor/354"
         let theJSON = [];
 
         // flowet starter her
@@ -72,6 +72,8 @@
             console.log("hej");
 
             document.querySelector("#overskrift_familiekor").textContent = theJSON.overskrift;
+
+            document.querySelector(".container_tekst1").innerHTML = theJSON.tekst1;
 
 
 

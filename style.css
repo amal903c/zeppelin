@@ -670,7 +670,7 @@ p {
 }
 
 .team_luk {
-    /*
+
     color: black;
     cursor: pointer;
     margin: 0;
@@ -678,7 +678,7 @@ p {
     border: none;
     font-size: 1.8rem;
     background-color: white;
-*/
+
 }
 
 @media only screen and (min-width: 768px) {
