@@ -86,12 +86,13 @@
         }
 
         #voreshus_text_img img {
-            width: 10vw;
-            height: 9vw;
+            width: 200px;
+            height: 200px;
         }
 
         #voreshus_infobilleder {
-            display: flex;
+            display: grid;
+            grid-template-columns: auto auto;
             justify-content: center;
         }
 
@@ -100,6 +101,12 @@
             margin: auto;
 
         }
+
+        @media only screen and (min-width: 1024px) {
+            #voreshus_infobilleder {
+                display: grid;
+                grid-template-columns: auto auto auto auto;
+            }
 
     </style>
 </head>

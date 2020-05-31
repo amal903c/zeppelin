@@ -39,7 +39,8 @@ h3 {
 p {
     font-family: roboto, sans-serif;
     font-style: normal;
-    font-weight: 200
+    font-weight: 200;
+    line-height: 1.4rem;
 }
 
 /* knappen */
@@ -683,7 +684,7 @@ p {
 }
 
 
-@media only screen and (min-width: 650px) {
+@media only screen and (min-width: 768px) {
     .team_liste {
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     }
@@ -722,7 +723,7 @@ p {
     flex-grow: 1;
     flex-basis: 500px;
 
-    padding: 50px;
+    padding: 5px 50px;
 }
 
 .navn_popup {
@@ -737,8 +738,13 @@ p {
     margin: 10px 0 35px 0;
 }
 
+.mail_popup {
+    margin-bottom: 10vw;
+}
+
 .text_popup {
-    margin: 0 0 60px 0;
+    margin: 8vw 0 60px 0;
+    line-height: 1.3rem;
 }
 
 .link_popup {
@@ -746,7 +752,7 @@ p {
 }
 
 .team_luk {
-    /*
+
     color: black;
     cursor: pointer;
     margin: 0;
@@ -754,7 +760,19 @@ p {
     border: none;
     font-size: 1.8rem;
     background-color: white;
-*/
+
+}
+
+@media only screen and (min-width: 768px) {
+    .team_col {
+        flex-basis: 300px;
+        flex-grow: 1;
+    }
+
+    .team_col_img {
+        padding: 2vw 7vw;
+    }
+
 }
 
 
@@ -795,8 +813,26 @@ p {
 /* SPONSOR */
 
 .sponsor_container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr))
+    padding: 1vw 13vw;
+}
+
+.sponsor_img {
+    text-align: center;
+}
+
+.sponsor_img img {
+    width: 70%;
+}
+
+@media only screen and (min-width: 768px) {
+    .sponsor_container {
+        padding: 1vw 30vw;
+    }
+
+    .sponsor_img {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(400px, 1fr))
+    }
 }
 
 
@@ -810,6 +846,70 @@ p {
 
 
 
+
+
+
+/* FAMILIEKOR */
+
+#liste_familie {
+    padding: 5vw 10vw;
+}
+
+#liste_familie p {
+    margin: 4vw 0;
+    line-height: 1.4rem;
+}
+
+@media only screen and (min-width: 768px) {
+    #liste_familie {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+
+        padding: 5vw 0;
+    }
+
+    #liste_familie p {
+        margin: 0;
+    }
+
+    .container_tekst1 {
+        padding-left: 3.5vw;
+        padding-right: 7vw;
+    }
+
+    .container_billede1 {
+        padding-left: 7vw;
+        padding-right: 3.5vw;
+    }
+
+    .container_tekst2 {
+        padding-left: 7vw;
+        padding-right: 3.5vw;
+        padding-top: 4vw;
+
+        grid-row-start: 2;
+    }
+
+    .container_billede2 {
+        padding-left: 3.5vw;
+        padding-right: 7vw;
+        padding-top: 4vw;
+    }
+
+    .container_tekst3 {
+        padding-left: 3.5vw;
+        padding-right: 7vw;
+        padding-top: 4vw;
+    }
+
+    .container_billede3 {
+        padding-left: 7vw;
+        padding-right: 3.5vw;
+        padding-top: 4vw;
+    }
+
+
+}
 
 
 

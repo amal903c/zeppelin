@@ -5,28 +5,68 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <div id="the_container">
-        <div id="basisside">
-            <div class="splash">
-                <button class="call_to_action_button"></button>
-            </div>
-            <h1 class="kommende"></h1>
-            <div class="forestillinger_galleri"></div>
-            <h1 class="mereend"></h1>
-            <p class="mereend_tekst"></p>
-            <button></button>
-            <h1 class="savner"></h1>
-            <p class="savner_tekst"></p>
-            <button></button>
-        </div>
-        <div id="footer"></div>
-    </div>
 
+    <article id="splash">
+        <video width="320" height="240" autoplay loop muted>
+            <source src="splash-video.mp4" type="video/mp4"></video>
+        <button class="koeb_billet"></button>
+
+    </article>
+
+
+
+    <template id="template_karusel">
+        <section>
+            <img class="karrusel_imgs" src="" alt="">
+        </section>
+    </template>
+
+    <section id="forestilling_galleri_template">
+        <div id="sectionswrapper">
+
+            <div id="top_current_forestilling">
+                <h1 id="top_overskrift"></h1>
+                <div class="wrapper">
+                    <div class="karrusel">
+                        <div class="karrusel_tekst">
+                            <h1 class="karrusel_h1"></h1>
+                            <p class="karrusel_brod"></p>
+                        </div>
+                        <div class="karrusel_inner">
+                            <div class="tilbage">
+                                <p>⭅</p>
+                            </div>
+                            <div class="the_container"></div>
+                            <div class="foran">
+                                <p>⭆</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="mereend">
+
+                <h1 id="overskrift2"></h1>
+                <p id="tekst2"></p>
+                <button class="read_more"></button>
+            </div>
+
+            <div class="savner">
+
+                <h1 id="overskrift3"></h1>
+                <p id="tekst3"></p>
+                <button class="read_more"></button>
+            </div>
+        </div>
+    </section>
 
 
 
@@ -37,7 +77,9 @@
         document.addEventListener("DOMContentLoaded", start);
 
         //endpoint url
-        var endpoint = "http://michelleyoung.dk/kea/zeppelin/wordpress/wp-json/wp/v2/forside/";
+        var endpoint = "http://michelleyoung.dk/kea/zeppelin/wordpress/wp-json/wp/v2/forside/161";
+        var endpoint2 = "http://michelleyoung.dk/kea/zeppelin/wordpress/wp-json/wp/v2/forside_galleri/157";
+
 
         function start() {
             loadData();
@@ -50,16 +92,40 @@
             theJSON = await response.json();
             visIndhold();
 
+
+            const response2 = await fetch(endpoint2);
+            theJSON2 = await response2.json();
+
         }
 
-
-
-
         function visIndhold() {
-            console.log(theJSON.call_to_action)
+            console.log(theJSON);
 
-            document.querySelector(".call_to_action_button").innerHTML = theJSON.call_to_action;
 
+            //Kommende forestillinger og billedgalleri
+            document.querySelector("#top_overskrift").innerHTML = theJSON.overskrift;
+
+            //Mere end bare et børneteater
+            document.querySelector("#overskrift2").innerHTML = theJSON.overskrift2;
+            document.querySelector("#tekst2").innerHTML = theJSON.tekst2;
+
+            //Vi savner jer
+            document.querySelector("#overskrift3").innerHTML = theJSON.overskrift3;
+            document.querySelector("#tekst3").innerHTML = theJSON.tekst3;
+
+            //KARRUSEL
+            numberOfPicsInKarrrusel = theJSON.billedgalleri.length;
+
+            //For each ud fra vorers array af husbilelderne:
+            theJSON.billedgalleri.forEach((billede, index) => {
+                //vi skal have for både det store billede - theclone, og så de små legend billeder - secondclone:
+                const theClone = document.querySelector("#template_karusel").cloneNode(true).content;
+                //billederne sættes ind
+                theClone.querySelector("img").src = billede.guid;
+                //vi skal appende vores kloner til dokumentet:
+                document.querySelector(".the_container").appendChild(theClone);
+            })
+            document.querySelector(".the_container").addEventListener("scroll", scrollFunction);
         }
 
     </script>

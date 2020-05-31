@@ -1,0 +1,68 @@
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 127">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        font-size: 12px;
+        font-family: Montserrat-Thin, Montserrat;
+        font-weight: 200;
+      }
+
+      .cls-1, .cls-11, .cls-2 {
+        stroke: #aa2c04;
+      }
+
+      .cls-1, .cls-6 {
+        letter-spacing: 0.06em;
+      }
+
+      .cls-2 {
+        letter-spacing: 0.01em;
+      }
+
+      .cls-3 {
+        letter-spacing: 0.05em;
+      }
+
+      .cls-4 {
+        letter-spacing: 0.06em;
+      }
+
+      .cls-5 {
+        letter-spacing: 0.04em;
+      }
+
+      .cls-7 {
+        letter-spacing: 0.06em;
+      }
+
+      .cls-8 {
+        letter-spacing: 0.14em;
+      }
+
+      .cls-9 {
+        letter-spacing: 0.05em;
+      }
+
+      .cls-10 {
+        letter-spacing: 0.05em;
+      }
+
+      .cls-11 {
+        fill: none;
+        stroke-miterlimit: 10;
+        stroke-width: 2px;
+      }
+    </style>
+  </defs>
+  <title>124</title>
+  <text class="cls-1" transform="translate(47.64 117.14)">21x10 m</text>
+  <text class="cls-2" transform="translate(11.09 22.94)">T<tspan class="cls-3" x="6.64" y="0">e</tspan><tspan class="cls-4" x="14.22" y="0">a</tspan><tspan class="cls-5" x="21.83" y="0">t</tspan><tspan class="cls-6" x="26.96" y="0">e</tspan><tspan class="cls-7" x="34.73" y="0">r</tspan><tspan class="cls-4" x="39.98" y="0">salens a</tspan><tspan class="cls-3" x="91.69" y="0">re</tspan><tspan class="cls-6" x="104.41" y="0">al </tspan><tspan class="cls-8"><tspan x="10.69" y="14.4">f</tspan><tspan class="cls-9" x="16.1" y="14.4">r</tspan><tspan class="cls-4" x="21.29" y="14.4">a </tspan><tspan class="cls-10" x="32.62" y="14.4">v</tspan><tspan class="cls-6" x="39.26" y="14.4">æg til </tspan><tspan class="cls-3" x="80.83" y="14.4">v</tspan><tspan class="cls-6" x="87.46" y="14.4">æg</tspan></tspan></text>
+  <g>
+    <rect class="cls-11" x="58.93" y="47.51" width="16" height="51.11" transform="translate(71.27 -25.92) rotate(45)"/>
+    <rect class="cls-11" x="74.91" y="66.21" width="0.36" height="6.26" transform="translate(177.21 65.28) rotate(135)"/>
+    <rect class="cls-11" x="83.41" y="63.83" width="0.36" height="2.02" transform="translate(188.54 51.59) rotate(135)"/>
+    <rect class="cls-11" x="70.41" y="76.83" width="0.36" height="2.02" transform="translate(175.54 82.97) rotate(135)"/>
+    <rect class="cls-11" x="61.91" y="79.21" width="0.36" height="6.26" transform="translate(164.21 96.67) rotate(135)"/>
+    <circle class="cls-11" cx="54.5" cy="85.5" r="2.5"/>
+  </g>
+</svg>
