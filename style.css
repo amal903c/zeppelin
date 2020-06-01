@@ -162,6 +162,9 @@ a {
 
 /* KAT */
 
+/* forestillinger */
+
+
 
 /* toppen med nuværende forestilling */
 
@@ -213,6 +216,14 @@ a {
 
 
 
+
+
+}
+
+@media only screen and (min-width: 1020px) {
+    #forestllinger {
+        margin-top: 37vh;
+    }
 
 }
 
@@ -404,6 +415,8 @@ a {
         display: grid;
         grid-template-columns: 50vw 50vw;
     }
+
+
 }
 
 #soerarrangement .infografik_container {
@@ -468,12 +481,21 @@ a {
     #web_nav {
         display: block;
     }
+
+    .logo_img {
+        margin: 0 auto;
+    }
+
+    .bottom_nav {
+        margin-bottom: 15px;
+    }
 }
 
 /* generelt */
 .logo_img {
-    width: 30vw;
-    max-width: 270px;
+    width: 25vw;
+    max-width: 230px;
+    transition: 0.5s;
 }
 
 /* mobil */
@@ -519,7 +541,13 @@ a {
 
 
 /* web */
-#web_nav {}
+#web_nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: .5s;
+}
 
 .top_nav {
     display: grid;
@@ -559,7 +587,25 @@ a {
     cursor: pointer;
 }
 
+#web_nav.black {
+    /*
+    background-color: white;
+    opacity: 80%;
+*/
 
+    /*    background-color: rgb(239, 232, 232, 0.3);*/
+    background-color: #f5f5f5;
+
+}
+
+#web_nav.black .logo_img {
+    width: 15vw;
+}
+
+
+#web_nav.black .menu_linje a {
+    font-size: 1rem;
+}
 
 
 
