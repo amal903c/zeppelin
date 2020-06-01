@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .forbered_container {
+            margin: auto;
+            display: flex;
+            max-width: 1200px;
+            justify-content: center;
+        }
+
+        .forbered_container h2 {
+            text-align: center;
+        }
+
+        #forbered_tekst {
+            margin: 10px;
+            max-width: 100ch;
+        }
+
+    </style>
+</head>
+
+<body>
+    <section id="forbered">
+        <h1 id="forbered_overskrift1"></h1>
+        <div class="forbered_container">
+            <div class="forbered_wrapper">
+                <div id="forbered_tekst"></div>
+                <div class="forbered_image">
+                    <img id="forbered_billede" src="" alt="">
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+    <script>
+        let endpointForbered = "http://michelleyoung.dk/kea/zeppelin/wordpress/wp-json/wp/v2/pages/174"
+
+        let theJSONforbered = [];
+
+        // flowet starter her
+        document.addEventListener("DOMContentLoaded", startForbered);
+
+        function startForbered() {
+            loadForbered();
+
+        }
+
+        async function loadForbered() {
+            //henter json data for forestillinger
+            let ressponsOmTeateret = await fetch(endpointForbered);
+
+            //putter json data ind i et array for forestillinger
+            theJSONForbered = await ressponsOmTeateret.json();
+
+            //kalder visForestillinger
+            visForbered();
+
+        }
+
+        function visForbered() {
+
+
+            document.querySelector("#forbered_overskrift1").textContent = theJSONForbered.title.rendered;;
+
+            document.querySelector("#forbered_tekst").innerHTML = theJSONForbered.content.rendered;
+
+            /*
+                        document.querySelector("#forbered_overskrift1").textContent = theJSONForbered.main_overskrift2;
+            */
+
+            /*            document.querySelector("#forbered_billede").src = theJSONForbered.ex.guid;*/
+
+
+
+
+
+
+
+
+
+        }
+
+    </script>
+</body>
+
+</html>

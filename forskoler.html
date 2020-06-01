@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .forskoler_nav {
+            text-align: center;
+            padding-top: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        button:hover {
+            cursor: pointer;
+        }
+
+        .filter {
+            border: none;
+            background: none;
+        }
+
+        .valgt {
+            opacity: 0.5;
+            border-bottom: 1px solid black;
+            margin: 0 auto;
+        }
+
+        .skoler_container {
+            margin: auto;
+            display: flex;
+            max-width: 1000px;
+            justify-content: center;
+        }
+
+        .liste_skoler h2 {
+            text-align: center;
+        }
+
+        .skoler_img {
+            width: 100%;
+            display: flex;
+            margin: auto;
+        }
+
+        .flex_imgs img {
+            display: flex;
+        }
+
+        .skoler_tekst {
+            margin: auto 10px;
+        }
+
+
+        .skoler_tekst iframe {
+            margin: auto;
+        }
+
+
+        .download_imgs img {
+            width: 50vw;
+            height: auto;
+            margin: auto;
+        }
+
+        .download_imgs {
+            margin: auto;
+            cursor: pointer;
+        }
+
+        .download_wrapper1,
+        .download_wrapper2,
+        .download_wrapper3 {
+            text-align: center;
+            margin: auto;
+        }
+
+
+
+        @media only screen and (min-width: 768px) {
+            .forskoler_nav {
+                text-align: center;
+                padding-top: 10px;
+                display: block;
+            }
+
+            .download_imgs {
+                display: flex;
+                font-size: 0.1rem;
+            }
+
+            .download_imgs h3 {
+                font-size: 0.6rem;
+            }
+
+            .download_imgs img {
+                width: 20vw;
+                height: 12vw;
+            }
+
+        }
+
+
+        @media only screen and (min-width: 1024px) {
+            .download_imgs h3 {
+                font-size: 1rem;
+            }
+        }
+
+    </style>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <nav class="forskoler_nav">
+        <button class="filter valgt" data-kategori="praktiskinfo">Praktisk Info</button>
+        <button class="filter" data-kategori="zepzone">Zepzone & undervisningsmateriale</button>
+        <button class="filter" data-kategori="forbered">Forbered elever</button>
+        <button class="filter" data-kategori="zepsko">Zepsko</button>
+        <button class="filter" data-kategori="huskunstordning">Huskunstordning</button>
+
+    </nav>
+
+
+    <section class="liste_skoler">
+
+        <template class="skoler_template">
+            <h1 class="h1_overskrift"></h1>
+            <div class="skoler_container">
+                <article class="skoler">
+                    <h2 class="h2_overskrift"></h2>
+                    <div class="flex_imgs">
+                        <p class="skoler_tekst"></p>
+                    </div>
+                    <img class="skoler_img" src="" alt="">
+                    <div class="download_imgs">
+                        <div class="download_wrapper1">
+                            <img class="download_1" src="" alt="">
+                            <h3 class="h3_tekst1"></h3>
+                        </div>
+                        <div class="download_wrapper2">
+                            <img class="download_2" src="" alt="">
+                            <h3 class="h3_tekst2"></h3>
+
+                        </div>
+                        <div class="download_wrapper3">
+                            <img class="download_3" src="" alt="">
+                            <h3 class="h3_tekst3"></h3>
+                        </div>
+                    </div>
+
+                </article>
+            </div>
+        </template>
+    </section>
+    <script>
+        const listeELM = document.querySelector(".liste_skoler");
+        const template_skoler = document.querySelector(".skoler_template").content;
+
+        let skoler = [];
+        let filterKnap = document.querySelectorAll(".filter");
+        let filter = "praktiskinfo";
+
+        document.addEventListener("DOMContentLoaded", startFilter);
+
+        //        HENT WORDPRESS
+        /*        const url = "http://michelleyoung.dk/kea/zeppelin/wordpress/wp-json/wp/v2/pages";*/
+        const url = "http://michelleyoung.dk/kea/zeppelin/wordpress/wp-json/wp/v2/skoler/";
+
+        function startFilter() {
+            hentData();
+            filterKnap.forEach(knap => {
+                knap.addEventListener("click", filtrering);
+            });
+
+        }
+
+
+        async function hentData() {
+            const resspons = await fetch(url);
+            skoler = await resspons.json();
+            console.log(skoler);
+            visSkoler();
+
+        }
+
+        function filtrering() {
+            console.log(filter);
+            filter = this.dataset.kategori;
+            //            document.querySelector("h2").textContent = this.textContent;
+            document.querySelector(".valgt").classList.remove("valgt"); // fjern klassen valgt fra aktuel knap
+            this.classList.add("valgt") // marker den nyvalgte knap
+            visSkoler(); // kald funktionen vis igen med nyt filter
+        }
+
+        function visSkoler() {
+            listeELM.innerHTML = "";
+            skoler.forEach(skole => {
+                if (skole.kategorier == filter || filter == "") {
+                    console.log(skole);
+                    let klon = template_skoler.cloneNode(true);
+
+
+                    klon.querySelector(".h2_overskrift").textContent = skole.overskrift1;
+
+                    klon.querySelector(".skoler_tekst").innerHTML = skole.tekst1;
+
+                    if (skole.billede) {
+                        klon.querySelector(".skoler_img").src = skole.billede.guid;
+
+                    }
+                    if (skole.download1) {
+                        klon.querySelector(".download_1").src = skole.download1.guid;
+
+                        klon.querySelector(".download_wrapper1").addEventListener("click", () => {
+                            location.href = "https://www.zeppelin.dk/wp-content/uploads/2014/07/Undervisningsmateriale-M%C3%A6lkeb%C3%B8ttereglementet.pdf"
+                        });
+
+                    }
+                    if (skole.download2) {
+                        klon.querySelector(".download_2").src = skole.download2.guid;
+
+                        klon.querySelector(".download_wrapper2").addEventListener("click", () => {
+                            location.href = "https://www.zeppelin.dk/wp-content/uploads/2014/07/Skolemat.-Frost-2019.pdf"
+                        });
+
+                    }
+                    if (skole.h3_tekst1) {
+                        klon.querySelector(".h3_tekst1").textContent = skole.h3_tekst1;
+                    }
+                    if (skole.h3_tekst2) {
+                        klon.querySelector(".h3_tekst2").textContent = skole.h3_tekst2;
+                    }
+                    if (skole.h3_tekst3) {
+                        klon.querySelector(".h3_tekst3").textContent = skole.h3_tekst3;
+                    }
+                    if (skole.download3) {
+                        klon.querySelector(".download_3").src = skole.download3.guid;
+                        klon.querySelector(".download_wrapper3").addEventListener("click", () => {
+                            location.href = "https://www.zeppelin.dk/wp-content/uploads/2014/07/Skolemateriale-DDFEHH-2020.pdf"
+                        });
+                    }
+                    listeELM.appendChild(klon);
+                }
+            })
+        }
+
+    </script>
+</body>
+
+</html>
