@@ -17,10 +17,34 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="msapplication-config" content="myicons/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .persondata_tekst {
+            max-width: 1000px;
+            margin: auto 10px;
+
+        }
+
+        @media only screen and (min-width: 768px) {
+
+            .persondata_section {
+                margin-top: 32vh;
+
+            }
+
+            .persondata_tekst {
+                max-width: 1000px;
+                margin: auto;
+                padding: 10px;
+            }
+
+    </style>
 </head>
 
 <body>
-    <script src="script.js"></script>
+
     <nav>
 
         <div id="mobil_nav">
@@ -189,7 +213,39 @@
 
 
 
+    <section class="persondata_section">
 
+        <div class="persondata_wrapper">
+            <h1 class="persondata_overskrift"></h1>
+            <p class="persondata_tekst"></p>
+        </div>
+
+
+    </section>
+    <script>
+        const endpointPersondata = "http://michelleyoung.dk/kea/zeppelin/wordpress/wp-json/wp/v2/pages/453";
+
+        document.addEventListener("DOMContentLoaded", start);
+
+        function start() {
+            hentPersondataJSON();
+        }
+        async function hentPersondataJSON() {
+            const response = await fetch(endpointPersondata);
+            personDataJSON = await response.json();
+            console.log(personDataJSON);
+            visPersondata();
+
+        }
+
+        function visPersondata() {
+            document.querySelector(".persondata_overskrift").textContent = personDataJSON.title.rendered;
+
+            document.querySelector(".persondata_tekst").innerHTML = personDataJSON.content.rendered;
+
+        }
+
+    </script>
 
     <script src=""></script>
 </body>
