@@ -60,6 +60,7 @@ p {
     padding: 1rem 2.5rem 1rem 2.5rem;
     color: white;
     cursor: pointer;
+    font-family: montserrat, sans-serif;
 }
 
 .read_more:hover,
