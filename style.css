@@ -709,7 +709,7 @@ p {
     top: 0;
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.4);
-    padding: 3vw;
+    padding: 3vw 4vw;
 }
 
 #team_article {
@@ -768,17 +768,13 @@ p {
     .team_col {
         flex-basis: 300px;
         flex-grow: 1;
+
+        padding: 50px;
     }
 
     .team_col_img {
-        padding: 2vw 7vw;
+        padding: 2vw 0;
     }
-
-/*
-    .team_col_img img {
-        width: 70%;
-    }
-*/
 
     .stilling_popup {
         margin: 10px 0 0 0;
@@ -786,10 +782,17 @@ p {
 
     .text_popup {
         margin: 0;
-        padding-top: 3vw;
+        padding-top: 2vw;
     }
 
 }
+
+@media only screen and (min-width: 1024px) {
+    .team_col_img {
+        padding: 2vw 7vw;
+    }
+}
+
 
 
 
