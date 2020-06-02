@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Dramatilbud</title>
+    <style>
+        .klikzep_wrapper h3 {
+            text-align: center;
+            margin: auto;
+        }
+
+        .klikzep_wrapper img {
+            width: 60vw;
+            display: flex;
+            margin: auto;
+        }
+
+        .klikzep_tekst {
+            max-width: 1000px;
+            margin: auto;
+        }
+
+    </style>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+
+    <section class="klikzepzone">
+        <div class="klikzep_wrapper">
+
+            <img src="" alt="" class="klikzep_img">
+            <h1 class="overskrift_klikzep"></h1>
+            <p class="klikzep_tekst"></p>
+        </div>
+
+
+
+    </section>
+
+    <script>
+        let urlParams = new URLSearchParams(window.location.search);
+
+        let id = urlParams.get("id");
+        console.log(id);
+
+        let klikzepzoneJSON = [];
+
+        document.addEventListener("DOMContentLoaded", startDetaljeZep);
+
+        function startDetaljeZep() {
+            loadDetaljeZep();
+        }
+
+        async function loadDetaljeZep() {
+
+            let jsonZepData = await fetch(`http://michelleyoung.dk/kea/zeppelin/wordpress/wp-json/wp/v2/zepzone/${id}`);
+
+            klikzepzoneJSON = await jsonZepData.json();
+
+            visZepDetalje();
+        }
+
+
+        function visZepDetalje() {
+            document.querySelector(".klikzep_img").src = klikzepzoneJSON.download1.guid;
+
+
+            document.querySelector(".overskrift_klikzep").textContent = klikzepzoneJSON.h3_tekst1;
+
+            document.querySelector(".klikzep_tekst").innerHTML = klikzepzoneJSON.kliktekst;
+        }
+
+    </script>
+</body>
+
+</html>

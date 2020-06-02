@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Zepzone</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .download_imgs button {
+            margin-bottom: 20px;
+        }
+
+        .download_imgs img {
+            height: 35vw;
+            width: 50vw;
+            object-fit: cover;
+
+        }
+
+
+        .download_imgs button {
+            cursor: pointer;
+        }
+
+        .download_imgs {
+            margin: auto;
+            display: grid;
+            column-gap: 10px;
+            row-gap: 10px;
+            justify-content: center;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr))
+        }
+
+        .zepzone_topwrapper img {
+            width: 90vw;
+            object-fit: cover;
+        }
+
+        .zepzone_topwrapper {
+            display: flex;
+            flex-direction: column-reverse;
+            padding-bottom: 20px;
+            margin: 20px;
+        }
+
+
+
+
+        .download_wrapper1,
+        .download_wrapper2,
+        .download_wrapper3 {
+            text-align: center;
+            margin: auto;
+        }
+
+        @media only screen and (min-width: 768px) {
+
+            .zepzone_topwrapper {
+                margin: auto;
+                max-width: 1000px;
+                display: grid;
+                grid-template-columns: 40vw 40vw;
+                column-gap: 10px;
+                justify-content: center;
+            }
+
+            .download_imgs img {
+                height: 15vw;
+                width: 20vw;
+            }
+
+            .download_imgs h3 {
+                font-size: 0.6rem;
+            }
+
+            .download_imgs {
+
+                display: grid;
+                grid-template-columns: repeat(3, minmax(100px, 1fr));
+            }
+
+            .zepzone_topwrapper img {
+                width: 40vw;
+                object-fit: cover;
+            }
+
+            h2 {
+                text-align: center;
+            }
+
+        }
+
+        @media only screen and (min-width: 1024px) {
+            .download_imgs h3 {
+                font-size: 1rem;
+            }
+
+        }
+
+    </style>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+
+<body>
+
+    <template class="zep_template">
+        <article id="" class="zep_article">
+            <img class="zep_loop_img" src="" alt="">
+            <h3 class="zep_loop_tekst"></h3>
+            <button class="read_more hide"></button>
+        </article>
+    </template>
+
+
+
+
+    <section id="zepzone">
+
+        <div class="zepzone_topcontainer">
+            <h1 id="zepzone_overskrift1"></h1>
+            <div class="zepzone_topwrapper">
+                <div id="zepzone_tekst"></div>
+                <div class="zepzone_img">
+                    <img id="zepzone_billede" src="" alt="">
+                </div>
+            </div>
+            <h2>Vores dramatilbud</h2>
+            <div class="download_imgs">
+                <div class="download_wrapper1">
+                    <img class="download_1" src="" alt="">
+                    <h3 class="h3_tekst1"></h3>
+                    <button class="read_more">Læs mere</button>
+                </div>
+                <div class="download_wrapper2">
+                    <img class="download_2" src="" alt="">
+                    <h3 class="h3_tekst2"></h3>
+                    <button class="read_more ">Læs mere</button>
+                </div>
+                <div class="download_wrapper3">
+                    <img class="download_3" src="" alt="">
+                    <h3 class="h3_tekst3"></h3>
+                    <button class="read_more ">Læs mere</button>
+                </div>
+            </div>
+
+
+        </div>
+
+
+        <section id="zep_loop_container"></section>
+        <div class="container_zep"></div>
+
+    </section>
+
+    <script>
+        let endpointzep = "http://michelleyoung.dk/kea/zeppelin/wordpress/wp-json/wp/v2/zepzone/422";
+        /*
+                let endpointloopzep = "http://michelleyoung.dk/kea/zeppelin/wordpress/wp-json/wp/v2/zepzoner/";*/
+
+        let zepJSON = [];
+        let loopJSON = [];
+        let loopZep = [];
+        let zepzoner = [];
+
+        const listeELM = document.querySelector(".zep_loop_container");
+
+        let zepContainer = document.querySelector(".container_zep")
+
+
+        let loopTemplate = document.querySelector(".zep_template");
+
+
+        // flowet starter her
+        document.addEventListener("DOMContentLoaded", startZep);
+
+        function startZep() {
+            loadZep();
+
+        }
+
+        async function loadZep() {
+            //henter json data for zepzone
+            let responseZep = await fetch(endpointzep);
+
+
+            //putter json data ind i et array for zepzone
+            zepJSON = await responseZep.json();
+
+
+            //kalder visZepzone
+            visZep();
+
+        }
+
+
+        function visZep() {
+
+            document.querySelector("#zepzone_overskrift1").textContent = zepJSON.overskrift1;
+
+            document.querySelector("#zepzone_tekst").innerHTML = zepJSON.tekst1;
+
+            document.querySelector("#zepzone_billede").src = zepJSON.billede.guid;
+
+            document.querySelector(".download_1").src = zepJSON.download1.guid;
+            document.querySelector(".h3_tekst1").textContent = zepJSON.h3_tekst1;
+
+            document.querySelector(".download_2").src = zepJSON.download2.guid;
+            document.querySelector(".h3_tekst2").textContent = zepJSON.h3_tekst2;
+
+            document.querySelector(".download_3").src = zepJSON.download3.guid;
+            document.querySelector(".h3_tekst3").textContent = zepJSON.h3_tekst3;
+
+
+            document.querySelector(".download_wrapper1 .read_more").addEventListener("click", () => {
+
+                location.href = `klikzepzone.html?id=${zepJSON.id}`;
+            })
+            document.querySelector(".download_wrapper2 .read_more").addEventListener("click", () => {
+
+                location.href = `klikzepzone.html?id=${zepJSON.id}`;
+            })
+            document.querySelector(".download_wrapper3 .read_more").addEventListener("click", () => {
+
+                location.href = `klikzepzone.html?id=${zepJSON.id}`;
+            })
+
+        }
+
+    </script>
+</body>
+
+</html>

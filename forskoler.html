@@ -65,7 +65,7 @@
         }
 
         .download_imgs button {
-        margin-bottom: 20px;
+            margin-bottom: 20px;
         }
 
         .download_imgs {
@@ -125,7 +125,7 @@
 
     <nav class="forskoler_nav">
         <button class="filter valgt" data-kategori="praktiskinfo">Praktisk Info</button>
-        <button class="filter" data-kategori="zepzone">Zepzone & undervisningsmateriale</button>
+        <button class="filter" data-kategori="undervisning">Undervisningsmateriale</button>
         <button class="filter" data-kategori="forbered">Forbered elever</button>
         <button class="filter" data-kategori="zepsko">Zepsko</button>
         <button class="filter" data-kategori="huskunstordning">Huskunstordning</button>
@@ -212,6 +212,8 @@
                 if (skole.kategorier == filter || filter == "") {
                     console.log(skole);
                     let klon = template_skoler.cloneNode(true);
+
+                    document.title = skole.title.rendered;
 
 
                     klon.querySelector(".h2_overskrift").textContent = skole.overskrift1;
