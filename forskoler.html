@@ -37,6 +37,10 @@
             margin: 0 auto;
         }
 
+        .skoler_container p {
+            max-width: 75ch;
+        }
+
         .skoler_container {
             margin: auto;
             display: flex;
@@ -108,15 +112,24 @@
                 display: block;
             }
 
+            .download_imgs img {
+                height: 15vw;
+                width: 20vw;
+            }
+
             .download_imgs h3 {
                 font-size: 0.6rem;
             }
 
-            .download_imgs img {
-                width: 20vw;
-                height: 12vw;
+            .download_imgs {
+
+                display: grid;
+                grid-template-columns: repeat(3, minmax(100px, 1fr));
             }
 
+            .skoler_tekst {
+                margin: auto;
+            }
         }
 
 
