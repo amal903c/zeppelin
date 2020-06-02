@@ -1161,6 +1161,54 @@ footer h3 {
 
 
 
+/* JOB */
+
+
+.hide {
+    display: none;
+}
+
+.job_col {
+    padding: 4vw 20vw;
+}
+
+
+@media only screen and (min-width: 768px) {
+
+    #liste_job {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .job_col {
+        flex-grow: 1;
+        flex-basis: 373px;
+
+        padding: 3vw 0;
+    }
+
+    .job_container1 {
+        padding-left: 21vw;
+    }
+
+    .job_container2 {
+        padding-left: 12vw;
+        padding-right: 7vw;
+    }
+
+
+
+}
+
+@media only screen and (min-width: 1024px) {
+    #section_job {
+        margin-top: 15vw;
+    }
+}
+
+
+
+
 
 
 
