@@ -6,6 +6,8 @@
     <title>Test</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/a54d2cbf95.js"></script>
+    <link rel="stylesheet" href="hamburgerstyle.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 
     <style>
         html {
@@ -250,12 +252,177 @@
             }
 
         }
-
     </style>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+    <script src="script.js"></script>
+    <nav>
+
+        <div id="mobil_nav">
+            <div class="wrapper_mobil">
+
+
+                <img class="logo_img" src="billeder/logodone.svg">
+                <button class="hamburger hamburger--minus" type="button">
+                    <span class="hamburger-box">
+                        <span class="hamburger-inner"></span>
+                    </span>
+                </button>
+            </div>
+            <div class="drop_down_mobil hidden">
+                <ul class="menu_linje_mobil">
+
+
+
+                    <li> <a href="forestillinger.html">Forestillinger</a> </li>
+
+                    <div class="dropdown_mobil">
+                        <a class="dropbtn_mobil a">Arrangementer</a>
+                        <div class="aa dropdown_content_mobil hide">
+                            <a href="soerarrangement.html">Særarrangementer</a>
+                            <a href="familiekor.html">Familiekor</a>
+                            <a href="forskoler.html#">Zepzone</a>
+                        </div>
+                    </div>
+
+
+                    <div class="dropdown_mobil">
+                        <a href="ditvisit.html" class="dropbtn_mobil">Dit besøg</a>
+                        <div class="dropdown_content_mobil hide">
+                            <a href="ditvisit.html#billet">Køb din billet</a>
+                            <a href="#ditvisit.htmlgaaiteater">At gå i teater med børn</a>
+                            <a href="ditvisit.html#findvej">Find vej</a>
+                            <a href="ditvisit.html#restaurant">Restaurant besøg</a>
+                            <a href="ditvisit.html#inden">Inden forestillingen</a>
+                            <a href="ditvisit.html#efter">Efter forestillingen</a>
+
+
+
+                        </div>
+                    </div>
+
+                    <div class="dropdown_mobil">
+                        <a class="dropbtn_mobil">Om os</a>
+                        <div class="dropdown_content_mobil hide">
+                            <a href="omteateret.html">Om teateret</a>
+                            <a href="team.html">Vores team</a>
+                            <a href="kontakt.html">Kontakt</a>
+                        </div>
+                    </div>
+
+
+                    <div class="dropdown_mobil">
+                        <a class="dropbtn_mobil">Særligt for</a>
+                        <div class="dropdown_content_mobil hide">
+                            <a href="kontakt.html">Pressen</a>
+                            <a href="forskoler.html">Skoler</a>
+                            <a href="voreshus.html">Dig der vil leje salen</a>
+                        </div>
+                    </div>
+
+
+
+
+
+                    <div class="dropdown_mobil">
+                        <a class="dropbtn_mobil">Praktisk info</a>
+                        <div class="dropdown_content_mobil hide">
+                            <a href="faq.html">Ofte stillede spørgsmål</a>
+                            <a href="kontakt.html">Job </a>
+                            <a href="persondatasikkerhed.html">Persondatasikkerhed</a>
+
+                        </div>
+                    </div>
+
+
+                    <li> <a href="https://www.teaterbilletter.dk/organizer/teatret-zeppelin/">Køb billet</a> </li>
+
+                </ul>
+            </div>
+
+
+        </div>
+        <div id="web_nav">
+            <div class="top_nav">
+                <div class="knap_container">
+                    <button class="i_dag_knap">I dag</button>
+                </div>
+                <img class="logo_img" src="billeder/logodone.svg">
+            </div>
+            <div class="bottom_nav">
+                <ul class="menu_linje">
+
+                    <li> <a href="forestillinger.html">Forestillinger</a> </li>
+
+                    <div class="dropdown">
+                        <a class="dropbtn">Arrangementer</a>
+                        <div class="dropdown-content">
+                            <a href="soerarrangement.html">Særarrangementer</a>
+                            <a href="familiekor.html">Familiekor</a>
+                            <a href="#">Zepzone</a>
+                        </div>
+                    </div>
+
+
+
+
+
+                    <div class="dropdown">
+                        <a href="ditvisit.html" class="dropbtn">Dit besøg</a>
+                        <div class="dropdown-content">
+                            <a href="ditvisit.html#billet">Køb din billet</a>
+                            <a href="#ditvisit.htmlgaaiteater">At gå i teater med børn</a>
+                            <a href="ditvisit.html#findvej">Find vej</a>
+                            <a href="ditvisit.html#restaurant">Restaurant besøg</a>
+                            <a href="ditvisit.html#inden">Inden forestillingen</a>
+                            <a href="ditvisit.html#efter">Efter forestillingen</a>
+
+
+
+                        </div>
+                    </div>
+
+                    <div class="dropdown">
+                        <a class="dropbtn">Om os</a>
+                        <div class="dropdown-content">
+                            <a href="omteateret.html">Om teateret</a>
+                            <a href="team.html">Vores team</a>
+                            <a href="kontakt.html">Kontakt</a>
+                        </div>
+                    </div>
+
+                    <div class="dropdown">
+                        <a class="dropbtn">Særligt for</a>
+                        <div class="dropdown-content">
+                            <a href="kontakt.html">Pressen</a>
+                            <a href="forskoler.html">Skoler</a>
+                            <a href="voreshus.html">Dig der vil leje salen</a>
+                        </div>
+                    </div>
+
+                    <div class="dropdown">
+                        <a class="dropbtn">Praktisk info</a>
+                        <div class="dropdown-content">
+                            <a href="faq.html">Ofte stillede spørgsmål</a>
+                            <a href="kontakt.html">Job </a>
+                            <a href="persondatasikkerhed.html">Persondatasikkerhed</a>
+                            <a href="kontakt.html">Kontakt os</a>
+                        </div>
+                    </div>
+
+
+                    <li> <a href="https://www.teaterbilletter.dk/organizer/teatret-zeppelin/">Køb billet</a> </li>
+
+                </ul>
+
+            </div>
+        </div>
+
+
+
+    </nav>
 
 
     <h1 class="mainoverskrift">Dit besøg</h1>
@@ -464,9 +631,6 @@
                 toTop.classList.remove("top_active");
             }
         })
-
     </script>
 
-</body>
-
-</html>
+</body></html>

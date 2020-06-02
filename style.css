@@ -57,6 +57,15 @@ p {
     filter: grayscale(30%);
 }
 
+a {
+    font-family: montserrat, sans-serif;
+    font-style: ExtraLight;
+    font-weight: 100;
+    font-size: 1.3rem;
+}
+
+
+
 
 
 
@@ -153,6 +162,9 @@ p {
 
 /* KAT */
 
+/* forestillinger */
+
+
 
 /* toppen med nuværende forestilling */
 
@@ -204,6 +216,14 @@ p {
 
 
 
+
+
+}
+
+@media only screen and (min-width: 1020px) {
+    #forestllinger {
+        margin-top: 37vh;
+    }
 
 }
 
@@ -395,6 +415,8 @@ p {
         display: grid;
         grid-template-columns: 50vw 50vw;
     }
+
+
 }
 
 #soerarrangement .infografik_container {
@@ -442,12 +464,293 @@ p {
 }
 
 
+/* menuen */
+
+@media only screen and (min-width: 320px) {
+    #web_nav {
+        display: none;
+    }
+
+}
+
+@media only screen and (min-width: 1020px) {
+    #mobil_nav {
+        display: none;
+    }
+
+    #web_nav {
+        display: block;
+    }
+
+    .logo_img {
+        margin: 0 auto;
+    }
+
+    .bottom_nav {
+        margin-bottom: 15px;
+    }
+}
+
+/* generelt */
+.logo_img {
+    width: 25vw;
+    max-width: 230px;
+    transition: 0.5s;
+}
+
+/* mobil */
+.wrapper_mobil {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+.drop_down_mobil {
+    background-color: #f5f5f5;
+}
+
+
+.hidden {
+    display: none;
+}
+
+.menu_linje_mobil {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0;
+
+
+}
+
+.menu_linje_mobil a {
+    color: black;
+    text-decoration: none;
+}
+
+.menu_linje_mobil li {
+    margin: 20px 0px 20px 0px;
+}
 
 
 
+/* web */
+#web_nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: .5s;
+    box-shadow: 0px 15px 10px -21px #111;
+    background-color: #f5f5f5;
+}
+
+.top_nav {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr)
+}
+
+.i_dag_knap {
+    border: 2px solid black;
+    height: 5vw;
+    width: 8vw;
+
+    max-width: 70px;
+    max-height: 40px;
+}
+
+.knap_container {
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 30px;
+}
+
+.menu_linje {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+    padding: 0;
+
+    margin: 40px 10px 0px 10px;
+}
+
+
+.menu_linje a {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#web_nav.black {
+    /*
+    background-color: white;
+    opacity: 80%;
+*/
+
+    /*    background-color: rgb(239, 232, 232, 0.3);*/
+    background-color: #f5f5f5;
+
+}
+
+#web_nav.black .logo_img {
+    width: 15vw;
+}
+
+
+#web_nav.black .menu_linje a {
+    font-size: 1rem;
+}
+
+/* drop down menu*/
+dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 1rem;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: #ddd;
+    background-color: #8C2020;
+    color: white;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    /*    background-color: #3e8e41;*/
+
+}
+
+
+/* dropdown i mobil */
+
+.dropdown_mobil {
+    text-align: center;
+    margin: 20px 0px 20px 0px;
+    cursor: pointer;
+}
+
+.dropdown_content_mobil {
+    display: flex;
+    flex-direction: column;
+    font-size: 1rem;
+    padding: 1rem;
+
+    margin: 1rem 0rem 1rem 0rem;
+}
+
+.hide {
+    transform: scale(0);
+}
+
+.valgt {
+    border-bottom: 2px solid #8C2020;
+}
+
+.dropdown_content_mobil a {
+    padding: 10px;
+    font-size: 1rem;
+}
+
+
+/* footer */
+
+.footer_content h3 {
+    font-weight: 600;
+}
+
+.footer_nyhed {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+}
+
+.footer_nyhed input {
+    width: 40vw;
+    border: none;
+    padding: 1rem;
+    max-width: 168px;
+}
+
+.tilmeld {
+    border: none;
+    width: 40vw;
+    padding: 1rem;
+    max-width: 168px;
+}
+
+.andet_box {
+    display: flex;
+    flex-direction: column;
+}
+
+.andet {
+    font-family: roboto, sans-serif;
+    font-style: normal;
+    font-weight: 200;
+    line-height: 1.4rem;
+    color: black;
+    text-decoration: none;
 
 
 
+}
+
+footer {
+    text-align: center;
+}
+
+footer h3 {
+    margin: 2rem 0rem 2rem 0rem;
+}
+
+@media only screen and (min-width: 768px) {
+    footer {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr)
+    }
+}
 
 
 
@@ -716,8 +1019,11 @@ p {
     display: flex;
     flex-wrap: wrap;
 
-    background-color: white;
     margin: auto;
+}
+
+.container_luk {
+    background-color: white;
 }
 
 .team_col {
