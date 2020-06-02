@@ -504,7 +504,7 @@ a {
 
 /* generelt */
 .logo_img {
-    width: 25vw;
+    width: 17vw;
     max-width: 230px;
     transition: 0.5s;
 }
@@ -565,7 +565,8 @@ a {
 
 .top_nav {
     display: grid;
-    grid-template-columns: repeat(3, 1fr)
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 10px;
 }
 
 .i_dag_knap {
@@ -601,24 +602,19 @@ a {
     cursor: pointer;
 }
 
+/* vælger et element, hvad der skal ske med det når classen er aktiv/sat på*/
 #web_nav.black {
-    /*
-    background-color: white;
-    opacity: 80%;
-*/
-
-    /*    background-color: rgb(239, 232, 232, 0.3);*/
     background-color: #f5f5f5;
 
 }
 
 #web_nav.black .logo_img {
-    width: 15vw;
+    width: 10vw;
 }
 
 
 #web_nav.black .menu_linje a {
-    font-size: 1rem;
+    font-size: 0.8rem;
 }
 
 /* drop down menu*/
