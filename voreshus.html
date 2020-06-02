@@ -70,7 +70,6 @@
 
         #voreshus_text_container {
             justify-content: center;
-            display: flex;
         }
 
         .voreshus_overskrift1,
@@ -102,6 +101,12 @@
             max-width: 150ch;
             margin: auto;
 
+        }
+
+        @media only screen and (min-width: 768px) {
+            #voreshus_text_container {
+                display: flex;
+            }
         }
 
         @media only screen and (min-width: 1024px) {

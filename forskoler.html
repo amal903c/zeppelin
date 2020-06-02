@@ -64,9 +64,23 @@
             margin: auto;
         }
 
+        .download_imgs button {
+        margin-bottom: 20px;
+        }
+
         .download_imgs {
             margin: auto;
             cursor: pointer;
+            display: grid;
+            column-gap: 10px;
+            row-gap: 10px;
+            justify-content: center;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr))
+        }
+
+        .download_imgs img {
+            width: 40vw;
+            height: 22vw;
         }
 
         .download_wrapper1,
@@ -77,17 +91,11 @@
         }
 
 
-
         @media only screen and (min-width: 768px) {
             .forskoler_nav {
                 text-align: center;
                 padding-top: 10px;
                 display: block;
-            }
-
-            .download_imgs {
-                display: flex;
-                font-size: 0.1rem;
             }
 
             .download_imgs h3 {
@@ -140,15 +148,17 @@
                         <div class="download_wrapper1">
                             <img class="download_1" src="" alt="">
                             <h3 class="h3_tekst1"></h3>
+                            <button class="read_more hide">Download</button>
                         </div>
                         <div class="download_wrapper2">
                             <img class="download_2" src="" alt="">
                             <h3 class="h3_tekst2"></h3>
-
+                            <button class="read_more hide">Download</button>
                         </div>
                         <div class="download_wrapper3">
                             <img class="download_3" src="" alt="">
                             <h3 class="h3_tekst3"></h3>
+                            <button class="read_more hide">Download</button>
                         </div>
                     </div>
 
@@ -230,12 +240,18 @@
                     }
                     if (skole.h3_tekst1) {
                         klon.querySelector(".h3_tekst1").textContent = skole.h3_tekst1;
+                        klon.querySelector(".download_wrapper1 button").classList.remove("hide");
+
                     }
                     if (skole.h3_tekst2) {
                         klon.querySelector(".h3_tekst2").textContent = skole.h3_tekst2;
+                        klon.querySelector(".download_wrapper2 button").classList.remove("hide");
+
                     }
                     if (skole.h3_tekst3) {
                         klon.querySelector(".h3_tekst3").textContent = skole.h3_tekst3;
+                        klon.querySelector(".download_wrapper3 button").classList.remove("hide");
+
                     }
                     if (skole.download3) {
                         klon.querySelector(".download_3").src = skole.download3.guid;
