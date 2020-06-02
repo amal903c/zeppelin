@@ -1,77 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="">
 <head>
-    <meta charset="UTF-8">
-    <title>Ofte stillede spørgsmål</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        .faq_accordion {
-            background-color: rgba(255, 255, 255, 0.31);
-            color: #585858;
-            cursor: pointer;
-            padding: 18px;
-            margin: 5px;
-            border: 1px solid;
-            border-radius: 5px;
-            font-size: 15px;
-            transition: 0.4s;
-            font-family: 'Montserrat', sans-serif;
-            text-align: left;
-            align-self: center;
-            width: 50vw;
-        }
-
-        /*hovereffekt*/
-        .active,
-        .faq_accordion:hover {
-            background-color: #ffffff;
-
-        }
-
-
-        /*styling og transition af svarene, når der trykkes på et spørgsmål*/
-
-
-        .faq_svar {
-            padding: 0 18px;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.2s ease-out;
-            width: 50vw;
-            justify-content: center;
-            align-self: center;
-        }
-
-
-
-
-        .faq_container {
-            display: flex;
-            flex-direction: column;
-            padding: 40px;
-            padding-top: 0;
-
-        }
-
-        /*        .faq {
-        width: 500px;
-        padding: 40px;
-        padding-top: 0;
-        }*/
-
-        .faq_overrubrik {
-            padding: 40px;
-            flex-direction: column;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="">
 </head>
 
 <body>
-
     <nav>
 
         <div id="mobil_nav">
@@ -237,81 +173,10 @@
 
 
     </nav>
-    <section class="faq_overrubrik">
-        <h1>Ofte stillede spørgsmål</h1>
-    </section>
-
-    <div class="faq_container">
-        <!--        <div class="faq">-->
-        <template id="faq_template">
-            <button class="faq_accordion"></button>
-            <div class="faq_svar">
-                <p></p>
-            </div>
-        </template>
-        <!--        </div>-->
-    </div>
-    <script>
-        "use strict";
-
-        let theFAQ;
-
-        const faq_TextTemplate = document.querySelector("#faq_template");
-
-        const endpoint = "http://michelleyoung.dk/kea/zeppelin/wordpress/wp-json/wp/v2/faq?per_page=100";
-
-
-        const container = document.querySelector(".faq_container");
-
-
-        document.addEventListener("DOMContentLoaded", start);
-
-
-        function start() {
-            loadData();
-        }
-
-        async function loadData() {
-
-            //            let jsonData = await fetch(`http://michelleyoung.dk/kea/09_cms/21-5_wp/wordpress/wp-json/wp/v2/${id}`);
-            //            console.log(jsonData)
-
-            const resspons = await fetch(endpoint)
-
-            theFAQ = await resspons.json();
-
-            visFAQ();
-        }
-
-
-        function visFAQ() {
-            console.log(theFAQ)
-            theFAQ.forEach(question => {
-                const klonText = faq_TextTemplate.cloneNode(true).content;
-                klonText.querySelector(".faq_accordion").textContent = question.question;
-                klonText.querySelector(".faq_svar p").textContent = question.svar;
-                container.appendChild(klonText);
-            });
-            faq_accordion();
-        }
 
 
 
-        function faq_accordion() {
-            var acc = document.getElementsByClassName("faq_accordion");
-            var i;
 
-            for (i = 0; i < acc.length; i++) {
-                acc[i].addEventListener("click", function() {
-                    this.classList.toggle("active");
-                    var faq_svar = this.nextElementSibling;
-                    if (faq_svar.style.maxHeight) {
-                        faq_svar.style.maxHeight = null;
-                    } else {
-                        faq_svar.style.maxHeight = faq_svar.scrollHeight + "px";
-                    }
-                });
-            }
-        }
-    </script>
+
+    <script src=""></script>
 </body></html>
