@@ -270,14 +270,14 @@
     <script>
         //variabler starter her
 
-        let endpointForestillinger = "http://michelleyoung.dk/kea/zeppelin/wordpress/wp-json/wp/v2/forestilling/53"
+
 
         let endpointAlleForestillinger = "http://michelleyoung.dk/kea/zeppelin/wordpress/wp-json/wp/v2/alle_forestillinge"
 
         let endpointAkriv = "http://michelleyoung.dk/kea/zeppelin/wordpress/wp-json/wp/v2/arkiv"
 
         //tomt array
-        let theJSONForestillinger = [];
+
         let theJSONAlleForestillinger = [];
         let alleForestillinger = [];
         let theJSONakriv = [];
@@ -291,22 +291,28 @@
         const arkivContainer = document.querySelector("#arkiv");
 
 
+        // Henter json data, via REST API
+        let endpointForestillinger = "http://michelleyoung.dk/kea/zeppelin/wordpress/wp-json/wp/v2/forestilling/53"
+
+        // tomt array
+        let theJSONForestillinger = [];
 
 
         // flowet starter her
         document.addEventListener("DOMContentLoaded", startForestillinger);
 
         function startForestillinger() {
+            // kalder de foreskellige funktioner
             loadDataForestillinger();
             loadAlleForestillinger();
             loadArkiv();
         }
 
         async function loadDataForestillinger() {
-            //henter json data for forestillinger
+            //henter json data for forestillinger via REST API
             let ressponsForestillinger = await fetch(endpointForestillinger);
 
-            //putter json data ind i et array for forestillinger
+            //putter json data ind i det tomme array for forestillinger
             theJSONForestillinger = await ressponsForestillinger.json();
 
             //kalder visForestillinger
@@ -315,16 +321,13 @@
 
         }
 
+        // async funktioner gør at flowet ikke kan gå videre før det har hentet data
         async function loadAlleForestillinger() {
 
             //henter data fra alle forestillinger
             let ressponsAlleForestillinger = await fetch(endpointAlleForestillinger);
 
-            console.log(ressponsAlleForestillinger);
-
             theJSONAlleForestillinger = await ressponsAlleForestillinger.json();
-
-            console.log(theJSONAlleForestillinger)
 
             //kalder visForestillinger
             visAlleForestillinger(theJSONAlleForestillinger);
@@ -345,31 +348,31 @@
 
         }
 
-
+        // indsætter indholdet
         function visForestillinger() {
 
-            // indsætter indholdet
-
             //indsætter main overskriften
+            // main_overskrift er navnet på field'en i poden
             document.querySelector("#top_overskrift").textContent = theJSONForestillinger.main_overskrift;
 
             //indsætter overskriften på nuværende forestilling
+            // overskrift er navnet på field'en i poden
             document.querySelector("#current_forestilling_overskrift").textContent = theJSONForestillinger.overskrift;
 
             // indsætter datoen på nuværrende forestilling
+            // Dato er navnet på field'en i poden
             document.querySelector("#current_forestilling_dato").textContent = theJSONForestillinger.dato;
 
             // indsætter billedet på nuværende forestilling
-
+            // Forestilling_billede er navnet på field'en i poden
             document.querySelector("#image_current_forestilling").src = theJSONForestillinger.forestilling_billede.guid;
 
             //tilføjet overskriften glæd jer til
+            // main_overskrift2 er navnet på field'en i poden
             document.querySelector("#mid_kommende_overskrift").textContent = theJSONForestillinger.main_overskrift2
 
+            // main_overskrift3 er navnet på field'en i poden
             document.querySelector("#arkiv_h1").textContent = theJSONForestillinger.main_overskrift3
-
-
-
 
         }
 
