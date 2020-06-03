@@ -4,7 +4,7 @@
 body {
     background-color: #f5f5f5;
     margin: 0;
-    margin-top: 165px;
+
 }
 
 img {
@@ -74,7 +74,7 @@ a {
     font-family: montserrat, sans-serif;
     font-style: ExtraLight;
     font-weight: 100;
-    font-size: 1rem;
+    font-size: 16px;
 }
 
 
@@ -212,6 +212,18 @@ a {
         height: 50vh;
     }
 
+    nav {
+        height: 66px;
+    }
+
+    #mobil_nav {
+        height: 66px;
+    }
+
+    .wrapper_mobil {
+        height: 66px;
+    }
+
 }
 
 @media only screen and (min-width: 768px) {
@@ -234,12 +246,21 @@ a {
 }
 
 @media only screen and (min-width: 1020px) {
+
     /*
     #forestllinger {
         margin-top: 37vh;
     }
 
 */
+    #body_index {
+        margin-top: 62px;
+    }
+
+    body {
+        margin-top: 107px;
+    }
+
 
 
 
@@ -518,7 +539,7 @@ a {
     }
 
     .logo_img {
-        width: 25vw;
+        width: 135px;
     }
 
 }
@@ -534,7 +555,7 @@ a {
 
     .logo_img {
         margin: 0 auto;
-        width: 15vw;
+        width: 170px;
     }
 
     .bottom_nav {
@@ -613,6 +634,8 @@ a {
     position: fixed;
     top: 0px;
     width: 100%;
+
+    /*    height: 139px;*/
 
     /*
     background-color: transparent;
@@ -848,7 +871,9 @@ footer h3 {
 @media only screen and (min-width: 768px) {
     footer {
         display: grid;
-        grid-template-columns: repeat(4, 1fr)
+        grid-template-columns: repeat(4, 1fr);
+        margin-top: 45px;
+
     }
 }
 
