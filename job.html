@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="">
+<html lang="da">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forbered dine elever</title>
+    <title>Job</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="hamburgerstyle.css">
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -18,25 +18,6 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="msapplication-config" content="myicons/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
-
-    <style>
-        .forbered_container {
-            margin: auto;
-            display: flex;
-            max-width: 1200px;
-            justify-content: center;
-        }
-
-        .forbered_container h2 {
-            text-align: center;
-        }
-
-        #forbered_tekst {
-            margin: 10px;
-            max-width: 100ch;
-        }
-
-    </style>
 </head>
 
 <body>
@@ -206,67 +187,91 @@
 
 
     </nav>
-    <section id="forbered">
-        <h1 id="forbered_overskrift1"></h1>
-        <div class="forbered_container">
-            <div class="forbered_wrapper">
-                <div id="forbered_tekst"></div>
-                <div class="forbered_image">
-                    <img id="forbered_billede" src="" alt="">
-                </div>
 
-            </div>
+
+    <section id="section_job">
+        <h1 class="job_overskrift"></h1>
+
+        <div id="liste_job">
+            <div class="job_container1 job_col"></div>
+            <div class="job_container2 job_col"></div>
         </div>
     </section>
 
 
 
+    <!--   TEMPLATE-->
+    <template class="template_job">
+        <article class="job">
+            <h1 id="overskrift" class="hide"></h1>
+            <p class="job_tekst1 hide "></p>
+            <p class="job_tekst2 hide"></p>
+        </article>
+    </template>
+
+
+
+
+
     <script>
-        let endpointForbered = "http://michelleyoung.dk/kea/zeppelin/wordpress/wp-json/wp/v2/pages/174"
+        let theJSON;
+        const template_job = document.querySelector(".template_job");
+        const overskriftContainer = document.querySelector(".job_overskrift");
+        const textContainer1 = document.querySelector(".job_container1");
+        const textContainer2 = document.querySelector(".job_container2");
 
-        let theJSONforbered = [];
 
-        // flowet starter her
-        document.addEventListener("DOMContentLoaded", startForbered);
+        document.addEventListener("DOMContentLoaded", start);
 
-        function startForbered() {
-            loadForbered();
 
+        // HENT WORDPRESS
+        const url = "http://michelleyoung.dk/kea/zeppelin/wordpress/wp-json/wp/v2/kontakt_job/388";
+
+
+
+        async function start() {
+            const resspons = await fetch(url);
+            theJSON = await resspons.json();
+            visIndhold();
         }
 
-        async function loadForbered() {
-            //henter json data for forestillinger
-            let ressponsOmTeateret = await fetch(endpointForbered);
 
-            //putter json data ind i et array for forestillinger
-            theJSONForbered = await ressponsOmTeateret.json();
-
-            //kalder visForestillinger
-            visForbered();
-
-        }
-
-        function visForbered() {
+        function visIndhold() {
+            console.log(theJSON)
 
 
-            document.querySelector("#forbered_overskrift1").textContent = theJSONForbered.title.rendered;;
+            if (theJSON.overskrift) {
+                console.log(theJSON.overskrift)
 
-            document.querySelector("#forbered_tekst").innerHTML = theJSONForbered.content.rendered;
+                const klonText = template_job.cloneNode(true).content;
 
-            /*
-                        document.querySelector("#forbered_overskrift1").textContent = theJSONForbered.main_overskrift2;
-            */
+                klonText.querySelector("#overskrift").classList.remove("hide");
+                klonText.querySelector("#overskrift").textContent = theJSON.overskrift;
 
-            /*            document.querySelector("#forbered_billede").src = theJSONForbered.ex.guid;*/
-
-
-
+                overskriftContainer.appendChild(klonText);
+            }
 
 
+            if (theJSON.tekst_1) {
+
+                const klonText = template_job.cloneNode(true).content;
+
+                klonText.querySelector(".job_tekst1").classList.remove("hide");
+                klonText.querySelector(".job_tekst1").innerHTML = theJSON.tekst_1;
+
+                textContainer1.appendChild(klonText);
+            }
 
 
+            if (theJSON.tekst_2) {
 
+                const klonText = template_job.cloneNode(true).content;
 
+                klonText.querySelector(".job_tekst2").classList.remove("hide");
+                klonText.querySelector(".job_tekst2").innerHTML = theJSON.tekst_2;
+
+                textContainer2.appendChild(klonText);
+            }
         }
 
     </script>

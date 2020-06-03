@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>Skoler</title>
 
     <link rel="apple-touch-icon" sizes="180x180" href="myicons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="myicons/favicon-32x32.png">
@@ -35,6 +35,10 @@
             opacity: 0.5;
             border-bottom: 1px solid black;
             margin: 0 auto;
+        }
+
+        .skoler_container p {
+            max-width: 75ch;
         }
 
         .skoler_container {
@@ -108,15 +112,24 @@
                 display: block;
             }
 
+            .download_imgs img {
+                height: 15vw;
+                width: 20vw;
+            }
+
             .download_imgs h3 {
                 font-size: 0.6rem;
             }
 
-            .download_imgs img {
-                width: 20vw;
-                height: 12vw;
+            .download_imgs {
+
+                display: grid;
+                grid-template-columns: repeat(3, minmax(100px, 1fr));
             }
 
+            .skoler_tekst {
+                margin: auto;
+            }
         }
 
 
