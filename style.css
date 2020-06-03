@@ -534,6 +534,10 @@ a {
     .bottom_nav {
         margin-bottom: 15px;
     }
+
+    .a_logo_img {
+        margin: 0 auto;
+    }
 }
 
 /* generelt */
@@ -543,11 +547,18 @@ a {
     transition: 0.5s;
 }
 
+.i_dag_knap {
+    font-family: montserrat, sans-serif;
+    font-style: ExtraLight;
+    font-weight: 100;
+    font-size: 1rem;
+}
+
 /* mobil */
 .wrapper_mobil {
     display: flex;
     justify-content: space-between;
-    padding: 1rem;
+    padding: 0.5rem;
 }
 
 .drop_down_mobil {
@@ -766,6 +777,11 @@ dropbtn {
     max-width: 136px;
     margin-top: 15px;
     background-color: #cbc8c8;
+    cursor: pointer;
+}
+
+.tilmeld:hover {
+    filter: grayscale(30%);
 }
 
 .andet_box {
