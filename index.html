@@ -34,6 +34,8 @@
             margin-bottom: 30px;
         }
 
+
+
         #splash {
             position: relative;
             top: 0;
@@ -110,6 +112,10 @@
         .koeb_billet {
             bottom: 30vw;
             position: relative;
+        }
+
+        .billet_knap:hover {
+            opacity: 0.7;
         }
 
         /*
@@ -218,9 +224,15 @@
 
         /*        KARRUSEL SEKTION START*/
 
-        .main {
-            width: 50vw;
+        .section_karusel {
+            width: 33%;
         }
+
+        .karrusel_imgs {
+            max-width: 100%;
+        }
+
+
 
         .karrusel {
             height: 100%;
@@ -236,7 +248,6 @@
 
         .the_container section {
             scroll-snap-align: start;
-            min-width: 100%;
         }
 
         .karrusel_inner {
@@ -283,12 +294,6 @@
 
         }
 
-        @media only screen and (min-width: 1024px) {
-            .karrusel_tekst {}
-
-
-        }
-
 
         .tilbage,
         .foran {
@@ -303,6 +308,7 @@
             font-size: 40px;
             /*    color: rgba(224, 189, 2, 0.57);*/
         }
+
     </style>
 </head>
 
@@ -324,7 +330,7 @@
     <div class="billet_container">
         <h1>OPLEV MAGIEN HOS ZEPPELIN</h1>
         <h1 class="underoverskrift">Et børneteater med dybde</h1>
-        <a href="ggg"><img src="billeder/koebbillet.svg" alt="køb billet hos zeppelin teater børneteater"></a>
+        <a class="billet_knap" href="https://www.teaterbilletter.dk/organizer/teatret-zeppelin/"><img src="billeder/koebbillet2.svg" alt="køb billet hos zeppelin teater børneteater"></a>
 
     </div>
 
@@ -333,7 +339,7 @@
 
 
     <template id="template_karusel">
-        <section>
+        <section class="section_karusel">
             <img class="karrusel_imgs" src="" alt="børneteater zeppelin forestillinger teater børn oplevelser">
             <h2 class="karrusel_titel"></h2>
             <p class="karrusel_dato"></p>
@@ -355,7 +361,6 @@
                             <div class="the_container">
 
                             </div>
-
                             <div class="foran">
                                 <p>⭆</p>
                             </div>
@@ -448,6 +453,10 @@
                 const theClone = document.querySelector("#template_karusel").cloneNode(true).content;
                 //billederne sættes ind
                 theClone.querySelector(".karrusel_imgs").src = billede.forestilling_billede.guid;
+                //billederne sættes ind
+                theClone.querySelector(".karrusel_titel").innerHTML = billede.title.rendered;
+                //billederne sættes ind
+                theClone.querySelector(".karrusel_dato").innerHTML = billede.dato;
                 //vi skal appende vores kloner til dokumentet:
                 document.querySelector(".the_container").appendChild(theClone);
             })
@@ -501,6 +510,9 @@
 
             }
         }
+
     </script>
 
-</body></html>
+</body>
+
+</html>
