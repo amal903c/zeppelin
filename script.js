@@ -57,9 +57,9 @@ function scollLogo() {
     $(window).on('scroll', function () {
 
         if ($(window).scrollTop()) {
-            $('#web_nav').addClass('black')
+            $('nav').addClass('black')
         } else {
-            $('#web_nav').removeClass('black')
+            $('nav').removeClass('black')
         }
 
 
