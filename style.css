@@ -335,7 +335,6 @@ a {
     }
 
     .text_citater p {
-        width: 382px;
         overflow: hidden;
         text-overflow: ellipsis;
         margin: 0 auto;
@@ -361,7 +360,7 @@ a {
 }
 
 #om_teateret .bottom_container {
-    padding: 2rem;
+    padding: 0 10vw;
 }
 
 #om_teateret .text_citater p {
