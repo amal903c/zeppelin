@@ -42,6 +42,8 @@
         .forskoler_nav button {
             font-size: 1rem;
             margin: 2vw auto;
+            font-family: montserrat, sans-serif;
+            font-style: normal;
         }
 
         .valgt {
@@ -137,7 +139,7 @@
 */
 
             .forskoler_nav button {
-                margin: auto 1.5vw;
+                margin: auto 0.7vw;
             }
 
             .download_imgs {
@@ -156,6 +158,11 @@
             .download_imgs h3 {
                 font-size: 1rem;
             }
+
+            .forskoler_nav button {
+                margin: 0 1.5vw;
+            }
+
         }
 
     </style>
@@ -356,7 +363,7 @@
             <h1 class="h1_overskrift"></h1>
             <div class="skoler_container">
                 <article class="skoler">
-                    <h2 class="h2_overskrift"></h2>
+                    <h1 class="h1_overskrift"></h1>
                     <div class="flex_imgs">
                         <p class="skoler_tekst"></p>
                     </div>
@@ -463,7 +470,7 @@
                     document.title = skole.title.rendered;
 
 
-                    klon.querySelector(".h2_overskrift").textContent = skole.overskrift1;
+                    klon.querySelector(".h1_overskrift").textContent = skole.overskrift1;
 
                     klon.querySelector(".skoler_tekst").innerHTML = skole.tekst1;
 
