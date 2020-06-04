@@ -4,12 +4,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forestillinger</title>
+    <title>Forestilling</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="hamburgerstyle.css">
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;1,100;1,200&family=Oswald:wght@400;600&display=swap" rel="stylesheet">
-    <meta name="description" content="Kom og opleve magien hos teateret Zeppelin! Vi er mere end bare et børneteater, i det vores forestillinger har filosofisk dybde. Giv din børn en oplevelse for livet med vores Lærerige og dybe forestillinger der fyldt med følelser og stof til eftertanke">
 
     <link rel="apple-touch-icon" sizes="180x180" href="myicons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="myicons/favicon-32x32.png">
@@ -22,21 +22,8 @@
     <meta name="theme-color" content="#ffffff">
 </head>
 
-<body id="body_forestillinger">
+<body id="body_klikforestillinger">
     <script src="script.js"></script>
-
-
-    <template id="forestillinger_template">
-        <article id="forestlling">
-            <img src="" alt="">
-            <h2 id="overskrift_h2"></h2>
-            <p id="dato_p"></p>
-            <button class="read_more">Læs mere</button>
-
-        </article>
-
-    </template>
-
     <nav>
 
         <div id="mobil_nav">
@@ -83,6 +70,9 @@
 
                         </div>
                     </div>
+
+
+
 
                     <div class="dropdown_mobil">
                         <a class="dropbtn_mobil d">Særligt for</a>
@@ -207,41 +197,65 @@
     </nav>
 
 
-    <section id="forestllinger">
-        <div id="sectionswrapper">
+    <section id="detalje_forestilling">
 
-            <div id="top_current_forestilling">
-                <h1 id="top_overskrift"></h1>
-                <div class="wrapper">
-                    <div class="text">
-                        <h2 id="current_forestilling_overskrift"></h2>
-                        <p id="current_forestilling_dato"></p>
+        <div class="detalje_section_wrapper">
 
-                        <button class="read_more read_more_current"> Læs mere</button>
+            <div class="image_detalje">
+                <img id="billede_detalje" src="" alt="">
+            </div>
+            <div class="text_detalje">
+                <h1 id="detalje_overskrift"></h1>
+                <p id="tekst_detalje"></p>
 
+            </div>
+            <div id="infografik_container">
 
-                    </div>
-                    <div class="image">
-                        <img id="image_current_forestilling" src="" alt="">
-                    </div>
+                <div class="infografik_box">
+
+                    <h3>Varighed</h3>
+                    <img src="billeder/varighed.svg">
+                    <h3 class="infografik_varighed"></h3>
+
                 </div>
+
+                <div class="infografik_box">
+
+                    <h3>Hvornår</h3>
+                    <img src="billeder/hvornaar.svg">
+                    <h3 class="infografik_hvornaar"></h3>
+
+                </div>
+
+                <div class="infografik_box">
+
+                    <h3>Pris</h3>
+                    <img src="billeder/graa_billet.svg">
+                    <h3 class="infografik_pris"></h3>
+
+                </div>
+
+                <div class="infografik_box">
+
+                    <h3>Aldersgrænse</h3>
+                    <img src="billeder/alder.svg">
+                    <h3 class="infografik_alder"></h3>
+
+                </div>
+
 
             </div>
 
-            <div class="mid_kommende_forestillinger">
+            <div class="billet_infografik">
+                <a href="https://www.teaterbilletter.dk/organizer/teatret-zeppelin/"> <img class="koeb_billet" src="billeder/koebbillet.svg"> </a>
 
-                <h1 id="mid_kommende_overskrift"></h1>
-                <div id="wrapper_mid_kommende">
-
-                </div>
             </div>
 
-            <div class="mid_kommende_forestillinger">
-                <h1 id="arkiv_h1"></h1>
-                <div id="arkiv">
-                </div>
-            </div>
         </div>
+
+
+
+
     </section>
 
     <footer id="footer">
@@ -274,177 +288,65 @@
         </div>
     </footer>
 
+
     <script>
-        //variabler starter her
+        //         let endpointAlleForestillinger = "http://michelleyoung.dk/kea/zeppelin/wordpress/wp-json/wp/v2/alle_forestillinge";
+
+        let urlParams = new URLSearchParams(window.location.search);
+
+        let id = urlParams.get("id");
+        console.log(id);
+
+        let theJSONDetalje = [];
 
 
+        document.addEventListener("DOMContentLoaded", startDetalje);
 
-        let endpointAlleForestillinger = "http://michelleyoung.dk/kea/zeppelin/wordpress/wp-json/wp/v2/alle_forestillinge"
-
-        let endpointAkriv = "http://michelleyoung.dk/kea/zeppelin/wordpress/wp-json/wp/v2/arkiv"
-
-        //tomt array
-        let theJSONAlleForestillinger = [];
-        let alleForestillinger = [];
-        let theJSONakriv = [];
-
-        //forestilling template
-        const forestillingTemplate = document.querySelector("#forestillinger_template");
-
-        //forestilling container
-        const forestillingerContainer = document.querySelector("#wrapper_mid_kommende");
-
-        const arkivContainer = document.querySelector("#arkiv");
-
-
-        // Henter json data, via REST API
-        let endpointForestillinger = "http://michelleyoung.dk/kea/zeppelin/wordpress/wp-json/wp/v2/forestilling/53"
-
-        // tomt array
-        let theJSONForestillinger = [];
-
-
-        // flowet starter her
-        document.addEventListener("DOMContentLoaded", startForestillinger);
-
-        function startForestillinger() {
-            // kalder de foreskellige funktioner
-            loadDataForestillinger();
-            loadAlleForestillinger();
-            loadArkiv();
+        function startDetalje() {
+            loadDetaljeData();
+            console.log("jeg er her")
         }
 
-        async function loadDataForestillinger() {
-            //henter json data for forestillinger via REST API
-            let ressponsForestillinger = await fetch(endpointForestillinger);
+        async function loadDetaljeData() {
 
-            //putter json data ind i det tomme array for forestillinger
-            theJSONForestillinger = await ressponsForestillinger.json();
-
-            //kalder visForestillinger
-            visForestillinger();
+            let jsonData = await fetch(`http://michelleyoung.dk/kea/zeppelin/wordpress/wp-json/wp/v2/forestilling/${id}`);
 
 
+            theJSONDetalje = await jsonData.json();
+
+            visDetalje();
         }
 
-        // async funktioner gør at flowet ikke kan gå videre før det har hentet data
-        async function loadAlleForestillinger() {
+        function visDetalje() {
 
-            //henter data fra alle forestillinger
-            let ressponsAlleForestillinger = await fetch(endpointAlleForestillinger);
+            console.log(theJSONDetalje)
 
-            theJSONAlleForestillinger = await ressponsAlleForestillinger.json();
+            document.querySelector("#billede_detalje").src = theJSONDetalje.forestilling_billede.guid;
 
-            //kalder visForestillinger
-            visAlleForestillinger(theJSONAlleForestillinger);
+
+            document.querySelector("#detalje_overskrift").textContent = theJSONDetalje.overskrift;
+
+            document.querySelector("#tekst_detalje").innerHTML = theJSONDetalje.tekst;
+
+            document.querySelector(".infografik_varighed").innerHTML = theJSONDetalje.varighed;
+
+            document.querySelector(".infografik_hvornaar").innerHTML = theJSONDetalje.when;
+
+            document.querySelector(".infografik_pris").innerHTML = theJSONDetalje.pris;
+
+            document.querySelector(".infografik_alder").innerHTML = theJSONDetalje.alder;
+
+            console.log(theJSONDetalje.alder);
+
+
+
+
+
 
 
         }
 
-        async function loadArkiv() {
-
-            //henter data fra alle forestillinger
-            let ressponsArkiv = await fetch(endpointAkriv);
-
-            theJSONakriv = await ressponsArkiv.json();
-
-            //kalder visForestillinger
-            visArkiv(theJSONakriv);
-
-
-        }
-
-        // indsætter indholdet
-        function visForestillinger() {
-
-            //indsætter main overskriften
-            // main_overskrift er navnet på field'en i poden
-            document.querySelector("#top_overskrift").textContent = theJSONForestillinger.main_overskrift;
-
-            //indsætter overskriften på nuværende forestilling
-            // overskrift er navnet på field'en i poden
-            document.querySelector("#current_forestilling_overskrift").textContent = theJSONForestillinger.overskrift;
-
-            // indsætter datoen på nuværrende forestilling
-            // Dato er navnet på field'en i poden
-            document.querySelector("#current_forestilling_dato").textContent = theJSONForestillinger.dato;
-
-            // indsætter billedet på nuværende forestilling
-            // Forestilling_billede er navnet på field'en i poden
-            document.querySelector("#image_current_forestilling").src = theJSONForestillinger.forestilling_billede.guid;
-
-            //tilføjet overskriften glæd jer til
-            // main_overskrift2 er navnet på field'en i poden
-            document.querySelector("#mid_kommende_overskrift").textContent = theJSONForestillinger.main_overskrift2
-
-            // main_overskrift3 er navnet på field'en i poden
-            document.querySelector("#arkiv_h1").textContent = theJSONForestillinger.main_overskrift3
-
-            //gør så man kan klikke på read more knappen på den forestilling der spiller nu, og bliver sendt videre
-
-
-
-            document.querySelector(".read_more_current").addEventListener("click", () => {
-
-                location.href = `klikpaaforestilling_current.html?id=${theJSONForestillinger.id}`;
-            })
-
-        }
-
-        function visAlleForestillinger(alleForestillinger) {
-            // laver et loop over alle kommende forestillinger
-
-
-
-            forestillingerContainer.innerHTML = "";
-
-            alleForestillinger.forEach(forestilling => {
-
-                //laver klon
-                const klonForestillinger = forestillingTemplate.cloneNode(true).content;
-
-                //kopiere indhold ind i klonen
-                klonForestillinger.querySelector("img").src = forestilling.billede.guid;
-
-                klonForestillinger.querySelector("#overskrift_h2").textContent = forestilling.titel;
-
-                klonForestillinger.querySelector("#dato_p").textContent = forestilling.dato;
-
-                klonForestillinger.querySelector(".read_more").addEventListener("click", () => {
-
-                    location.href = `klikpaaforestilling.html?id=${forestilling.id}`;
-                })
-
-                forestillingerContainer.appendChild(klonForestillinger);
-
-
-            })
-        }
-
-        function visArkiv(theJSONakriv) {
-            arkivContainer.innerHTML = "";
-
-            theJSONakriv.forEach(arkiv => {
-
-                const klonForestillinger = forestillingTemplate.cloneNode(true).content;
-
-                //kopiere indhold ind i klonen
-                klonForestillinger.querySelector("img").src = arkiv.billede.guid;
-
-                klonForestillinger.querySelector("#overskrift_h2").textContent = arkiv.titel;
-
-                klonForestillinger.querySelector("#dato_p").textContent = arkiv.aarstal;
-
-                arkivContainer.appendChild(klonForestillinger);
-
-
-
-
-
-            })
-
-
-
-        }
     </script>
-</body></html>
+</body>
+
+</html>
