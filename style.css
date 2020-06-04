@@ -231,13 +231,13 @@ a {
 
     #forestllinger #image_current_forestilling {
         height: 75vh;
-        padding: 1rem;
+        padding: 1rem 5rem 1rem 1rem;
     }
 
     #forestllinger .wrapper {
         display: grid;
         grid-template-columns: 40vw 60vw;
-        height: 100vh;
+
     }
 
 
