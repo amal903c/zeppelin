@@ -14,10 +14,19 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="msapplication-config" content="myicons/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
+
+    <link rel="stylesheet" href="hamburgerstyle.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="script.js"></script>
+
     <style>
         .klikzep_wrapper h3 {
             text-align: center;
             margin: auto;
+        }
+
+        .klikzepzone {
+            margin: 10px;
         }
 
         .klikzep_wrapper img {
@@ -30,6 +39,7 @@
             max-width: 75ch;
             margin: auto;
         }
+
     </style>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -283,5 +293,8 @@
 
             document.querySelector(".klikzep_tekst").innerHTML = klikzepzoneJSON.kliktekst;
         }
+
     </script>
-</body></html>
+</body>
+
+</html>
