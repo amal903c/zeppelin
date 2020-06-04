@@ -384,6 +384,12 @@ a {
 
 /* alle forestillinger, når du har klikket på en forestilling */
 
+.koeb_billet:hover {
+    transform: translateY(-10px);
+    transition: .5s;
+
+}
+
 #detalje_forestilling .billet_infografik {
     width: 25vw;
     max-width: 300px;
@@ -870,6 +876,8 @@ dropbtn {
 footer {
     text-align: center;
     box-shadow: 0px -14px 10px -21px #111;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 
 
