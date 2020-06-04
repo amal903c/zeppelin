@@ -42,6 +42,7 @@ function startVises() {
 
 
     document.querySelector(".hamburger").addEventListener("click", () => {
+        console.log("jeg har klikket på brugermenu")
         document.querySelector(".hamburger").classList.toggle("is-active");
 
         document.querySelector(".drop_down_mobil").classList.toggle("hidden");
