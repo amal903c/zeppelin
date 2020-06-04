@@ -26,6 +26,8 @@
     <script src="script.js"></script>
     <nav>
 
+
+        <!--       BURGERMENU-->
         <div id="mobil_nav">
             <div class="wrapper_mobil">
 
@@ -41,7 +43,6 @@
             </div>
             <div class="drop_down_mobil hidden">
                 <ul class="menu_linje_mobil">
-
 
 
                     <li> <a href="forestillinger.html">Forestillinger</a> </li>
@@ -66,12 +67,8 @@
                             <a href="ditvisit.html#inden">Inden forestillingen</a>
                             <a href="ditvisit.html#efter">Efter forestillingen</a>
 
-
-
                         </div>
                     </div>
-
-
 
 
                     <div class="dropdown_mobil">
@@ -106,10 +103,19 @@
 
 
                     <li> <a href="https://www.teaterbilletter.dk/organizer/teatret-zeppelin/">Køb billet</a> </li>
-
                 </ul>
             </div>
 
+
+
+
+
+
+
+
+
+
+            <!--      WEB MENU      -->
 
         </div>
         <div id="web_nav">
@@ -135,9 +141,6 @@
                     </div>
 
 
-
-
-
                     <div class="dropdown">
                         <a href="ditvisit.html" class="dropbtn">Dit besøg</a>
                         <div class="dropdown-content">
@@ -147,8 +150,6 @@
                             <a href="ditvisit.html#restaurant">Restaurant besøg</a>
                             <a href="ditvisit.html#inden">Inden forestillingen</a>
                             <a href="ditvisit.html#efter">Efter forestillingen</a>
-
-
 
                         </div>
                     </div>
@@ -188,19 +189,25 @@
                     <li> <a href="https://www.teaterbilletter.dk/organizer/teatret-zeppelin/">Køb billet</a> </li>
 
                 </ul>
-
             </div>
         </div>
 
-
-
     </nav>
+
+
+
+
+
+
+
+
+    <!--    SIDENS INDHOLD-->
 
 
     <h1 id="team_title">Vores team</h1>
 
 
-    <!--  POPUP-->
+    <!--  Popup-->
 
     <section id="team_detalje" class="team_skjul">
         <div class="container_luk">
@@ -221,7 +228,6 @@
 
 
 
-
     <!--    LOOPVIEW-->
     <section class="team_liste"></section>
 
@@ -232,6 +238,15 @@
             <p class="team_stilling"></p>
         </article>
     </template>
+
+
+
+
+
+
+
+
+    <!--    FOOTER-->
 
     <footer id="footer">
         <div class="footer_content">
@@ -269,20 +284,31 @@
 
 
 
+
+
     <script>
+        // Flowet starter her
         document.addEventListener("DOMContentLoaded", start);
 
+
+        // Variabler
         const listeELM = document.querySelector(".team_liste");
         const template_teamet = document.querySelector(".team_template").content;
 
-        // HENT WORDPRESS
+
+        // Hent JSON via Rest API
         const url = "http://michelleyoung.dk/kea/zeppelin/wordpress/wp-json/wp/v2/team?per_page=100";
 
 
+        // async funcktionen gør at flowet ikke kan gå videre før det har hentet data
 
         async function start() {
+            // Henter json data for teamet via Rest API
             const resspons = await fetch(url);
+
+            // Putter json data ind i det tomme array for teamet
             const json = await resspons.json();
+            // kalder funktion
             vis(json);
         }
 
@@ -291,8 +317,11 @@
             listeELM.innerHTML = "";
             personer.forEach(person => {
                 console.log(person);
+
+                // laver klon
                 const klon = template_teamet.cloneNode(true);
 
+                // Kopiere indholdet ind i klon
                 klon.querySelector(".team_navn").textContent = person.navn;
                 klon.querySelector(".team_stilling").textContent = person.stilling;
                 klon.querySelector("img").src = person.billede.guid;
