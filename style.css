@@ -16,33 +16,23 @@ img {
 }
 
 h1 {
-    /*
-    font-family: montserrat, sans-serif;
-    font-style: Light;
-    font-weight: 100;
-*/
-
-
     font-family: oswald, sans-serif;
     font-style: normal;
     font-weight: 200;
     text-align: center;
     font-size: 3rem;
-
 }
 
 h2 {
 
     font-family: oswald, sans-serif;
     font-style: normal;
-    font-weight: 550;
     font-size: 1.5rem;
 }
 
 h3 {
 
     font-family: oswald, sans-serif;
-    font-style: Light;
     font-weight: 100;
     font-size: 1rem;
 }
@@ -73,7 +63,6 @@ p {
 
 a {
     font-family: montserrat, sans-serif;
-    font-style: ExtraLight;
     font-weight: 100;
     font-size: 16px;
 }
@@ -637,7 +626,6 @@ a {
 
 .i_dag_knap {
     font-family: montserrat, sans-serif;
-    font-style: ExtraLight;
     font-weight: 100;
     font-size: 1rem;
 }
