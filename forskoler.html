@@ -169,7 +169,6 @@
             }
 
         }
-
     </style>
 
     <link rel="stylesheet" href="style.css">
@@ -371,20 +370,20 @@
                     <div class="flex_imgs">
                         <p class="skoler_tekst"></p>
                     </div>
-                    <img class="skoler_img" src="" alt="Teatret Zeppelin">
+                    <img class="skoler_img" src="" alt="">
                     <div class="download_imgs">
                         <div class="download_wrapper1">
-                            <img class="download_1" src="" alt="Teatret Zeppelin">
+                            <img class="download_1" src="" alt="">
                             <h3 class="h3_tekst1"></h3>
                             <button class="read_more hide">Download</button>
                         </div>
                         <div class="download_wrapper2">
-                            <img class="download_2" src="" alt="Teatret Zeppelin">
+                            <img class="download_2" src="" alt="">
                             <h3 class="h3_tekst2"></h3>
                             <button class="read_more hide">Download</button>
                         </div>
                         <div class="download_wrapper3">
-                            <img class="download_3" src="" alt="Teatret Zeppelin">
+                            <img class="download_3" src="" alt="">
                             <h3 class="h3_tekst3"></h3>
                             <button class="read_more hide">Download</button>
                         </div>
@@ -479,52 +478,68 @@
                     klon.querySelector(".skoler_tekst").innerHTML = skole.tekst1;
 
                     if (skole.billede) {
+                        let klon = template_skoler.cloneNode(true);
+
                         klon.querySelector(".skoler_img").src = skole.billede.guid;
+                        listeELM.appendChild(klon);
+
 
                     }
                     if (skole.download1) {
+
+
+
                         klon.querySelector(".download_1").src = skole.download1.guid;
 
                         klon.querySelector(".download_wrapper1").addEventListener("click", () => {
                             location.href = "https://www.zeppelin.dk/wp-content/uploads/2014/07/Undervisningsmateriale-M%C3%A6lkeb%C3%B8ttereglementet.pdf"
                         });
 
+
                     }
                     if (skole.download2) {
+
                         klon.querySelector(".download_2").src = skole.download2.guid;
 
                         klon.querySelector(".download_wrapper2").addEventListener("click", () => {
                             location.href = "https://www.zeppelin.dk/wp-content/uploads/2014/07/Skolemat.-Frost-2019.pdf"
                         });
 
+
+
                     }
                     if (skole.h3_tekst1) {
+
                         klon.querySelector(".h3_tekst1").textContent = skole.h3_tekst1;
                         klon.querySelector(".download_wrapper1 button").classList.remove("hide");
 
+
                     }
                     if (skole.h3_tekst2) {
+
                         klon.querySelector(".h3_tekst2").textContent = skole.h3_tekst2;
                         klon.querySelector(".download_wrapper2 button").classList.remove("hide");
 
+
                     }
                     if (skole.h3_tekst3) {
+
                         klon.querySelector(".h3_tekst3").textContent = skole.h3_tekst3;
                         klon.querySelector(".download_wrapper3 button").classList.remove("hide");
 
+
                     }
                     if (skole.download3) {
+
                         klon.querySelector(".download_3").src = skole.download3.guid;
                         klon.querySelector(".download_wrapper3").addEventListener("click", () => {
                             location.href = "https://www.zeppelin.dk/wp-content/uploads/2014/07/Skolemateriale-DDFEHH-2020.pdf"
                         });
+
                     }
                     listeELM.appendChild(klon);
                 }
             })
         }
-
     </script>
-</body>
-
-</html>
+</body></html>
