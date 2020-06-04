@@ -51,8 +51,9 @@ p {
     font-family: montserrat, sans-serif;
     font-style: normal;
     font-weight: 200;
-    line-height: 1.4rem;
+    line-height: 1.7rem;
     max-width: 75ch;
+    letter-spacing: 1px;
 }
 
 /* knappen */
