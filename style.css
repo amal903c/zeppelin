@@ -498,8 +498,6 @@ a {
 
 }
 
-
-
 #soerarrangement .infografik_container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -512,6 +510,7 @@ a {
 
 .infografik_boks img {
     width: 8vw;
+    min-width: 75px;
 }
 
 #soerarrangement .infografik_boks {
@@ -1477,10 +1476,21 @@ footer h3 {
         padding-top: 4vw;
     }
 
+    .container_billede2 img {
+        height: 70vh;
+        object-fit: cover;
+    }
+
+
     .container_tekst3 {
         padding-left: 3.5vw;
         padding-right: 7vw;
         padding-top: 4vw;
+    }
+
+    .container_billede3 {
+        height: 70vh;
+        object-fit: cover;
     }
 
     .container_billede3 {
