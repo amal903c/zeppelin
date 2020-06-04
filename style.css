@@ -1312,17 +1312,13 @@ footer h3 {
     display: flex;
 }
 
-.kontakt_container1 {
-    justify-content: flex-end;
-    padding: 0rem 3rem 0rem 0rem;
+
+
+@media only screen and (min-width: 320px) {
+    .kontakt_col {
+        justify-content: center;
+    }
 }
-
-.kontakt_container2 {
-    justify-content: flex-start;
-    padding: 0rem 0rem 0rem 3rem;
-}
-
-
 
 
 @media only screen and (min-width: 768px) {
@@ -1331,6 +1327,16 @@ footer h3 {
         width: 100%;
         display: grid;
         grid-template-columns: 50vw 50vw;
+    }
+
+    .kontakt_container1 {
+        justify-content: flex-end;
+        padding: 0rem 3rem 0rem 0rem;
+    }
+
+    .kontakt_container2 {
+        justify-content: flex-start;
+        padding: 0rem 0rem 0rem 3rem;
     }
 }
 
