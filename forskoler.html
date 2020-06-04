@@ -11,9 +11,16 @@
     <link rel="manifest" href="myicons/site.webmanifest">
     <link rel="mask-icon" href="myicons/safari-pinned-tab.svg" color="#5bbad5">
     <link rel="shortcut icon" href="myicons/favicon.ico">
+    <link rel="stylesheet" href="hamburgerstyle.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="script.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;1,100;1,200&family=Oswald:wght@400;600&display=swap" rel="stylesheet">
+
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="msapplication-config" content="myicons/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
+    <script src="https://kit.fontawesome.com/c8a06f238c.js" crossorigin="anonymous"></script>
     <style>
         .forskoler_nav {
             text-align: center;
@@ -22,6 +29,7 @@
             flex-direction: column;
         }
 
+
         button:hover {
             cursor: pointer;
         }
@@ -29,6 +37,10 @@
         .filter {
             border: none;
             background: none;
+        }
+
+        .forskoler_nav button {
+            font-size: 1rem;
         }
 
         .valgt {
@@ -138,12 +150,15 @@
                 font-size: 1rem;
             }
         }
+
     </style>
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+
+
 
     <nav>
 
@@ -319,11 +334,21 @@
 
 
     <nav class="forskoler_nav">
-        <button class="filter valgt" data-kategori="praktiskinfo">Praktisk Info</button>
-        <button class="filter" data-kategori="undervisning">Undervisningsmateriale</button>
-        <button class="filter" data-kategori="forbered">Forbered elever</button>
-        <button class="filter" data-kategori="zepsko">Zepsko</button>
-        <button class="filter" data-kategori="huskunstordning">Huskunstordning</button>
+        <button class="filter valgt" data-kategori="praktiskinfo">Praktisk Info</i>
+
+        </button>
+        <button class="filter" data-kategori="undervisning">Undervisningsmateriale</i>
+
+        </button>
+        <button class="filter" data-kategori="forbered">Forbered elever</i>
+
+        </button>
+        <button class="filter" data-kategori="zepsko">Zepsko</i>
+
+        </button>
+        <button class="filter" data-kategori="huskunstordning">Huskunstordning</i>
+
+        </button>
 
     </nav>
 
@@ -490,5 +515,8 @@
                 }
             })
         }
+
     </script>
-</body></html>
+</body>
+
+</html>

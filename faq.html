@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="hamburgerstyle.css">
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;1,100;1,200&family=Oswald:wght@400;600&display=swap" rel="stylesheet">
+
     <link rel="apple-touch-icon" sizes="180x180" href="myicons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="myicons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="myicons/favicon-16x16.png">
@@ -263,6 +265,16 @@
     <section class="faq_overrubrik">
         <h1>Ofte stillede spørgsmål</h1>
     </section>
+    <div class="faq_container">
+        <!--        <div class="faq">-->
+        <template id="faq_template">
+            <button class="faq_accordion"></button>
+            <div class="faq_svar">
+                <p></p>
+            </div>
+        </template>
+        <!--        </div>-->
+    </div>
 
     <footer id="footer">
         <div class="footer_content">
@@ -294,16 +306,6 @@
         </div>
     </footer>
 
-    <div class="faq_container">
-        <!--        <div class="faq">-->
-        <template id="faq_template">
-            <button class="faq_accordion"></button>
-            <div class="faq_svar">
-                <p></p>
-            </div>
-        </template>
-        <!--        </div>-->
-    </div>
     <script>
         "use strict";
 
