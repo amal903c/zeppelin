@@ -481,6 +481,10 @@ a {
     object-fit: cover;
 }
 
+#soerarrangement h1 {
+    margin-bottom: 70px;
+}
+
 @media only screen and (min-width: 320px) {
     #soerarrangement .tekst_container {
         padding: 0rem 2rem;
