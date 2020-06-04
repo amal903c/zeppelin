@@ -1303,34 +1303,35 @@ footer h3 {
     display: none;
 }
 
-.kontakt_col {
-    padding: 4vw 20vw;
+.wrapper_kontakt {
+    width: 100%;
+    display: grid;
 }
+
+.kontakt_col {
+    display: flex;
+}
+
+.kontakt_container1 {
+    justify-content: flex-end;
+    padding: 0rem 3rem 0rem 0rem;
+}
+
+.kontakt_container2 {
+    justify-content: flex-start;
+    padding: 0rem 0rem 0rem 3rem;
+}
+
+
 
 
 @media only screen and (min-width: 768px) {
 
-    #liste_kontakt {
-        display: flex;
-        flex-wrap: wrap;
+    .wrapper_kontakt {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 50vw 50vw;
     }
-
-    .kontakt_col {
-        flex-grow: 1;
-        flex-basis: 373px;
-
-        padding: 3vw 0;
-    }
-
-    .kontakt_container1 {
-        padding-left: 24vw;
-    }
-
-    .kontakt_container2 {
-        padding-left: 12vw;
-        padding-right: 7vw;
-    }
-
 }
 
 
