@@ -225,19 +225,35 @@ a {
         height: 66px;
     }
 
+    #forestllinger .wrapper {
+        display: grid;
+        grid-template-columns: auto;
+
+    }
+
+    #forestllinger .image {
+        grid-row-start: 1;
+        padding: 2rem;
+
+    }
 }
 
 @media only screen and (min-width: 768px) {
 
     #forestllinger #image_current_forestilling {
         height: 75vh;
-        padding: 1rem 5rem 1rem 1rem;
+        padding: 1rem 2rem 1rem 1rem;
     }
 
     #forestllinger .wrapper {
         display: grid;
         grid-template-columns: 40vw 60vw;
 
+    }
+
+    #forestllinger .text {
+        grid-column-start: 1;
+        grid-row-start: 1;
     }
 
 
