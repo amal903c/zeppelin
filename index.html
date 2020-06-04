@@ -484,6 +484,7 @@
                 font-size: 20vw;
             }
         }
+
     </style>
 </head>
 
@@ -910,8 +911,8 @@
         function start() {
             loadData();
 
-//            document.querySelector(".foran").addEventListener("click", foran);
-// document.querySelector(".tilbage").addEventListener("click", tilbage);
+            document.querySelector(".arrow-right").addEventListener("click", foran);
+            document.querySelector(".arrow-left").addEventListener("click", tilbage);
         }
 
         async function loadData() {
@@ -925,6 +926,63 @@
             console.log(theJSONBilledGalleri);
 
             visIndhold();
+            buildKarrusel();
+        }
+
+        function buildKarrusel() {
+            numberOfPicsInKarrrusel = theJSONBilledGalleri.length;
+
+            //For each ud fra vorers array af husbilelderne:
+
+            document.querySelector(".karrusel").addEventListener("scroll", scrollFunction);
+        }
+
+        function scrollFunction() {
+            karruselCurrentNumber = Math.round(document.querySelector(".karrusel").scrollLeft / document.querySelector(".billede_karrusel").width);
+            console.log(karruselCurrentNumber);
+            setBtns();
+        }
+
+        function foran() {
+            if (karruselCurrentNumber < numberOfPicsInKarrrusel - 1) {
+                karruselCurrentNumber++;
+                karruselCurrentNumber++;
+                navigate();
+            }
+        }
+
+        function tilbage() {
+            if (karruselCurrentNumber > 0) {
+                karruselCurrentNumber--;
+                karruselCurrentNumber--;
+                navigate();
+            }
+        }
+
+        function navigate() {
+            document.querySelector(".karrusel").scrollTo({
+                left: karruselCurrentNumber * document.querySelector(".billede_karrusel").width,
+                behavior: "smooth"
+            })
+            setBtns();
+        }
+
+        function setBtns() {
+            if (karruselCurrentNumber < numberOfPicsInKarrrusel - 1) {
+                document.querySelector(".arrow-right").style.opacity = 1;
+                document.querySelector(".arrow-right").style.cursor = "pointer";
+            } else {
+                document.querySelector(".arrow-right").style.opacity = 0.2;
+                document.querySelector(".arrow-right").style.cursor = "default";
+            }
+            if (karruselCurrentNumber > 0) {
+                document.querySelector(".arrow-left").style.opacity = 1;
+                document.querySelector(".arrow-left").style.cursor = "pointer";
+            } else {
+                document.querySelector(".arrow-left").style.opacity = 0.2;
+                document.querySelector(".arrow-left").style.cursor = "default";
+
+            }
         }
 
         function visIndhold() {
@@ -946,72 +1004,10 @@
             document.querySelector("#tekst3").innerHTML = theJSON.tekst3;
         }
 
-        //            //KARRUSEL
-        //            numberOfPicsInKarrrusel = theJSONBilledGalleri.length;
-        //
-        //            //For each ud fra vorers array af husbilelderne:
-        //            theJSONBilledGalleri.forEach((billede, index) => {
-        //                //vi skal have for både det store billede - theclone, og så de små legend billeder - secondclone:
-        //                const theClone = document.querySelector("#template_karusel").cloneNode(true).content;
-        //                //billederne sættes ind
-        //                theClone.querySelector(".karrusel_imgs").src = billede.forestilling_billede.guid;
-        //                //billederne sættes ind
-        //                theClone.querySelector(".karrusel_titel").innerHTML = billede.title.rendered;
-        //                //billederne sættes ind
-        //                theClone.querySelector(".karrusel_dato").innerHTML = billede.dato;
-        //                //vi skal appende vores kloner til dokumentet:
-        //                document.querySelector(".the_container").appendChild(theClone);
-        //            })
-        //            document.querySelector(".the_container").addEventListener("scroll", scrollFunction);
-        //        }
-        //
-        //        function scrollFunction() {
-        //            karruselCurrentNumber = Math.round(document.querySelector(".the_container").scrollLeft / document.querySelector(".karrusel_imgs").width);
-        //            console.log(karruselCurrentNumber);
-        //            setBtns();
-        //        }
-        //
-        //        function foran() {
-        //            if (karruselCurrentNumber < numberOfPicsInKarrrusel - 1) {
-        //
-        //                karruselCurrentNumber++;
-        //                navigate();
-        //            }
-        //        }
-        //
-        //        function tilbage() {
-        //            if (karruselCurrentNumber > 0) {
-        //                karruselCurrentNumber--;
-        //                navigate();
-        //            }
-        //        }
-        //
-        //        function navigate() {
-        //            document.querySelector(".the_container").scrollTo({
-        //                left: karruselCurrentNumber * document.querySelector(".karrusel_imgs").width,
-        //                behavior: "smooth"
-        //            })
-        //            setBtns();
-        //        }
+        //KARRUSEL
 
-        //        function setBtns() {
-        //            if (karruselCurrentNumber < numberOfPicsInKarrrusel - 1) {
-        //                document.querySelector(".foran").style.opacity = 1;
-        //                document.querySelector(".foran").style.cursor = "pointer";
-        //            } else {
-        //                document.querySelector(".foran").style.opacity = 0.2;
-        //                document.querySelector(".foran").style.cursor = "default";
-        //
-        //            }
-        //            if (karruselCurrentNumber > 0) {
-        //                document.querySelector(".tilbage").style.opacity = 1;
-        //                document.querySelector(".tilbage").style.cursor = "pointer";
-        //            } else {
-        //                document.querySelector(".tilbage").style.opacity = 0.2;
-        //                document.querySelector(".tilbage").style.cursor = "default";
-        //
-        //            }
-        //        }
     </script>
     <script src="script.js"></script>
-</body></html>
+</body>
+
+</html>
