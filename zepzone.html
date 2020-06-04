@@ -128,6 +128,7 @@
             }
 
         }
+
     </style>
 </head>
 
@@ -327,23 +328,23 @@
             <div class="zepzone_topwrapper">
                 <div id="zepzone_tekst"></div>
                 <div class="zepzone_img">
-                    <img id="zepzone_billede" src="" alt="">
+                    <img id="zepzone_billede" src="z" alt="z">
                 </div>
             </div>
             <h2>Vores dramatilbud</h2>
             <div class="download_imgs">
                 <div class="download_wrapper1">
-                    <img class="download_1" src="" alt="">
+                    <img class="download_1" src="z" alt="z">
                     <h3 class="h3_tekst1"></h3>
                     <button class="read_more">Læs mere</button>
                 </div>
                 <div class="download_wrapper2">
-                    <img class="download_2" src="" alt="">
+                    <img class="download_2" src="z" alt="z">
                     <h3 class="h3_tekst2"></h3>
                     <button class="read_more ">Læs mere</button>
                 </div>
                 <div class="download_wrapper3">
-                    <img class="download_3" src="" alt="">
+                    <img class="download_3" src="z" alt="z">
                     <h3 class="h3_tekst3"></h3>
                     <button class="read_more ">Læs mere</button>
                 </div>
@@ -361,9 +362,9 @@
     <footer id="footer">
         <div class="footer_content">
             <h3>Følg os</h3>
-            <a href="https://www.facebook.com/TeatretZeppelin/"> <img class="footer_img" src="billeder/faceillustration.svg"></a>
+            <a href="https://www.facebook.com/TeatretZeppelin/"> <img class="footer_img" src="billeder/faceillustration.svg" alt="Teatret Zeppelin"></a>
 
-            <a href="https://www.instagram.com/teatretzeppelin/"> <img class="footer_img" src="billeder/instaillustrattion.svg"></a>
+            <a href="https://www.instagram.com/teatretzeppelin/"> <img class="footer_img" src="billeder/instaillustrattion.svg" alt="Teatret Zeppelin"></a>
 
 
         </div>
@@ -436,14 +437,21 @@
             document.querySelector("#zepzone_tekst").innerHTML = zepJSON.tekst1;
 
             document.querySelector("#zepzone_billede").src = zepJSON.billede.guid;
+            document.querySelector("#zepzone_billede").alt = "Teatret Zeppelin " + zepJSON.overskrift1;
+
 
             document.querySelector(".download_1").src = zepJSON.download1.guid;
+            document.querySelector(".download_1").alt = "Teatret Zeppelin " + zepJSON.h3_tekst1;
             document.querySelector(".h3_tekst1").textContent = zepJSON.h3_tekst1;
 
             document.querySelector(".download_2").src = zepJSON.download2.guid;
+            document.querySelector(".download_2").alt = "Teatret Zeppelin " + zepJSON.h3_tekst2;
+
             document.querySelector(".h3_tekst2").textContent = zepJSON.h3_tekst2;
 
             document.querySelector(".download_3").src = zepJSON.download3.guid;
+            document.querySelector(".download_2").alt = "Teatret Zeppelin " + zepJSON.h3_tekst3;
+
             document.querySelector(".h3_tekst3").textContent = zepJSON.h3_tekst3;
 
 
@@ -461,5 +469,8 @@
             })
 
         }
+
     </script>
-</body></html>
+</body>
+
+</html>
