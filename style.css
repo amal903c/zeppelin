@@ -63,9 +63,237 @@ p {
 
 a {
     font-family: montserrat, sans-serif;
-    font-weight: 100;
+    /*    font-weight: 100;*/
     font-size: 16px;
+    text-decoration: none;
+    border-bottom: none;
 }
+
+/* i dag knap */
+
+.i_dag_knap {
+    width: fit-content;
+    cursor: pointer;
+    font-family: montserrat, sans-serif;
+    height: 40px;
+    border: none;
+    border-bottom: 2px solid #8C2020;
+    background-color: transparent;
+    font-weight: 900;
+    font-size: 18px;
+}
+
+.read_more_idag_info {
+    border: none;
+    background-color: #8C2020;
+
+    color: white;
+    cursor: pointer;
+    font-family: montserrat, sans-serif;
+    width: 130px;
+    height: 40px;
+    padding: 16px 36px;
+    margin: 10px;
+    text-align: center;
+    font-size: 11px;
+
+}
+
+.idag_popup_container {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 120;
+    left: 0;
+    top: 0;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 3vw 4vw;
+}
+
+.idag_popup {
+    width: 60%;
+    background-color: white;
+    margin: 0 auto;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .5)
+}
+
+.idag_popup_top {
+    display: grid;
+    grid-template-rows: auto auto;
+}
+
+.idag_popup_bot {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    padding: 20px;
+}
+
+.idag_popup_top h1 {
+    margin: 0;
+}
+
+.idag_popup_top h2 {
+    text-align: right;
+    margin: 0;
+    margin-right: 17px;
+    margin-top: 14px;
+    border-bottom: 2px solid;
+    padding-bottom: 10px;
+    margin-left: 17px;
+}
+
+#idag_billede {
+    width: 70%;
+    height: 176px;
+    object-fit: cover;
+}
+
+
+
+.idag_img {
+    text-align: center;
+}
+
+.billet_knap_idag {
+    width: 145px;
+}
+
+.container_knapper {
+    display: flex;
+}
+
+.luk_idag {
+    color: black;
+    cursor: pointer;
+    margin: 0;
+    float: left;
+    border: none;
+    font-size: 1.8rem;
+    background-color: white;
+    display: flex;
+    justify-content: flex-end;
+    margin: 6px;
+    width: fit-content;
+}
+
+/* kalender */
+
+.kalender_knap {
+
+
+    cursor: pointer;
+    font-family: montserrat, sans-serif;
+    height: 40px;
+    height: 40px;
+    border: none;
+    border-bottom: 2px solid #8C2020;
+    background-color: transparent;
+    font-weight: 900;
+    font-size: 18px;
+    padding: 0;
+}
+
+.knap_container_kalender {
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    flex-direction: column;
+    margin-right: 30px;
+    align-items: flex-end;
+}
+
+.kalender_popup_container {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 120;
+    left: 0;
+    top: 0;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 3vw 4vw;
+}
+
+.kalender_popup {
+    width: 86%;
+    background-color: white;
+    margin: 0 auto;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .5)
+}
+
+/* selve kalenderen */
+.date_container {
+    list-style-type: none;
+    display: flex;
+    padding: 0;
+    justify-content: center;
+    padding-bottom: 50px;
+    margin: 0px 20px;
+}
+
+.date_container li {
+    border: 1px solid #8C2020;
+    color: #8C2020;
+
+
+    font-family: montserrat, sans-serif;
+    font-style: normal;
+    font-weight: 200;
+    line-height: 1.7rem;
+    letter-spacing: 1px;
+    padding: 5px;
+
+    width: 32px;
+    height: 32px;
+    font-size: 0.9em;
+    text-align: center;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.unactive {
+    opacity: 30%;
+}
+
+.valgt {
+    background-color: #8C2020;
+    color: white;
+}
+
+li.valgt {
+    color: white;
+}
+
+#info_om_forestilling {
+    border: 2px solid;
+    display: flex;
+    width: 60%;
+    justify-content: space-around;
+    align-items: center;
+    margin: 50px;
+}
+
+#drop_down_date {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.read_more_kalender {
+    border: none;
+    background-color: #8C2020;
+    padding: 1rem 2.5rem 1rem 2.5rem;
+    color: white;
+    cursor: pointer;
+    font-family: montserrat, sans-serif;
+}
+
 
 
 
@@ -610,6 +838,9 @@ a {
 
     .bottom_nav {
         margin-bottom: 15px;
+        width: 90%;
+        margin: 0 auto;
+        padding: 0px 0px 16px 0px;
     }
 
     .a_logo_img {
@@ -624,11 +855,13 @@ a {
     transition: 0.5s;
 }
 
+/*
 .i_dag_knap {
     font-family: montserrat, sans-serif;
     font-weight: 100;
     font-size: 1rem;
 }
+*/
 
 /* mobil */
 .wrapper_mobil {
@@ -705,15 +938,7 @@ a {
     margin-top: 10px;
 }
 
-.i_dag_knap {
-    border: 2px solid #8C2020;
-    height: 5vw;
-    width: 8vw;
 
-    max-width: 70px;
-    max-height: 40px;
-    background-color: #f5f5f5;
-}
 
 .knap_container {
     display: flex;
@@ -759,7 +984,15 @@ nav.black {
 }
 
 
+#web_nav.black .i_dag_knap {
 
+    font-size: 14px;
+}
+
+#web_nav.black .kalender_knap {
+
+    font-size: 14px;
+}
 
 
 #web_nav.black .logo_img {

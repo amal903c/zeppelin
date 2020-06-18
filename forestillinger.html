@@ -37,6 +37,14 @@
 
     </template>
 
+    <template id="kalender_template">
+        <article id="info_om_forestilling">
+            <h2 class="kalender_overskrift">Hej</h2>
+            <p class="tid_kalender">10:10</p>
+            <div class="read_more_kalender">Læs mere</div>
+        </article>
+    </template>
+
     <nav>
 
         <div id="mobil_nav">
@@ -125,9 +133,88 @@
         <div id="web_nav">
             <div class="top_nav">
                 <div class="knap_container">
-                    <button class="i_dag_knap">I dag</button>
+                    <button class="i_dag_knap">I DAG</button>
+                    <div class="idag_popup_container hidden">
+                        <div class="idag_popup">
+                            <div class="idag_popup_top">
+                                <button class="luk_idag">X</button>
+                                <h1>Spiller i dag</h1>
+                                <h2>Zeppelin teater</h2>
+                            </div>
+                            <div class="idag_popup_bot">
+                                <div class="idag_img">
+                                    <img id="idag_billede" src="" alt="">
+                                </div>
+                                <div class="idag_text">
+                                    <h2 id="idag_overskrift"></h2>
+                                    <p id="idag_dato"></p>
+
+                                    <div class="container_knapper hidden">
+                                        <a href="https://www.teaterbilletter.dk/organizer/teatret-zeppelin/">
+                                            <div class="read_more_idag_info">Køb billet</div>
+                                        </a>
+                                        <div class="read_more_idag_info readmore_info">Læs mere</div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <a class="a_logo_img" href="index.html"><img class="logo_img" src="billeder/logodone.svg" alt="Zeppelin børneteater"></a>
+
+
+                <div class="knap_container_kalender">
+                    <button class="kalender_knap">KALENDER</button>
+                    <div class="kalender_popup_container hidden">
+                        <div class="kalender_popup">
+                            <div class="idag_popup_top">
+                                <button class="luk_kalender luk_idag">X</button>
+                                <h1>Kalender</h1>
+                                <h2>Zeppelin teater</h2>
+                            </div>
+                            <h1 class="maanede"></h1>
+                            <ol class="date_container">
+                                <li class="dato unactive en_date"><span>1</span></li>
+                                <li class="dato unactive to_date"><span>2</span></li>
+                                <li class="dato unactive tre_date"><span>3</span></li>
+                                <li class="dato unactive fire_date"><span>4</span></li>
+                                <li class="dato unactive fem_date"><span>5</span></li>
+                                <li class="dato unactive seks_date"><span>6</span></li>
+                                <li class="dato unactive syv_date"><span>7</span></li>
+                                <li class="dato unactive otte_date"><span>8</span></li>
+                                <li class="dato unactive ni_date"><span>9</span></li>
+                                <li class="dato unactive ti_date"><span>10</span></li>
+                                <li class="dato unactive elve_date"><span>11</span></li>
+                                <li class="dato unactive tolv_date"><span>12</span></li>
+                                <li class="dato unactive tretten_date"><span>13</span></li>
+                                <li class="dato unactive fjorten_date"><span>14</span></li>
+                                <li class="dato unactive femten_date"><span>15</span></li>
+                                <li class="dato unactive seksten_date"><span>16</span></li>
+                                <li class="dato unactive sytten_date"><span>17</span></li>
+                                <li class="dato unactive atten_date"><span>18</span></li>
+                                <li class="dato unactive nitten_date"><span>19</span></li>
+                                <li class="dato unactive tyve_date"><span>20</span></li>
+                                <li class="dato unactive enogtyve_date"><span>21</span></li>
+                                <li class="dato unactive toogtyve_date"><span>22</span></li>
+                                <li class="dato unactive treogtyve_date"><span>23</span></li>
+                                <li class="dato unactive fireogtyve_date"><span>24</span></li>
+                                <li class="dato unactive femogtyve_date"><span>25</span></li>
+                                <li class="dato unactive seksogtyve_date"><span>26</span></li>
+                                <li class="dato unactive syvogtyve_date"><span>27</span></li>
+                                <li class="dato unactive otteogtyve"><span>28</span></li>
+                                <li class="dato unactive niogtyve"><span>29</span></li>
+                                <li class="dato unactive tredive_date"><span>30</span></li>
+                                <li class="dato unactive entredive_date"><span>31</span></li>
+                            </ol>
+                            <div id="drop_down_date">
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
 
             </div>
             <div class="bottom_nav">
@@ -446,5 +533,8 @@
 
 
         }
+
     </script>
-</body></html>
+</body>
+
+</html>

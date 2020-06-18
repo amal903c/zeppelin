@@ -58,6 +58,7 @@
             top: 40%;
         }
 
+        /* fjerner den første og den sidste streg */
         .navbar-step:first-child:before,
         .navbar-step:first-child:after {
             display: none;
@@ -109,7 +110,7 @@
         }
 
 
-
+        /* strengen ude til siden, selve elementet */
         .visit section {
             font-size: 1em;
             line-height: 1.75em;
@@ -124,7 +125,7 @@
         }
 
 
-
+        /* stregen i topppen, og dermed også i bunden, kommer før sectionen */
         .visit section:before {
 
             position: absolute;
@@ -140,19 +141,16 @@
         }
 
 
-
+        /* gør sådan så hver anden, ulige, at stregen er til højre */
         .visit section:nth-child(odd) {
             border-right: 3px solid;
             padding-left: 0;
         }
 
-
-
         .visit section:nth-child(odd):before {
             left: 100%;
             margin-left: -20px;
         }
-
 
 
         .visit section:nth-child(even) {
@@ -161,14 +159,14 @@
         }
 
 
-
+        /* gør sådan så hver anden, lige, at stregen er til højre */
         .visit section:nth-child(even):before {
             right: 100%;
             margin-right: -20px;
         }
 
 
-
+        /* gør så at der ikke kommer en ekstra streg rundt, kunne havde været undgået ved bare at slette sectionen */
         .visit section:first-child {
             border-top: 0;
             border-top-right-radius: 0;
@@ -177,7 +175,7 @@
         }
 
 
-
+        /* gør så stregen slutter*/
         .visit section:last-child {
             border-bottom-right-radius: 0;
             border-bottom-left-radius: 0;
@@ -365,6 +363,32 @@
             <div class="top_nav">
                 <div class="knap_container">
                     <button class="i_dag_knap">I dag</button>
+                    <div class="idag_popup_container hidden">
+                        <div class="idag_popup">
+                            <div class="idag_popup_top">
+                                <button class="luk_idag">X</button>
+                                <h1>Spiller i dag</h1>
+                                <h2>Zeppelin teater</h2>
+                            </div>
+                            <div class="idag_popup_bot">
+                                <div class="idag_img">
+                                    <img id="idag_billede" src="" alt="">
+                                </div>
+                                <div class="idag_text">
+                                    <h2 id="idag_overskrift"></h2>
+                                    <p id="idag_dato"></p>
+
+                                    <div class="container_knapper hidden">
+                                        <a href="https://www.teaterbilletter.dk/organizer/teatret-zeppelin/">
+                                            <div class="read_more_idag_info">Køb billet</div>
+                                        </a>
+                                        <div class="read_more_idag_info readmore_info">Læs mere</div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <a class="a_logo_img" href="index.html"><img class="logo_img" src="billeder/logodone.svg" alt="Zeppelin børneteater"></a>
 
@@ -671,6 +695,7 @@
 
         const toTop = document.querySelector(".to-top");
 
+        // hvis man er under 100px, så vises kom til top knappen og ellers gemmes den
         window.addEventListener("scroll", () => {
             if (window.pageYOffset > 100) {
                 toTop.classList.add("top_active");
